@@ -1,0 +1,19 @@
+{
+  "name": "casyoro",
+  "version": "1.0.0",
+  "description": "Full-stack cashback and affiliate platform combining coupons, publishers, and promoters",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
+  },
+  "keywords": ["cashback", "affiliate", "ecommerce", "coupons", "publishers"],
+  "author": "Casyoro Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
