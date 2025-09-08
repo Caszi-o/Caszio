@@ -40,6 +40,22 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Client-side validation
+    if (formData.firstName.length < 2) {
+      toast.error('First name must be at least 2 characters');
+      return;
+    }
+    
+    if (formData.lastName.length < 2) {
+      toast.error('Last name must be at least 2 characters');
+      return;
+    }
+    
+    if (formData.password.length < 8) {
+      toast.error('Password must be at least 8 characters');
+      return;
+    }
+    
     if (formData.password !== formData.confirmPassword) {
       toast.error('Passwords do not match');
       return;
@@ -53,7 +69,17 @@ export default function Register() {
     setLoading(true);
 
     try {
-      await register(formData);
+      // Send only the required fields to the backend
+      const registrationData = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+        phone: formData.phone,
+        role: formData.role
+      };
+      
+      await register(registrationData);
     } catch (error) {
       console.error('Registration error:', error);
       
@@ -61,7 +87,13 @@ export default function Register() {
       if (error.code === 'ECONNREFUSED' || error.message.includes('Network Error')) {
         toast.error('Backend server is not running. Please start the backend server on port 5000.');
       } else if (error.response?.status === 400) {
-        toast.error(error.response.data.message || 'Invalid registration data');
+        // Show specific validation errors
+        if (error.response.data.errors && Array.isArray(error.response.data.errors)) {
+          const errorMessages = error.response.data.errors.map(err => err.msg).join(', ');
+          toast.error(`Validation errors: ${errorMessages}`);
+        } else {
+          toast.error(error.response.data.message || 'Invalid registration data');
+        }
       } else if (error.response?.status === 409) {
         toast.error('User already exists with this email');
       } else {
@@ -170,7 +202,7 @@ export default function Register() {
                   autoComplete="tel"
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Enter your phone number"
+                  placeholder="Phone number (e.g., +919876543210)"
                   value={formData.phone}
                   onChange={handleChange}
                 />

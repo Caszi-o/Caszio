@@ -2,9 +2,10 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/auth/register": "pages/auth/register.js",
   "/": "pages/index.js",
-  "/disclaimer": "pages/disclaimer.js",
+  "/auth/verify-email": "pages/auth/verify-email.js",
   "/404": "pages/404.js",
-  "/how-it-works": "pages/how-it-works.js"
+  "/auth/login": "pages/auth/login.js",
+  "/user/dashboard": "pages/user/dashboard.js",
+  "/auth/register": "pages/auth/register.js"
 }

@@ -32,7 +32,7 @@ router.post('/register', [
   body('lastName').trim().isLength({ min: 2 }).withMessage('Last name must be at least 2 characters'),
   body('email').isEmail().normalizeEmail().withMessage('Valid email is required'),
   body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
-  body('phone').optional().isMobilePhone().withMessage('Valid phone number required')
+  body('phone').optional().isLength({ min: 10 }).withMessage('Phone number must be at least 10 digits')
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -90,16 +90,25 @@ router.post('/register', [
     user.verificationToken = verificationToken;
     await user.save();
 
-    // Send verification email
-    await sendEmail({
-      to: email,
-      subject: 'Verify Your Casyoro Account',
-      template: 'verification',
-      data: {
-        name: firstName,
-        verificationLink: `${process.env.FRONTEND_URL}/verify-email?token=${verificationToken}`
+    // Send verification email (skip if email not configured)
+    try {
+      if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+        await sendEmail({
+          to: email,
+          subject: 'Verify Your Casyoro Account',
+          template: 'verification',
+          data: {
+            name: firstName,
+            verificationLink: `${process.env.FRONTEND_URL}/verify-email?token=${verificationToken}`
+          }
+        });
+      } else {
+        console.log('Email not configured, skipping verification email');
       }
-    });
+    } catch (emailError) {
+      console.log('Email sending failed:', emailError.message);
+      // Continue with registration even if email fails
+    }
 
     // Generate tokens
     const { accessToken, refreshToken } = generateTokens(user._id);
@@ -119,7 +128,8 @@ router.post('/register', [
     console.error('Registration error:', error);
     res.status(500).json({
       success: false,
-      message: 'Registration failed'
+      message: 'Registration failed',
+      error: error.message
     });
   }
 });

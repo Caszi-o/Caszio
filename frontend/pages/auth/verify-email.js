@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import { authAPI } from '../../lib/api';
-import { useAuth } from '../../lib/auth';
+import { useAuth, getRedirectPath } from '../../lib/auth';
 import toast from 'react-hot-toast';
 
 const fadeInUp = {
@@ -27,6 +27,7 @@ export default function VerifyEmail() {
     }
   }, [token]);
 
+
   const verifyEmailToken = async (verificationToken) => {
     try {
       setLoading(true);
@@ -35,9 +36,10 @@ export default function VerifyEmail() {
       await loadUser(); // Refresh user data
       toast.success('Email verified successfully!');
       
-      // Redirect after 3 seconds
+      // Redirect based on user role after 3 seconds
       setTimeout(() => {
-        router.push('/user/dashboard');
+        const redirectPath = getRedirectPath(user?.role);
+        router.push(redirectPath);
       }, 3000);
     } catch (error) {
       setVerificationStatus('error');
@@ -153,7 +155,7 @@ export default function VerifyEmail() {
                 Redirecting to your dashboard in a few seconds...
               </p>
               
-              <Link href="/user/dashboard" className="btn btn-primary">
+              <Link href={getRedirectPath(user?.role)} className="btn btn-primary">
                 Go to Dashboard
               </Link>
             </div>

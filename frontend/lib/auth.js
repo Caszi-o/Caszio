@@ -6,6 +6,20 @@ import toast from 'react-hot-toast';
 // Auth Context
 const AuthContext = createContext({});
 
+// Helper function for role-based redirects
+export const getRedirectPath = (role) => {
+  switch (role) {
+    case 'admin':
+      return '/admin/dashboard';
+    case 'publisher':
+      return '/dashboard/publisher';
+    case 'promoter':
+      return '/dashboard/promoter';
+    default:
+      return '/dashboard/user';
+  }
+};
+
 // Auth Provider
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -44,6 +58,12 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       toast.success('Login successful!');
       
+      // Check if email is verified, if not redirect to verification page
+      if (!user.isVerified) {
+        router.push('/auth/verify-email');
+        return { success: true, requiresVerification: true };
+      }
+      
       // Redirect based on user role
       const redirectPath = getRedirectPath(user.role);
       router.push(redirectPath);
@@ -63,7 +83,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       toast.success('Registration successful! Please verify your email.');
       
-      router.push('/verify-email');
+      router.push('/auth/verify-email');
       return { success: true };
     } catch (error) {
       throw error;
@@ -90,18 +110,6 @@ export const AuthProvider = ({ children }) => {
     setUser(updatedUser);
   };
 
-  const getRedirectPath = (role) => {
-    switch (role) {
-      case 'admin':
-        return '/admin/dashboard';
-      case 'publisher':
-        return '/publisher/dashboard';
-      case 'promoter':
-        return '/promoter/dashboard';
-      default:
-        return '/user/dashboard';
-    }
-  };
 
   const hasRole = (role) => {
     return user?.role === role;
@@ -202,8 +210,9 @@ export const ProtectedRoute = ({ children, allowedRoles = [], requireVerificatio
         return;
       }
 
+      // Require email verification for all roles by default
       if (requireVerification && !user.isVerified) {
-        router.push('/verify-email');
+        router.push('/auth/verify-email');
         return;
       }
     }
