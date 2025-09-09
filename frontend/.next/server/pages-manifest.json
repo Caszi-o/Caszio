@@ -3,9 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/auth/verify-email": "pages/auth/verify-email.js",
   "/404": "pages/404.js",
-  "/auth/login": "pages/auth/login.js",
-  "/user/dashboard": "pages/user/dashboard.js",
-  "/auth/register": "pages/auth/register.js"
+  "/admin/dashboard": "pages/admin/dashboard.js"
 }
