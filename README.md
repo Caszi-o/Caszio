@@ -348,6 +348,8 @@ npm start
 - **Twitter**: https://twitter.com/casyoro
 - **YouTube**: https://youtube.com/casyoro
 - **GitHub**: https://github.com/casyoro
+- **Instagran**: https://www.instagram.com/casyoro.casyoro?igsh=bW5taTV2cHp2NTJq
+- **Facebook**: https://www.facebook.com/share/1CW6kEJu8c/
 
 ---
 
