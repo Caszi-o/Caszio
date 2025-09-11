@@ -384,7 +384,7 @@ export default function Home() {
               {merchants.map((merchant) => (
                 <motion.div
                   key={merchant.name}
-                  className="flex items-center justify-center p-4 rounded-lg hover:shadow-soft transition-shadow grayscale hover:grayscale-0"
+                  className="flex items-center justify-center p-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 hover:bg-gray-50"
                   variants={fadeInUp}
                 >
                   <Image

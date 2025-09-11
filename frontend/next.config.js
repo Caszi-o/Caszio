@@ -4,7 +4,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['res.cloudinary.com', 'lh3.googleusercontent.com', 'graph.facebook.com'],
-    formats: ['image/webp', 'image/avif'],
   },
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
