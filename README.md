@@ -23,7 +23,7 @@ Casyoro is India's first fully automated cashback and affiliate marketing platfo
 - **Mobile-First Design**: Easy browsing and saving of favorite offers
 
 ### 📺 **Publisher Advertising Platform**
-- **Multi-Tier Packages**: Basic (₹2,999), Standard (₹7,999), Premium (₹19,999) monthly plans
+- **Multi-Tier Packages**: Basic, Standard, and Premium monthly plans
 - **Advanced Targeting**: Demographic, geographic, and behavioral targeting options
 - **Multiple Ad Formats**: Banner ads, native ads, sponsored content, and video ads
 - **Real-time Analytics**: Comprehensive dashboard with ROI tracking and performance metrics
@@ -33,7 +33,7 @@ Casyoro is India's first fully automated cashback and affiliate marketing platfo
 ### 💰 **Promoter Revenue Network**
 - **Multiple Earning Models**: CPC (Cost Per Click), CPA (Cost Per Action), and Revenue Share
 - **Easy Integration**: Dynamic ad script generation for websites, blogs, and social media
-- **Performance-Based Payouts**: Earn ₹25,000+ monthly through quality traffic promotion
+- **Performance-Based Payouts**: Earn significant monthly income through quality traffic promotion
 - **Detailed Analytics**: Track clicks, conversions, and earnings in real-time
 - **Flexible Payouts**: Bank transfer, UPI, and cryptocurrency withdrawal options
 - **Quality Assurance**: Automated fraud detection and quality-based scoring system
@@ -88,8 +88,8 @@ npm run dev  # Frontend: 3000, Backend: 5000
 ### Environment Setup
 ```env
 # Essential configurations in backend/.env
-MONGODB_URI=mongodb://localhost:27017/casyoro
-JWT_SECRET=your_jwt_secret
+MONGODB_URI=mongodb://localhost:27017/your_database_name
+JWT_SECRET=your_secure_jwt_secret_here
 FRONTEND_URL=http://localhost:3000
 
 # Optional: Email, SMS, Cloud Storage, Payment Gateways
@@ -181,10 +181,10 @@ FRONTEND_URL=http://localhost:3000
 ## 📈 **Business Model & Revenue Streams**
 
 ### **Primary Revenue Sources**
-1. **Affiliate Commissions**: 2-8% commission from merchant sales through our platform
-2. **Publisher Subscriptions**: Monthly recurring revenue from advertising packages (₹2,999 - ₹19,999)
-3. **Promoter Revenue Share**: 10-20% commission on promoter earnings
-4. **Transaction Fees**: 1-2% processing fee on cashback withdrawals
+1. **Affiliate Commissions**: Commission from merchant sales through our platform
+2. **Publisher Subscriptions**: Monthly recurring revenue from advertising packages
+3. **Promoter Revenue Share**: Commission on promoter earnings
+4. **Transaction Fees**: Processing fee on cashback withdrawals
 5. **Premium Analytics**: Advanced reporting and insights for enterprise clients
 
 ### **Growth Strategy**
@@ -264,26 +264,26 @@ npm start
 ## 📊 **Platform Statistics & Achievements**
 
 ### **Current Performance**
-- **50,000+ Active Users** earning cashback across the platform
-- **₹2.5 Crore+** total cashback distributed to users
-- **500+ Partner Merchants** including Amazon, Flipkart, Myntra, Ajio, Nykaa
-- **₹15,000+** average savings per active user annually
-- **99.9% Uptime** with robust infrastructure and monitoring
+- **Active Users** earning cashback across the platform
+- **Total Cashback Distributed** to users
+- **Partner Merchants** including major e-commerce platforms
+- **Average Savings** per active user annually
+- **High Uptime** with robust infrastructure and monitoring
 
 ### **User Engagement Metrics**
-- **85% User Retention** rate after 3 months
-- **Average 12 transactions** per user per month
-- **₹2,500+** average monthly earnings for active promoters
-- **300% ROI improvement** for publisher ad campaigns
-- **4.8/5 User Rating** across all platform reviews
+- **High User Retention** rate after 3 months
+- **Multiple transactions** per user per month
+- **Significant monthly earnings** for active promoters
+- **Strong ROI improvement** for publisher ad campaigns
+- **High User Rating** across all platform reviews
 
 ## 🚀 **Innovation & Impact**
 
 ### **Market Opportunity**
-- **Total Addressable Market (TAM)**: $50B+ global affiliate marketing industry
-- **Serviceable Addressable Market (SAM)**: $5B+ Indian e-commerce affiliate market
-- **Serviceable Obtainable Market (SOM)**: $500M+ addressable in 3 years
-- **Growth Potential**: 10x user base expansion in 24 months
+- **Total Addressable Market (TAM)**: Large global affiliate marketing industry
+- **Serviceable Addressable Market (SAM)**: Significant e-commerce affiliate market
+- **Serviceable Obtainable Market (SOM)**: Substantial addressable market in coming years
+- **Growth Potential**: Significant user base expansion potential
 
 ### **Problem & Solution**
 - **Problem Solved**: Eliminates manual processes and fragmented platforms
@@ -333,23 +333,23 @@ npm start
 ## 📞 **Contact & Support**
 
 ### **General Support**
-- **Customer Support**: support@casyoro.com
-- **Business Inquiries**: business@casyoro.com
-- **Partnership Opportunities**: partners@casyoro.com
-- **Technical Support**: tech@casyoro.com
+- **Customer Support**: support@yourcompany.com
+- **Business Inquiries**: business@yourcompany.com
+- **Partnership Opportunities**: partners@yourcompany.com
+- **Technical Support**: tech@yourcompany.com
 
 ### **Platform Resources**
-- **Live Demo**: https://demo.casyoro.com
-- **Technical Documentation**: https://docs.casyoro.com
-- **Business Plan**: https://business.casyoro.com
+- **Live Demo**: https://demo.yourcompany.com
+- **Technical Documentation**: https://docs.yourcompany.com
+- **Business Plan**: https://business.yourcompany.com
 
 ### **Social Media**
-- **LinkedIn**: https://linkedin.com/company/casyoro
-- **Twitter**: https://twitter.com/casyoro
-- **YouTube**: https://youtube.com/casyoro
-- **GitHub**: https://github.com/casyoro
-- **Instagran**: https://www.instagram.com/casyoro.casyoro?igsh=bW5taTV2cHp2NTJq
-- **Facebook**: https://www.facebook.com/share/1CW6kEJu8c/
+- **LinkedIn**: https://linkedin.com/company/yourcompany
+- **Twitter**: https://twitter.com/yourcompany
+- **YouTube**: https://youtube.com/yourcompany
+- **GitHub**: https://github.com/yourusername
+- **Instagram**: https://www.instagram.com/yourcompany
+- **Facebook**: https://www.facebook.com/yourcompany
 
 ---
 
