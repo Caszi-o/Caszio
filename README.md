@@ -333,23 +333,23 @@ npm start
 ## 📞 **Contact & Support**
 
 ### **General Support**
-- **Customer Support**: support@yourcompany.com
-- **Business Inquiries**: business@yourcompany.com
-- **Partnership Opportunities**: partners@yourcompany.com
-- **Technical Support**: tech@yourcompany.com
+- **Customer Support**: 
+- **Business Inquiries**: 
+- **Partnership Opportunities**: 
+- **Technical Support**: 
 
 ### **Platform Resources**
-- **Live Demo**: https://demo.yourcompany.com
-- **Technical Documentation**: https://docs.yourcompany.com
-- **Business Plan**: https://business.yourcompany.com
+- **Live Demo**: 
+- **Technical Documentation**: 
+- **Business Plan**: 
 
 ### **Social Media**
-- **LinkedIn**: https://linkedin.com/company/yourcompany
-- **Twitter**: https://twitter.com/yourcompany
-- **YouTube**: https://youtube.com/yourcompany
-- **GitHub**: https://github.com/yourusername
-- **Instagram**: https://www.instagram.com/yourcompany
-- **Facebook**: https://www.facebook.com/yourcompany
+- **LinkedIn**: 
+- **Twitter**: 
+- **YouTube**: 
+- **GitHub**: https://github.com/Casyoro/Casyoro
+- **Instagram**: https://www.instagram.com/casyoro.casyoro?igsh=bW5taTV2cHp2NTJq
+- **Facebook**: https://www.facebook.com/share/1CW6kEJu8c/
 
 ---
 
