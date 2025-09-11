@@ -20,7 +20,7 @@ export const mockAuthAPI = {
       lastName: data.lastName,
       email: data.email,
       role: data.role || 'user',
-      isVerified: false,
+      isVerified: true,
       createdAt: new Date().toISOString()
     };
     

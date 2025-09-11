@@ -18,11 +18,11 @@ const ProtectedRoute = ({ children, allowedRoles = [], requireVerification = tru
         return;
       }
 
-      // Require email verification for all roles by default
-      if (requireVerification && !user.isVerified) {
-        router.push('/auth/verify-email');
-        return;
-      }
+      // Email verification is no longer required
+      // if (requireVerification && !user.isVerified) {
+      //   router.push('/auth/verify-email');
+      //   return;
+      // }
     }
   }, [user, loading, router, allowedRoles, requireVerification]);
 
@@ -42,9 +42,10 @@ const ProtectedRoute = ({ children, allowedRoles = [], requireVerification = tru
     return null;
   }
 
-  if (requireVerification && !user.isVerified) {
-    return null;
-  }
+  // Email verification is no longer required
+  // if (requireVerification && !user.isVerified) {
+  //   return null;
+  // }
 
   return children;
 };

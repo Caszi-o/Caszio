@@ -2,10 +2,16 @@ import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
-import { useAuth } from '../../lib/auth';
+import { 
+  UserIcon, 
+  MegaphoneIcon, 
+  ShareIcon, 
+  ArrowRightIcon,
+  GiftIcon,
+  CurrencyDollarIcon,
+  ChartBarIcon
+} from '@heroicons/react/24/outline';
 import { PublicRoute } from '../../lib/auth';
-import toast from 'react-hot-toast';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -13,321 +19,156 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
+const staggerChildren = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
 export default function Register() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    role: 'user',
-    agreeToTerms: false
-  });
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { register } = useAuth();
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Client-side validation
-    if (formData.firstName.length < 2) {
-      toast.error('First name must be at least 2 characters');
-      return;
+  const roles = [
+    {
+      id: 'user',
+      title: 'User',
+      subtitle: 'Earn Cashback',
+      description: 'Shop and earn money back on every purchase',
+      icon: UserIcon,
+      features: ['Earn cashback on purchases', 'Exclusive deals & offers', 'Referral bonuses'],
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
+      link: '/auth/register-user'
+    },
+    {
+      id: 'publisher',
+      title: 'Publisher',
+      subtitle: 'Advertise Your Business',
+      description: 'Promote your business to thousands of users',
+      icon: MegaphoneIcon,
+      features: ['Reach more customers', 'Detailed analytics', 'Flexible budgeting'],
+      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
+      link: '/auth/register-publisher'
+    },
+    {
+      id: 'promoter',
+      title: 'Promoter',
+      subtitle: 'Earn by Promoting',
+      description: 'Monetize your social media presence',
+      icon: ShareIcon,
+      features: ['High commission rates', 'Track performance', 'Flexible schedule'],
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200',
+      link: '/auth/register-promoter'
     }
-    
-    if (formData.lastName.length < 2) {
-      toast.error('Last name must be at least 2 characters');
-      return;
-    }
-    
-    if (formData.password.length < 8) {
-      toast.error('Password must be at least 8 characters');
-      return;
-    }
-    
-    if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
-    }
-
-    if (!formData.agreeToTerms) {
-      toast.error('Please agree to the terms and conditions');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      // Send only the required fields to the backend
-      const registrationData = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password,
-        phone: formData.phone,
-        role: formData.role
-      };
-      
-      await register(registrationData);
-    } catch (error) {
-      console.error('Registration error:', error);
-      
-      // More specific error handling
-      if (error.code === 'ECONNREFUSED' || error.message.includes('Network Error')) {
-        toast.error('Backend server is not running. Please start the backend server on port 5000.');
-      } else if (error.response?.status === 400) {
-        // Show specific validation errors
-        if (error.response.data.errors && Array.isArray(error.response.data.errors)) {
-          const errorMessages = error.response.data.errors.map(err => err.msg).join(', ');
-          toast.error(`Validation errors: ${errorMessages}`);
-        } else {
-          toast.error(error.response.data.message || 'Invalid registration data');
-        }
-      } else if (error.response?.status === 409) {
-        toast.error('User already exists with this email');
-      } else {
-        toast.error(error.response?.data?.message || 'Registration failed. Please check backend server.');
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
+  ];
 
   return (
     <PublicRoute>
       <Head>
-        <title>Sign Up - Casyoro</title>
-        <meta name="description" content="Create your Casyoro account to start earning cashback and accessing exclusive deals." />
+        <title>Choose Your Role - Casyoro</title>
+        <meta name="description" content="Join Casyoro as a user, publisher, or promoter. Choose your role and start your journey today." />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="max-w-md w-full space-y-8"
-          initial="initial"
-          animate="animate"
-          variants={fadeInUp}
-        >
-          <div>
-            <Link href="/" className="flex justify-center">
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">C</span>
-                </div>
-                <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50">
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              <div className="flex items-center">
+                <Link href="/" className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">C</span>
+                  </div>
+                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                </Link>
               </div>
-            </Link>
-            <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
-              Create your account
-            </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
+
+              <div className="flex items-center space-x-4">
+                <Link href="/auth/login" className="text-gray-600 hover:text-primary-600 transition-colors">
+                  Sign In
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <motion.div
+            className="text-center mb-16"
+            initial="initial"
+            animate="animate"
+            variants={fadeInUp}
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">Role</span>
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Join Casyoro and be part of India's leading cashback and affiliate platform. 
+              Choose how you want to participate in our ecosystem.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid md:grid-cols-3 gap-8"
+            initial="initial"
+            animate="animate"
+            variants={staggerChildren}
+          >
+            {roles.map((role) => (
+              <motion.div
+                key={role.id}
+                className={`${role.bgColor} ${role.borderColor} border-2 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:scale-105`}
+                variants={fadeInUp}
+              >
+                <div className="text-center mb-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${role.color} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
+                    <role.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{role.title}</h3>
+                  <p className="text-lg font-semibold text-gray-700 mb-2">{role.subtitle}</p>
+                  <p className="text-gray-600">{role.description}</p>
+                </div>
+
+                <div className="space-y-3 mb-8">
+                  {role.features.map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-3">
+                      <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href={role.link}
+                  className={`w-full btn bg-gradient-to-r ${role.color} hover:opacity-90 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300`}
+                >
+                  <span>Join as {role.title}</span>
+                  <ArrowRightIcon className="w-5 h-5" />
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            className="mt-16 text-center"
+            initial="initial"
+            animate="animate"
+            variants={fadeInUp}
+          >
+            <p className="text-gray-600 mb-4">
               Already have an account?{' '}
               <Link href="/auth/login" className="font-medium text-primary-600 hover:text-primary-500">
                 Sign in here
               </Link>
             </p>
-          </div>
-
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
-                    First Name
-                  </label>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="First name"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
-                    Last Name
-                  </label>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="Last name"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Phone number (e.g., +919876543210)"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="role" className="block text-sm font-medium text-gray-700">
-                  I want to join as
-                </label>
-                <select
-                  id="role"
-                  name="role"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  value={formData.role}
-                  onChange={handleChange}
-                >
-                  <option value="user">User (Earn Cashback)</option>
-                  <option value="publisher">Publisher (Advertise)</option>
-                  <option value="promoter">Promoter (Promote Ads)</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
-                </label>
-                <div className="mt-1 relative">
-                  <input
-                    id="password"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    autoComplete="new-password"
-                    required
-                    className="block w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="Create a password"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="button"
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeSlashIcon className="h-5 w-5 text-gray-400" />
-                    ) : (
-                      <EyeIcon className="h-5 w-5 text-gray-400" />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                  Confirm Password
-                </label>
-                <div className="mt-1 relative">
-                  <input
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    type={showConfirmPassword ? 'text' : 'password'}
-                    autoComplete="new-password"
-                    required
-                    className="block w-full px-3 py-2 pr-10 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="Confirm your password"
-                    value={formData.confirmPassword}
-                    onChange={handleChange}
-                  />
-                  <button
-                    type="button"
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  >
-                    {showConfirmPassword ? (
-                      <EyeSlashIcon className="h-5 w-5 text-gray-400" />
-                    ) : (
-                      <EyeIcon className="h-5 w-5 text-gray-400" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center">
-              <input
-                id="agreeToTerms"
-                name="agreeToTerms"
-                type="checkbox"
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-                checked={formData.agreeToTerms}
-                onChange={handleChange}
-              />
-              <label htmlFor="agreeToTerms" className="ml-2 block text-sm text-gray-900">
-                I agree to the{' '}
-                <Link href="/terms" className="text-primary-600 hover:text-primary-500">
-                  Terms of Service
-                </Link>{' '}
-                and{' '}
-                <Link href="/privacy" className="text-primary-600 hover:text-primary-500">
-                  Privacy Policy
-                </Link>
-              </label>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? (
-                  <span className="flex items-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Creating account...
-                  </span>
-                ) : (
-                  'Create account'
-                )}
-              </button>
-            </div>
-          </form>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </PublicRoute>
   );

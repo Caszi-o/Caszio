@@ -162,8 +162,8 @@ const templates = {
 const sendEmail = async (options) => {
   try {
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.warn('Email configuration not found. Skipping email send.');
-      return { success: false, message: 'Email not configured' };
+      console.warn('Email configuration not found. EMAIL_USER and EMAIL_PASS must be set in environment variables.');
+      return { success: false, error: 'Email configuration missing. Please set EMAIL_USER and EMAIL_PASS environment variables.' };
     }
 
     const transporter = createTransporter();

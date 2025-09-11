@@ -44,7 +44,7 @@ export default function AdminUsers() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [editForm, setEditForm] = useState({
     role: '',
-    isVerified: false,
+    isVerified: true,
     isBlocked: false,
     notes: ''
   });
@@ -113,7 +113,7 @@ export default function AdminUsers() {
 
   const getStatusIcon = (user) => {
     if (user.isBlocked) return { icon: NoSymbolIcon, color: 'text-danger-600', text: 'Blocked' };
-    if (!user.isVerified) return { icon: XCircleIcon, color: 'text-warning-600', text: 'Unverified' };
+    // All users are now auto-verified
     return { icon: CheckCircleIcon, color: 'text-success-600', text: 'Verified' };
   };
 

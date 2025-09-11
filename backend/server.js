@@ -10,12 +10,16 @@ const config = require('./config');
 
 const app = express();
 
-// Security middleware
-app.use(helmet());
+// CORS middleware - must be before other middleware
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
+
+// Security middleware
+app.use(helmet());
 
 // Rate limiting
 const limiter = rateLimit({
@@ -49,6 +53,15 @@ app.use('/api/wallet', require('./routes/wallet'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/affiliate', require('./routes/affiliate'));
 app.use('/api/payments', require('./routes/payments'));
+
+// Test route for frontend connection
+app.get('/api/test', (req, res) => {
+  res.json({ 
+    message: "Backend connected successfully!",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
 
 // Health check
 app.get('/api/health', (req, res) => {

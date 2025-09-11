@@ -24,10 +24,8 @@ const VerificationBanner = () => {
     }
   };
 
-  // Don't show banner if user is verified
-  if (user?.isVerified) {
-    return null;
-  }
+  // Email verification is no longer required
+  return null;
 
   return (
     <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">

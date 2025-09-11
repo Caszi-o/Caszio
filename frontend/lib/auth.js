@@ -58,13 +58,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       toast.success('Login successful!');
       
-      // Check if email is verified, if not redirect to verification page
-      if (!user.isVerified) {
-        router.push('/auth/verify-email');
-        return { success: true, requiresVerification: true };
-      }
-      
-      // Redirect based on user role
+      // Redirect based on user role (no email verification required)
       const redirectPath = getRedirectPath(user.role);
       router.push(redirectPath);
       
@@ -210,11 +204,11 @@ export const ProtectedRoute = ({ children, allowedRoles = [], requireVerificatio
         return;
       }
 
-      // Require email verification for all roles by default
-      if (requireVerification && !user.isVerified) {
-        router.push('/auth/verify-email');
-        return;
-      }
+      // Email verification is no longer required
+      // if (requireVerification && !user.isVerified) {
+      //   router.push('/auth/verify-email');
+      //   return;
+      // }
     }
   }, [user, loading, router, allowedRoles, requireVerification]);
 
@@ -234,9 +228,10 @@ export const ProtectedRoute = ({ children, allowedRoles = [], requireVerificatio
     return null;
   }
 
-  if (requireVerification && !user.isVerified) {
-    return null;
-  }
+  // Email verification is no longer required
+  // if (requireVerification && !user.isVerified) {
+  //   return null;
+  // }
 
   return children;
 };

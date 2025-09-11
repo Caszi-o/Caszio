@@ -67,14 +67,16 @@ router.post('/register', [
       }
     }
 
-    // Create user
+    // Create user with auto-verified email
     const user = new User({
       firstName,
       lastName,
       email,
       password,
       phone,
-      referredBy: referredBy?._id
+      referredBy: referredBy?._id,
+      isVerified: true, // Auto-verify email
+      emailVerifiedAt: new Date()
     });
 
     await user.save();
@@ -85,38 +87,13 @@ router.post('/register', [
     });
     await wallet.save();
 
-    // Generate verification token
-    const verificationToken = crypto.randomBytes(32).toString('hex');
-    user.verificationToken = verificationToken;
-    await user.save();
-
-    // Send verification email (skip if email not configured)
-    try {
-      if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-        await sendEmail({
-          to: email,
-          subject: 'Verify Your Casyoro Account',
-          template: 'verification',
-          data: {
-            name: firstName,
-            verificationLink: `${process.env.FRONTEND_URL}/verify-email?token=${verificationToken}`
-          }
-        });
-      } else {
-        console.log('Email not configured, skipping verification email');
-      }
-    } catch (emailError) {
-      console.log('Email sending failed:', emailError.message);
-      // Continue with registration even if email fails
-    }
-
     // Generate tokens
     const { accessToken, refreshToken } = generateTokens(user._id);
     await user.addRefreshToken(refreshToken);
 
     res.status(201).json({
       success: true,
-      message: 'Registration successful. Please verify your email.',
+      message: 'Registration successful!',
       data: {
         user: user.getPublicProfile(),
         accessToken,
@@ -398,20 +375,36 @@ router.post('/resend-verification', [
     await user.save();
 
     // Send verification email
-    await sendEmail({
-      to: email,
-      subject: 'Verify Your Casyoro Account',
-      template: 'verification',
-      data: {
-        name: user.firstName,
-        verificationLink: `${process.env.FRONTEND_URL}/verify-email?token=${verificationToken}`
-      }
-    });
+    try {
+      const emailResult = await sendEmail({
+        to: email,
+        subject: 'Verify Your Casyoro Account',
+        template: 'verification',
+        data: {
+          name: user.firstName,
+          verificationLink: `${process.env.FRONTEND_URL}/verify-email?token=${verificationToken}`
+        }
+      });
 
-    res.json({
-      success: true,
-      message: 'Verification email sent successfully'
-    });
+      if (!emailResult.success) {
+        console.error('Email sending failed:', emailResult.error);
+        return res.status(500).json({
+          success: false,
+          message: 'Failed to send verification email. Please check email configuration.'
+        });
+      }
+
+      res.json({
+        success: true,
+        message: 'Verification email sent successfully'
+      });
+    } catch (emailError) {
+      console.error('Email sending error:', emailError);
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to send verification email. Please check email configuration.'
+      });
+    }
 
   } catch (error) {
     console.error('Resend verification error:', error);
