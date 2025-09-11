@@ -10,7 +10,7 @@ const Offers = () => {
       description: 'Get up to 50% off on electronics with 5% cashback',
       discount: '50% OFF',
       cashback: '5%',
-      image: '/images/merchants/amazon.png',
+      image: '/images/merchants/Amazon-logo.jpeg',
       category: 'Electronics',
       validUntil: '2024-02-15'
     },
@@ -21,7 +21,7 @@ const Offers = () => {
       description: 'Latest fashion trends with 3% cashback',
       discount: '30% OFF',
       cashback: '3%',
-      image: '/images/merchants/flipkart.png',
+      image: '/images/merchants/Flipkart-Logo.jpg',
       category: 'Fashion',
       validUntil: '2024-02-20'
     },
@@ -32,7 +32,7 @@ const Offers = () => {
       description: 'Fresh summer styles with 4% cashback',
       discount: '40% OFF',
       cashback: '4%',
-      image: '/images/merchants/myntra.png',
+      image: '/images/merchants/Myntra-Logo.jpg',
       category: 'Fashion',
       validUntil: '2024-02-25'
     },
@@ -43,7 +43,7 @@ const Offers = () => {
       description: 'Premium beauty products with 6% cashback',
       discount: '25% OFF',
       cashback: '6%',
-      image: '/images/merchants/nykaa.png',
+      image: '/images/merchants/Nykaa-Logo.png',
       category: 'Beauty',
       validUntil: '2024-02-18'
     },
@@ -54,7 +54,7 @@ const Offers = () => {
       description: 'Transform your home with 4% cashback',
       discount: '35% OFF',
       cashback: '4%',
-      image: '/images/merchants/tatacliq.png',
+      image: '/images/merchants/Tata-Cliq-Logo.jpg',
       category: 'Home',
       validUntil: '2024-02-22'
     },
@@ -65,7 +65,7 @@ const Offers = () => {
       description: 'Latest fashion with 3% cashback',
       discount: '45% OFF',
       cashback: '3%',
-      image: '/images/merchants/ajio.png',
+      image: '/images/merchants/Ajio-Logo.jpg',
       category: 'Fashion',
       validUntil: '2024-02-28'
     }

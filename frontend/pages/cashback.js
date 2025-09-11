@@ -71,9 +71,9 @@ export default function Cashback() {
   ];
 
   const topMerchants = [
-    { name: 'Amazon', logo: '/images/merchants/amazon.png', cashback: '2-5%', category: 'Shopping' },
-    { name: 'Flipkart', logo: '/images/merchants/flipkart.png', cashback: '3-7%', category: 'Electronics' },
-    { name: 'Myntra', logo: '/images/merchants/myntra.png', cashback: '4-8%', category: 'Fashion' },
+    { name: 'Amazon', logo: '/images/merchants/Amazon-logo.jpeg', cashback: '2-5%', category: 'Shopping' },
+    { name: 'Flipkart', logo: '/images/merchants/Flipkart-Logo.jpg', cashback: '3-7%', category: 'Electronics' },
+    { name: 'Myntra', logo: '/images/merchants/Myntra-Logo.jpg', cashback: '4-8%', category: 'Fashion' },
     { name: 'Swiggy', logo: '/images/merchants/swiggy.png', cashback: '2-6%', category: 'Food' },
     { name: 'Ola', logo: '/images/merchants/ola.png', cashback: '1-3%', category: 'Travel' },
     { name: 'BookMyShow', logo: '/images/merchants/bookmyshow.png', cashback: '2-4%', category: 'Entertainment' }

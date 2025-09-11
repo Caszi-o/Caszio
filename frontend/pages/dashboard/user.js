@@ -24,12 +24,12 @@ const UserDashboard = () => {
   const loadUserData = async () => {
     // Mock data for now - replace with actual API calls
     setLinkedAccounts([
-      { id: 1, name: 'Amazon', status: 'linked', logo: '/images/merchants/amazon.png' },
-      { id: 2, name: 'Flipkart', status: 'linked', logo: '/images/merchants/flipkart.png' },
-      { id: 3, name: 'Myntra', status: 'not_linked', logo: '/images/merchants/myntra.png' },
-      { id: 4, name: 'Nykaa', status: 'not_linked', logo: '/images/merchants/nykaa.png' },
-      { id: 5, name: 'Tata CLiQ', status: 'not_linked', logo: '/images/merchants/tatacliq.png' },
-      { id: 6, name: 'AJIO', status: 'not_linked', logo: '/images/merchants/ajio.png' }
+      { id: 1, name: 'Amazon', status: 'linked', logo: '/images/merchants/Amazon-logo.jpeg' },
+      { id: 2, name: 'Flipkart', status: 'linked', logo: '/images/merchants/Flipkart-Logo.jpg' },
+      { id: 3, name: 'Myntra', status: 'not_linked', logo: '/images/merchants/Myntra-Logo.jpg' },
+      { id: 4, name: 'Nykaa', status: 'not_linked', logo: '/images/merchants/Nykaa-Logo.png' },
+      { id: 5, name: 'Tata CLiQ', status: 'not_linked', logo: '/images/merchants/Tata-Cliq-Logo.jpg' },
+      { id: 6, name: 'AJIO', status: 'not_linked', logo: '/images/merchants/Ajio-Logo.jpg' }
     ]);
 
     setCashbackData({

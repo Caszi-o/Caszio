@@ -107,12 +107,12 @@ export default function Home() {
   ];
 
   const merchants = [
-    { name: 'Amazon', logo: '/images/merchants/amazon.png' },
-    { name: 'Flipkart', logo: '/images/merchants/flipkart.png' },
-    { name: 'Myntra', logo: '/images/merchants/myntra.png' },
-    { name: 'Ajio', logo: '/images/merchants/ajio.png' },
-    { name: 'Nykaa', logo: '/images/merchants/nykaa.png' },
-    { name: 'Tata CLiQ', logo: '/images/merchants/tatacliq.png' }
+    { name: 'Amazon', logo: '/images/merchants/Amazon-logo.jpeg' },
+    { name: 'Flipkart', logo: '/images/merchants/Flipkart-Logo.jpg' },
+    { name: 'Myntra', logo: '/images/merchants/Myntra-Logo.jpg' },
+    { name: 'Ajio', logo: '/images/merchants/Ajio-Logo.jpg' },
+    { name: 'Nykaa', logo: '/images/merchants/Nykaa-Logo.png' },
+    { name: 'Tata CLiQ', logo: '/images/merchants/Tata-Cliq-Logo.jpg' }
   ];
 
   return (
