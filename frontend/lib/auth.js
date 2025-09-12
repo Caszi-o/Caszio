@@ -12,11 +12,12 @@ export const getRedirectPath = (role) => {
     case 'admin':
       return '/admin/dashboard';
     case 'publisher':
-      return '/dashboard/publisher';
+      return '/publisher/dashboard';
     case 'promoter':
-      return '/dashboard/promoter';
+      return '/promoter/dashboard';
+    case 'user':
     default:
-      return '/dashboard/user';
+      return '/user/dashboard';
   }
 };
 
@@ -75,9 +76,17 @@ export const AuthProvider = ({ children }) => {
 
       setTokens(accessToken, refreshToken);
       setUser(user);
-      toast.success('Registration successful! Please verify your email.');
       
-      router.push('/auth/verify-email');
+      // Redirect based on user role
+      if (user.role === 'publisher' || user.role === 'promoter') {
+        toast.success('Registration successful! Please verify your account to access all features.');
+        const redirectPath = getRedirectPath(user.role);
+        router.push(redirectPath);
+      } else {
+        toast.success('Registration successful! Please verify your email.');
+        router.push('/auth/verify-email');
+      }
+      
       return { success: true };
     } catch (error) {
       throw error;

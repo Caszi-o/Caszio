@@ -18,6 +18,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { useAuth, ProtectedRoute } from '../../lib/auth';
 import { adminAPI } from '../../lib/api';
+import DashboardContainer from '../../components/Dashboard/DashboardContainer';
 import { Line, Doughnut, Bar } from 'react-chartjs-2';
 import toast from 'react-hot-toast';
 
@@ -167,39 +168,49 @@ export default function AdminDashboard() {
     ]
   };
 
+  const quickActions = [
+    {
+      title: 'User Management',
+      description: 'Manage all user accounts',
+      icon: UsersIcon,
+      href: '/admin/users',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-100'
+    },
+    {
+      title: 'Publisher Approvals',
+      description: 'Review & approve publishers',
+      icon: BuildingOfficeIcon,
+      href: '/admin/publishers',
+      color: 'text-green-600',
+      bgColor: 'bg-green-100'
+    },
+    {
+      title: 'Promoter Approvals',
+      description: 'Review & approve promoters',
+      icon: UserGroupIcon,
+      href: '/admin/promoters',
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-100'
+    },
+    {
+      title: 'System Analytics',
+      description: 'Platform performance metrics',
+      icon: ChartBarIcon,
+      href: '/admin/analytics',
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-100'
+    }
+  ];
+
   return (
     <ProtectedRoute allowedRoles={['admin']} requireVerification>
-      <Head>
-        <title>Admin Dashboard - Casyoro</title>
-        <meta name="description" content="Comprehensive admin control panel for Casyoro platform" />
-      </Head>
-
-      <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-white shadow-sm border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center space-x-4">
-                <Link href="/" className="text-2xl font-bold text-primary-600">
-                  Casyoro
-                </Link>
-                <div className="h-6 border-l border-gray-300"></div>
-                <h1 className="text-xl font-semibold text-gray-900">Admin Dashboard</h1>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">
-                  Welcome, {user?.firstName} {user?.lastName}
-                </span>
-                <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center text-white font-medium">
-                  {user?.firstName?.[0]}{user?.lastName?.[0]}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <DashboardContainer
+        title="System Control Center"
+        subtitle="Manage users, campaigns, and platform operations"
+        role="admin"
+        quickActions={quickActions}
+      >
           {/* Overview Stats */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
@@ -551,42 +562,8 @@ export default function AdminDashboard() {
             </motion.div>
           </motion.div>
 
-          {/* Quick Actions */}
-          <motion.div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4" variants={staggerChildren}>
-            <motion.div variants={fadeInUp}>
-              <Link href="/admin/users" className="block p-6 bg-gradient-primary rounded-lg text-white hover:shadow-lg transition-shadow">
-                <UsersIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Manage Users</h3>
-                <p className="text-sm opacity-90">View and manage user accounts</p>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link href="/admin/publishers" className="block p-6 bg-gradient-success rounded-lg text-white hover:shadow-lg transition-shadow">
-                <BuildingOfficeIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Publisher Review</h3>
-                <p className="text-sm opacity-90">Review publisher applications</p>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link href="/admin/promoters" className="block p-6 bg-gradient-warning rounded-lg text-white hover:shadow-lg transition-shadow">
-                <UserGroupIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Promoter Review</h3>
-                <p className="text-sm opacity-90">Review promoter applications</p>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link href="/admin/analytics" className="block p-6 bg-gradient-danger rounded-lg text-white hover:shadow-lg transition-shadow">
-                <ChartBarIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Analytics</h3>
-                <p className="text-sm opacity-90">Detailed platform analytics</p>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
+        </motion.div>
+      </DashboardContainer>
     </ProtectedRoute>
   );
 }

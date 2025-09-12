@@ -44,7 +44,7 @@ router.post('/register', [
       });
     }
 
-    const { firstName, lastName, email, password, phone, referralCode } = req.body;
+    const { firstName, lastName, email, password, phone, referralCode, role } = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -75,6 +75,7 @@ router.post('/register', [
       password,
       phone,
       referredBy: referredBy?._id,
+      role: role || 'user', // Set role from request or default to 'user'
       isVerified: true, // Auto-verify email
       emailVerifiedAt: new Date()
     });

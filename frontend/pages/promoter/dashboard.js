@@ -18,6 +18,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { useAuth, ProtectedRoute } from '../../lib/auth';
 import { promoterAPI } from '../../lib/api';
+import DashboardContainer from '../../components/Dashboard/DashboardContainer';
 import { Line, Doughnut, Bar } from 'react-chartjs-2';
 import toast from 'react-hot-toast';
 
@@ -158,44 +159,49 @@ export default function PromoterDashboard() {
     ]
   };
 
+  const quickActions = [
+    {
+      title: 'Active Promotions',
+      description: 'View your current campaigns',
+      icon: EyeIcon,
+      href: '/promoter/campaigns',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-100'
+    },
+    {
+      title: 'My Earnings',
+      description: 'Track income and withdraw',
+      icon: BanknotesIcon,
+      href: '/promoter/earnings',
+      color: 'text-green-600',
+      bgColor: 'bg-green-100'
+    },
+    {
+      title: 'Content Tools',
+      description: 'Generate scripts and content',
+      icon: CodeBracketIcon,
+      href: '/promoter/tools',
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-100'
+    },
+    {
+      title: 'Analytics',
+      description: 'Track performance metrics',
+      icon: ChartBarIcon,
+      href: '/promoter/analytics',
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-100'
+    }
+  ];
+
   return (
     <ProtectedRoute allowedRoles={['promoter']} requireVerification>
-      <Head>
-        <title>Promoter Dashboard - Casyoro</title>
-        <meta name="description" content="Track your earnings and manage ad promotions" />
-      </Head>
-
-      <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-white shadow-sm border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center space-x-4">
-                <Link href="/" className="text-2xl font-bold text-primary-600">
-                  Casyoro
-                </Link>
-                <div className="h-6 border-l border-gray-300"></div>
-                <h1 className="text-xl font-semibold text-gray-900">Promoter Dashboard</h1>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm text-gray-500">Status:</span>
-                  <span className={`badge ${getStatusColor(promoter.applicationStatus)}`}>
-                    {promoter.applicationStatus.replace('_', ' ')}
-                  </span>
-                </div>
-                
-                <Link href="/promoter/scripts" className="btn btn-primary">
-                  <CodeBracketIcon className="w-5 h-5 mr-2" />
-                  Get Ad Scripts
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <DashboardContainer
+        title="Influencer Hub"
+        subtitle="Promote brands and earn money from your content"
+        role="promoter"
+        quickActions={quickActions}
+      >
           {/* Application Status */}
           {promoter.applicationStatus !== 'approved' && (
             <motion.div
@@ -203,20 +209,38 @@ export default function PromoterDashboard() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <div className="flex items-center">
-                <DocumentTextIcon className="w-5 h-5 text-warning-600 mr-2" />
-                <div>
-                  <h3 className="text-sm font-medium text-warning-800">
-                    Application Status: {promoter.applicationStatus.replace('_', ' ')}
-                  </h3>
-                  <p className="text-sm text-warning-700 mt-1">
-                    {promoter.applicationStatus === 'pending' 
-                      ? 'Your application is under review. You will be notified once approved.'
-                      : promoter.applicationStatus === 'under_review'
-                      ? 'Our team is reviewing your application. This usually takes 24-48 hours.'
-                      : 'Please contact support for more information about your application status.'
-                    }
-                  </p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <DocumentTextIcon className="w-5 h-5 text-warning-600 mr-2" />
+                  <div>
+                    <h3 className="text-sm font-medium text-warning-800">
+                      Application Status: {promoter.applicationStatus.replace('_', ' ')}
+                    </h3>
+                    <p className="text-sm text-warning-700 mt-1">
+                      {promoter.applicationStatus === 'pending' 
+                        ? 'Your application is under review. You will be notified once approved.'
+                        : promoter.applicationStatus === 'under_review'
+                        ? 'Our team is reviewing your application. This usually takes 24-48 hours.'
+                        : 'Please contact support for more information about your application status.'
+                      }
+                    </p>
+                  </div>
+                </div>
+                <div className="flex space-x-3">
+                  {promoter.applicationStatus === 'pending' && (
+                    <Link 
+                      href="/promoter/apply" 
+                      className="btn btn-warning btn-sm"
+                    >
+                      Complete Application
+                    </Link>
+                  )}
+                  <Link 
+                    href="/promoter/profile" 
+                    className="btn btn-outline-warning btn-sm"
+                  >
+                    Update Profile
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -508,42 +532,8 @@ export default function PromoterDashboard() {
             </div>
           </motion.div>
 
-          {/* Quick Actions */}
-          <motion.div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4" variants={staggerChildren}>
-            <motion.div variants={fadeInUp}>
-              <Link href="/promoter/scripts" className="block p-6 bg-gradient-primary rounded-lg text-white hover:shadow-lg transition-shadow">
-                <CodeBracketIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Get Ad Scripts</h3>
-                <p className="text-sm opacity-90">Generate scripts to promote ads</p>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link href="/promoter/earnings" className="block p-6 bg-gradient-success rounded-lg text-white hover:shadow-lg transition-shadow">
-                <BanknotesIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">View Earnings</h3>
-                <p className="text-sm opacity-90">Track your income and withdrawals</p>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link href="/promoter/analytics" className="block p-6 bg-gradient-warning rounded-lg text-white hover:shadow-lg transition-shadow">
-                <ChartBarIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Analytics</h3>
-                <p className="text-sm opacity-90">Detailed performance insights</p>
-              </Link>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link href="/promoter/profile" className="block p-6 bg-gradient-danger rounded-lg text-white hover:shadow-lg transition-shadow">
-                <UserGroupIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Profile Settings</h3>
-                <p className="text-sm opacity-90">Manage your promoter account</p>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </div>
+        </motion.div>
+      </DashboardContainer>
     </ProtectedRoute>
   );
 }

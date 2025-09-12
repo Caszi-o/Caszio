@@ -1,0 +1,29 @@
+import { useState, useEffect } from 'react';
+import { useAuth, ProtectedRoute } from '../../lib/auth';
+
+export default function PublisherDashboardDebug() {
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <ProtectedRoute allowedRoles={['publisher']} requireVerification>
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900">Debug Publisher Dashboard</h1>
+            <p className="text-gray-600">This is a minimal version to test basic functionality.</p>
+            <p className="text-sm text-gray-500 mt-2">User: {user?.email || 'Not logged in'}</p>
+          </div>
+        </div>
+      </div>
+    </ProtectedRoute>
+  );
+}
