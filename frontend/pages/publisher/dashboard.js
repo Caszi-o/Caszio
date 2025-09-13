@@ -14,7 +14,8 @@ import {
   ExclamationTriangleIcon,
   CheckCircleIcon,
   ClockIcon,
-  XCircleIcon
+  XCircleIcon,
+  TagIcon
 } from '@heroicons/react/24/outline';
 import { useAuth, ProtectedRoute } from '../../lib/auth';
 import { publisherAPI } from '../../lib/api';
@@ -232,18 +233,18 @@ export default function PublisherDashboard() {
       bgColor: 'bg-blue-100'
     },
     {
-      title: 'Ad Manager',
-      description: 'Manage all your campaigns',
-      icon: EyeIcon,
-      href: '/publisher/ads',
+      title: 'Manage Offers',
+      description: 'Create and manage discount offers',
+      icon: TagIcon,
+      href: '/publisher/offers',
       color: 'text-green-600',
       bgColor: 'bg-green-100'
     },
     {
-      title: 'Analytics',
-      description: 'Track performance & ROI',
-      icon: ChartBarIcon,
-      href: '/publisher/analytics',
+      title: 'Ad Manager',
+      description: 'Manage all your campaigns',
+      icon: EyeIcon,
+      href: '/publisher/ads',
       color: 'text-purple-600',
       bgColor: 'bg-purple-100'
     },
@@ -533,10 +534,10 @@ export default function PublisherDashboard() {
             </motion.div>
 
             <motion.div variants={fadeInUp}>
-              <Link href="/publisher/profile" className="block p-6 bg-gradient-danger rounded-lg text-white hover:shadow-lg transition-shadow">
-                <CalendarIcon className="w-8 h-8 mb-3" />
-                <h3 className="font-semibold mb-2">Account Settings</h3>
-                <p className="text-sm opacity-90">Manage your publisher profile</p>
+              <Link href="/publisher/offers" className="block p-6 bg-gradient-info rounded-lg text-white hover:shadow-lg transition-shadow">
+                <TagIcon className="w-8 h-8 mb-3" />
+                <h3 className="font-semibold mb-2">Manage Offers</h3>
+                <p className="text-sm opacity-90">Create and manage discount offers</p>
               </Link>
             </motion.div>
         </motion.div>
