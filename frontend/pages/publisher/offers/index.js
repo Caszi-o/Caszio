@@ -227,7 +227,6 @@ export default function PublisherOffers() {
                   >
                     <option value="">All Status</option>
                     <option value="draft">Draft</option>
-                    <option value="pending_approval">Pending Approval</option>
                     <option value="active">Active</option>
                     <option value="paused">Paused</option>
                     <option value="expired">Expired</option>

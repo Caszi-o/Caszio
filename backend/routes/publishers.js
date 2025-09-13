@@ -1128,7 +1128,9 @@ router.post('/offers', [
       thumbnailImage,
       createdBy: req.user._id,
       publisher: publisher._id,
-      status: 'pending_approval' // Publisher offers need admin approval
+      status: 'active', // Publisher offers are automatically approved
+      approvedBy: req.user._id, // Auto-approved by the publisher
+      approvedAt: new Date() // Set approval timestamp
     });
 
     await offer.save();

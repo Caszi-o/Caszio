@@ -71,7 +71,7 @@ export default function CreateOffer() {
 
       const response = await publisherAPI.createOffer(data);
       
-      toast.success('Offer created successfully and submitted for approval');
+      toast.success('Offer created successfully and is now live!');
       router.push('/publisher/offers');
       
     } catch (error) {
@@ -104,6 +104,21 @@ export default function CreateOffer() {
                 <h1 className="text-3xl font-bold text-gray-900">Create New Offer</h1>
                 <p className="mt-2 text-gray-600">
                   Create a discount offer or cashback deal for your customers
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Auto-approval Notice */}
+          <motion.div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg" variants={fadeInUp}>
+            <div className="flex items-center">
+              <div className="w-5 h-5 bg-green-400 rounded-full mr-3"></div>
+              <div>
+                <h3 className="text-sm font-medium text-green-800">
+                  Instant Approval
+                </h3>
+                <p className="text-sm text-green-700 mt-1">
+                  Your offers will be automatically approved and immediately visible to users. No admin review required.
                 </p>
               </div>
             </div>
