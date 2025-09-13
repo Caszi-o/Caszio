@@ -189,6 +189,12 @@ const offerSchema = new mongoose.Schema({
     required: true
   },
   
+  // Publisher Info (if created by publisher)
+  publisher: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Publisher'
+  },
+  
   // Approval Workflow
   approvedBy: {
     type: mongoose.Schema.Types.ObjectId,

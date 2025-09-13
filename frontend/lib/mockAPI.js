@@ -221,36 +221,7 @@ export const mockOffersAPI = {
     return {
       data: {
         success: true,
-        data: [
-          {
-            _id: '1',
-            title: 'Amazon Electronics - 5% Cashback',
-            merchant: { name: 'Amazon' },
-            cashbackPercentage: 5,
-            description: 'Get 5% cashback on all electronics'
-          },
-          {
-            _id: '2',
-            title: 'Flipkart Fashion - 3% Cashback', 
-            merchant: { name: 'Flipkart' },
-            cashbackPercentage: 3,
-            description: 'Get 3% cashback on fashion items'
-          },
-          {
-            _id: '3',
-            title: 'Myntra Apparel - 4% Cashback',
-            merchant: { name: 'Myntra' },
-            cashbackPercentage: 4,
-            description: 'Get 4% cashback on all apparel'
-          },
-          {
-            _id: '4',
-            title: 'Nykaa Beauty - 6% Cashback',
-            merchant: { name: 'Nykaa' },
-            cashbackPercentage: 6,
-            description: 'Get 6% cashback on beauty products'
-          }
-        ]
+        data: []
       }
     };
   }
@@ -272,62 +243,13 @@ export const mockPublisherAPI = {
                     currentPackage: 'Premium',
                     packageStatus: 'active'
                   },
-          recentAds: [
-            {
-              _id: '1',
-              title: 'Summer Sale Campaign',
-              status: 'active',
-              type: 'banner',
-              metrics: {
-                impressions: 15000,
-                clicks: 450,
-                conversions: 25,
-                cost: 250
-              }
-            },
-            {
-              _id: '2',
-              title: 'Electronics Promotion',
-              status: 'paused',
-              type: 'video',
-              metrics: {
-                impressions: 8000,
-                clicks: 200,
-                conversions: 12,
-                cost: 180
-              }
-            },
-            {
-              _id: '3',
-              title: 'Fashion Week Special',
-              status: 'active',
-              type: 'banner',
-              metrics: {
-                impressions: 12000,
-                clicks: 320,
-                conversions: 18,
-                cost: 200
-              }
-            },
-            {
-              _id: '4',
-              title: 'Holiday Campaign',
-              status: 'pending_review',
-              type: 'video',
-              metrics: {
-                impressions: 0,
-                clicks: 0,
-                conversions: 0,
-                cost: 0
-              }
-            }
-          ],
-          activeAdsCount: 3,
+          recentAds: [],
+          activeAdsCount: 0,
           todayMetrics: {
-            impressions: 2500,
-            clicks: 75,
-            conversions: 8,
-            cost: 150
+            impressions: 0,
+            clicks: 0,
+            conversions: 0,
+            cost: 0
           },
           packageInfo: {
             current: 'Premium',
@@ -353,30 +275,17 @@ export const mockPromoterAPI = {
           promoter: {
             _id: '1',
             applicationStatus: 'pending',
-            totalEarnings: 2500,
-            monthlyEarnings: 450,
-            totalClicks: 1250,
-            totalConversions: 85
+            totalEarnings: 0,
+            monthlyEarnings: 0,
+            totalClicks: 0,
+            totalConversions: 0
           },
-          recentActivities: [
-            {
-              type: 'click',
-              adTitle: 'Summer Sale Campaign',
-              earnings: 2.50,
-              date: new Date().toISOString()
-            },
-            {
-              type: 'conversion',
-              adTitle: 'Electronics Promotion',
-              earnings: 15.00,
-              date: new Date(Date.now() - 86400000).toISOString()
-            }
-          ],
+          recentActivities: [],
           performance: {
-            clicks: 1250,
-            conversions: 85,
-            conversionRate: 6.8,
-            totalEarnings: 2500
+            clicks: 0,
+            conversions: 0,
+            conversionRate: 0,
+            totalEarnings: 0
           }
         }
       }
@@ -395,30 +304,30 @@ export const mockAdminAPI = {
         data: {
           overview: {
             users: {
-              total: 1250,
-              newToday: 15,
-              verified: 1100,
-              active: 850
+              total: 0,
+              newToday: 0,
+              verified: 0,
+              active: 0
             },
             publishers: {
-              total: 45,
-              approved: 38,
-              pending: 7
+              total: 0,
+              approved: 0,
+              pending: 0
             },
             promoters: {
-              total: 120,
-              approved: 95,
-              pending: 25
+              total: 0,
+              approved: 0,
+              pending: 0
             },
             ads: {
-              total: 180,
-              active: 150,
-              pending: 30
+              total: 0,
+              active: 0,
+              pending: 0
             },
             financials: {
-              totalRevenue: 125000,
-              monthlyRevenue: 15000,
-              totalCashback: 25000
+              totalRevenue: 0,
+              monthlyRevenue: 0,
+              totalCashback: 0
             }
           },
           recentActivities: {
@@ -426,8 +335,8 @@ export const mockAdminAPI = {
             transactions: []
           },
           growth: {
-            users: [10, 15, 12, 18, 20, 25, 15],
-            revenue: [5000, 7500, 6000, 9000, 12000, 15000, 18000],
+            users: [0, 0, 0, 0, 0, 0, 0],
+            revenue: [0, 0, 0, 0, 0, 0, 0],
             period: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7']
           }
         }

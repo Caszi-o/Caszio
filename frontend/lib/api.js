@@ -241,6 +241,14 @@ export const publisherAPI = {
   getWallet: () => api.get('/publishers/wallet'),
   topUpWallet: (data) => api.post('/publishers/wallet/topup', data),
   getPayments: (params) => api.get('/publishers/payments', { params }),
+  
+  // Offer Management
+  getOffers: (params) => api.get('/publishers/offers', { params }),
+  createOffer: (data) => api.post('/publishers/offers', data),
+  getOffer: (id) => api.get(`/publishers/offers/${id}`),
+  updateOffer: (id, data) => api.put(`/publishers/offers/${id}`, data),
+  deleteOffer: (id) => api.delete(`/publishers/offers/${id}`),
+  getOfferAnalytics: (id) => api.get(`/publishers/offers/${id}/analytics`),
 };
 
 export const promoterAPI = {

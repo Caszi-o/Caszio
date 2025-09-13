@@ -5,6 +5,7 @@ const Publisher = require('../models/Publisher');
 const Ad = require('../models/Ad');
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
+const Offer = require('../models/Offer');
 const { authenticateToken, authorize, requireKYC } = require('../middleware/auth');
 const { uploadToCloudinary } = require('../utils/cloudinary');
 
@@ -964,6 +965,435 @@ router.get('/packages', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Failed to get packages information'
+    });
+  }
+});
+
+// ==================== PUBLISHER OFFER MANAGEMENT ====================
+
+// Get publisher's offers
+router.get('/offers', [authenticateToken, authorize('publisher')], async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 20;
+    const status = req.query.status;
+    const type = req.query.type;
+    const search = req.query.search;
+
+    const publisher = await Publisher.findOne({ userId: req.user._id });
+    if (!publisher) {
+      return res.status(404).json({
+        success: false,
+        message: 'Publisher account not found'
+      });
+    }
+
+    const filters = { publisher: publisher._id };
+    
+    if (status) filters.status = status;
+    if (type) filters.type = type;
+    if (search) {
+      filters.$or = [
+        { title: new RegExp(search, 'i') },
+        { description: new RegExp(search, 'i') },
+        { 'merchant.name': new RegExp(search, 'i') }
+      ];
+    }
+
+    const offers = await Offer.find(filters)
+      .sort({ createdAt: -1 })
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .populate('approvedBy', 'firstName lastName');
+
+    const total = await Offer.countDocuments(filters);
+
+    res.json({
+      success: true,
+      data: {
+        offers,
+        pagination: {
+          currentPage: page,
+          totalPages: Math.ceil(total / limit),
+          totalItems: total,
+          itemsPerPage: limit
+        }
+      }
+    });
+
+  } catch (error) {
+    console.error('Get publisher offers error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get offers'
+    });
+  }
+});
+
+// Create new offer
+router.post('/offers', [
+  authenticateToken,
+  authorize('publisher'),
+  body('title').trim().isLength({ min: 3 }).withMessage('Title must be at least 3 characters'),
+  body('description').trim().isLength({ min: 10 }).withMessage('Description must be at least 10 characters'),
+  body('type').isIn(['coupon', 'cashback', 'deal', 'bundle']).withMessage('Invalid offer type'),
+  body('merchant.name').trim().isLength({ min: 2 }).withMessage('Merchant name is required'),
+  body('startDate').isISO8601().withMessage('Valid start date required'),
+  body('endDate').isISO8601().withMessage('Valid end date required'),
+  body('categories').isArray({ min: 1 }).withMessage('At least one category required')
+], async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation errors',
+        errors: errors.array()
+      });
+    }
+
+    const publisher = await Publisher.findOne({ userId: req.user._id });
+    if (!publisher) {
+      return res.status(404).json({
+        success: false,
+        message: 'Publisher account not found'
+      });
+    }
+
+    const {
+      title,
+      description,
+      shortDescription,
+      type,
+      merchant,
+      couponCode,
+      cashbackPercentage,
+      flatCashback,
+      maxCashback,
+      minOrderValue,
+      discountType,
+      discountValue,
+      maxDiscount,
+      categories,
+      startDate,
+      endDate,
+      totalUsageLimit,
+      userUsageLimit,
+      dailyUsageLimit,
+      terms,
+      exclusions,
+      trackingUrl,
+      deepLink,
+      images,
+      bannerImage,
+      thumbnailImage
+    } = req.body;
+
+    // Validate dates
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    if (start >= end) {
+      return res.status(400).json({
+        success: false,
+        message: 'End date must be after start date'
+      });
+    }
+
+    const offer = new Offer({
+      title,
+      description,
+      shortDescription,
+      type,
+      merchant,
+      couponCode,
+      cashbackPercentage,
+      flatCashback,
+      maxCashback,
+      minOrderValue,
+      discountType,
+      discountValue,
+      maxDiscount,
+      categories,
+      startDate: start,
+      endDate: end,
+      totalUsageLimit,
+      userUsageLimit,
+      dailyUsageLimit,
+      terms,
+      exclusions,
+      trackingUrl,
+      deepLink,
+      images,
+      bannerImage,
+      thumbnailImage,
+      createdBy: req.user._id,
+      publisher: publisher._id,
+      status: 'pending_approval' // Publisher offers need admin approval
+    });
+
+    await offer.save();
+
+    res.status(201).json({
+      success: true,
+      message: 'Offer created successfully and submitted for approval',
+      data: { offer }
+    });
+
+  } catch (error) {
+    console.error('Create offer error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to create offer'
+    });
+  }
+});
+
+// Get single offer
+router.get('/offers/:id', [authenticateToken, authorize('publisher')], async (req, res) => {
+  try {
+    const publisher = await Publisher.findOne({ userId: req.user._id });
+    if (!publisher) {
+      return res.status(404).json({
+        success: false,
+        message: 'Publisher account not found'
+      });
+    }
+
+    const offer = await Offer.findOne({
+      _id: req.params.id,
+      publisher: publisher._id
+    }).populate('approvedBy', 'firstName lastName');
+
+    if (!offer) {
+      return res.status(404).json({
+        success: false,
+        message: 'Offer not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      data: { offer }
+    });
+
+  } catch (error) {
+    console.error('Get offer error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get offer'
+    });
+  }
+});
+
+// Update offer
+router.put('/offers/:id', [
+  authenticateToken,
+  authorize('publisher'),
+  body('title').optional().trim().isLength({ min: 3 }).withMessage('Title must be at least 3 characters'),
+  body('description').optional().trim().isLength({ min: 10 }).withMessage('Description must be at least 10 characters'),
+  body('startDate').optional().isISO8601().withMessage('Valid start date required'),
+  body('endDate').optional().isISO8601().withMessage('Valid end date required')
+], async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation errors',
+        errors: errors.array()
+      });
+    }
+
+    const publisher = await Publisher.findOne({ userId: req.user._id });
+    if (!publisher) {
+      return res.status(404).json({
+        success: false,
+        message: 'Publisher account not found'
+      });
+    }
+
+    const offer = await Offer.findOne({
+      _id: req.params.id,
+      publisher: publisher._id
+    });
+
+    if (!offer) {
+      return res.status(404).json({
+        success: false,
+        message: 'Offer not found'
+      });
+    }
+
+    // Only allow editing if offer is in draft or pending approval
+    if (!['draft', 'pending_approval'].includes(offer.status)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Cannot edit approved or active offers'
+      });
+    }
+
+    // Update fields
+    const allowedFields = [
+      'title', 'description', 'shortDescription', 'merchant', 'couponCode',
+      'cashbackPercentage', 'flatCashback', 'maxCashback', 'minOrderValue',
+      'discountType', 'discountValue', 'maxDiscount', 'categories',
+      'startDate', 'endDate', 'totalUsageLimit', 'userUsageLimit',
+      'dailyUsageLimit', 'terms', 'exclusions', 'trackingUrl', 'deepLink',
+      'images', 'bannerImage', 'thumbnailImage'
+    ];
+
+    allowedFields.forEach(field => {
+      if (req.body[field] !== undefined) {
+        offer[field] = req.body[field];
+      }
+    });
+
+    // If dates are being updated, validate them
+    if (req.body.startDate || req.body.endDate) {
+      const start = new Date(offer.startDate);
+      const end = new Date(offer.endDate);
+      if (start >= end) {
+        return res.status(400).json({
+          success: false,
+          message: 'End date must be after start date'
+        });
+      }
+    }
+
+    // Reset to pending approval if significant changes made
+    if (offer.status === 'draft') {
+      offer.status = 'pending_approval';
+    }
+
+    await offer.save();
+
+    res.json({
+      success: true,
+      message: 'Offer updated successfully',
+      data: { offer }
+    });
+
+  } catch (error) {
+    console.error('Update offer error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update offer'
+    });
+  }
+});
+
+// Delete offer
+router.delete('/offers/:id', [authenticateToken, authorize('publisher')], async (req, res) => {
+  try {
+    const publisher = await Publisher.findOne({ userId: req.user._id });
+    if (!publisher) {
+      return res.status(404).json({
+        success: false,
+        message: 'Publisher account not found'
+      });
+    }
+
+    const offer = await Offer.findOne({
+      _id: req.params.id,
+      publisher: publisher._id
+    });
+
+    if (!offer) {
+      return res.status(404).json({
+        success: false,
+        message: 'Offer not found'
+      });
+    }
+
+    // Only allow deletion if offer is in draft or pending approval
+    if (!['draft', 'pending_approval'].includes(offer.status)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Cannot delete approved or active offers'
+      });
+    }
+
+    await Offer.findByIdAndDelete(req.params.id);
+
+    res.json({
+      success: true,
+      message: 'Offer deleted successfully'
+    });
+
+  } catch (error) {
+    console.error('Delete offer error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to delete offer'
+    });
+  }
+});
+
+// Get offer analytics
+router.get('/offers/:id/analytics', [authenticateToken, authorize('publisher')], async (req, res) => {
+  try {
+    const publisher = await Publisher.findOne({ userId: req.user._id });
+    if (!publisher) {
+      return res.status(404).json({
+        success: false,
+        message: 'Publisher account not found'
+      });
+    }
+
+    const offer = await Offer.findOne({
+      _id: req.params.id,
+      publisher: publisher._id
+    });
+
+    if (!offer) {
+      return res.status(404).json({
+        success: false,
+        message: 'Offer not found'
+      });
+    }
+
+    // Get daily metrics for the last 30 days
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+    const dailyMetrics = await Offer.aggregate([
+      {
+        $match: {
+          _id: offer._id,
+          'dailyMetrics.date': { $gte: thirtyDaysAgo }
+        }
+      },
+      {
+        $unwind: '$dailyMetrics'
+      },
+      {
+        $match: {
+          'dailyMetrics.date': { $gte: thirtyDaysAgo }
+        }
+      },
+      {
+        $sort: { 'dailyMetrics.date': 1 }
+      }
+    ]);
+
+    res.json({
+      success: true,
+      data: {
+        offer: {
+          _id: offer._id,
+          title: offer.title,
+          status: offer.status,
+          metrics: offer.metrics
+        },
+        dailyMetrics: dailyMetrics.map(doc => doc.dailyMetrics)
+      }
+    });
+
+  } catch (error) {
+    console.error('Get offer analytics error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to get offer analytics'
     });
   }
 });

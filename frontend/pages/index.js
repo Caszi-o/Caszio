@@ -35,10 +35,10 @@ export default function Home() {
   const { user } = useAuth();
   const [featuredOffers, setFeaturedOffers] = useState([]);
   const [stats, setStats] = useState({
-    users: '50K+',
-    cashback: '₹2.5Cr+',
-    merchants: '500+',
-    savings: '₹15K'
+    users: '0',
+    cashback: '₹0',
+    merchants: '0',
+    savings: '₹0'
   });
 
   // Load featured offers
@@ -82,29 +82,7 @@ export default function Home() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: 'Priya Sharma',
-      role: 'Regular User',
-      image: '/images/testimonials/user1.jpg',
-      rating: 5,
-      content: 'Casyoro has changed how I shop online. I earn cashback automatically without any effort. Amazing!'
-    },
-    {
-      name: 'Rajesh Kumar',
-      role: 'Publisher',
-      image: '/images/testimonials/user2.jpg',
-      rating: 5,
-      content: 'The ad management system is incredible. My ROI has increased by 300% since joining Casyoro.'
-    },
-    {
-      name: 'Sneha Patel',
-      role: 'Promoter',
-      image: '/images/testimonials/user3.jpg',
-      rating: 5,
-      content: 'I earn ₹25,000+ monthly by promoting ads through Casyoro. It\'s been life-changing!'
-    }
-  ];
+  const testimonials = [];
 
   const merchants = [
     { name: 'Amazon', logo: '/images/merchants/Amazon-logo.jpeg' },
@@ -119,7 +97,7 @@ export default function Home() {
     <>
       <Head>
         <title>Casyoro - India's Leading Cashback & Affiliate Platform</title>
-        <meta name="description" content="Earn automatic cashback, find exclusive coupons, and grow your business with India's most comprehensive affiliate platform. Join 50K+ users earning ₹2.5Cr+ in cashback." />
+        <meta name="description" content="Earn automatic cashback, find exclusive coupons, and grow your business with our comprehensive affiliate platform." />
       </Head>
 
       <div className="min-h-screen bg-white">
