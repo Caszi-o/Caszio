@@ -149,7 +149,7 @@ export default function AdminPromoters() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['admin']} requireVerification>
+    <ProtectedRoute allowedRoles={['admin']}>
       <Head>
         <title>Promoter Management - Admin Dashboard - Casyoro</title>
         <meta name="description" content="Review and manage promoter applications" />

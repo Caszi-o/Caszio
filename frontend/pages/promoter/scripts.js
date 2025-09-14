@@ -136,7 +136,7 @@ export default function PromoterScripts() {
   }
 
   return (
-    <ProtectedRoute allowedRoles={['promoter']} requireVerification>
+    <ProtectedRoute allowedRoles={['promoter']}>
       <Head>
         <title>Ad Scripts - Promoter Dashboard - Casyoro</title>
         <meta name="description" content="Get ad scripts to promote on your platforms" />

@@ -130,7 +130,7 @@ export default function PromoterWithdrawals() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['promoter']} requireVerification>
+    <ProtectedRoute allowedRoles={['promoter']}>
       <Head>
         <title>Withdrawals - Promoter Dashboard - Casyoro</title>
         <meta name="description" content="Track your withdrawal requests and payment history" />

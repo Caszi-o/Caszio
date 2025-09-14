@@ -126,7 +126,7 @@ export default function AdminUsers() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['admin']} requireVerification>
+    <ProtectedRoute allowedRoles={['admin']}>
       <Head>
         <title>User Management - Admin Dashboard - Casyoro</title>
         <meta name="description" content="Manage user accounts and permissions" />

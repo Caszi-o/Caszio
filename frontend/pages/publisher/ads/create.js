@@ -631,7 +631,7 @@ export default function CreateAd() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['publisher']} requireVerification>
+    <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
         <title>Create Ad - Publisher Dashboard - Casyoro</title>
         <meta name="description" content="Create a new advertising campaign" />

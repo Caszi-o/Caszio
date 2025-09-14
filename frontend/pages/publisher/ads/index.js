@@ -149,7 +149,7 @@ export default function PublisherAds() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['publisher']} requireVerification>
+    <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
         <title>My Ads - Publisher Dashboard - Casyoro</title>
         <meta name="description" content="Manage your advertising campaigns" />

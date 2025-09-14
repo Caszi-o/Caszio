@@ -204,7 +204,7 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <ProtectedRoute allowedRoles={['admin']} requireVerification>
+    <ProtectedRoute allowedRoles={['admin']}>
       <DashboardContainer
         title="System Control Center"
         subtitle="Manage users, campaigns, and platform operations"

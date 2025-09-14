@@ -195,7 +195,7 @@ export default function PromoterDashboard() {
   ];
 
   return (
-    <ProtectedRoute allowedRoles={['promoter']} requireVerification>
+    <ProtectedRoute allowedRoles={['promoter']}>
       <DashboardContainer
         title="Influencer Hub"
         subtitle="Promote brands and earn money from your content"

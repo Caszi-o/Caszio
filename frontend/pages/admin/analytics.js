@@ -168,7 +168,7 @@ export default function AdminAnalytics() {
   ];
 
   return (
-    <ProtectedRoute allowedRoles={['admin']} requireVerification>
+    <ProtectedRoute allowedRoles={['admin']}>
       <Head>
         <title>Analytics - Admin Dashboard - Casyoro</title>
         <meta name="description" content="Comprehensive platform analytics and insights" />

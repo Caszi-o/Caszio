@@ -148,7 +148,7 @@ export default function PromoterEarnings() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['promoter']} requireVerification>
+    <ProtectedRoute allowedRoles={['promoter']}>
       <Head>
         <title>Earnings - Promoter Dashboard - Casyoro</title>
         <meta name="description" content="Track your earnings and manage withdrawals" />

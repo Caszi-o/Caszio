@@ -164,7 +164,7 @@ export default function PublisherWallet() {
   }
 
   return (
-    <ProtectedRoute allowedRoles={['publisher']} requireVerification>
+    <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
         <title>Wallet - Publisher Dashboard - Casyoro</title>
         <meta name="description" content="Manage your advertising budget and payments" />

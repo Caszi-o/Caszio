@@ -259,7 +259,7 @@ export default function PublisherDashboard() {
   ];
 
   return (
-    <ProtectedRoute allowedRoles={['publisher']} requireVerification>
+    <ProtectedRoute allowedRoles={['publisher']}>
       <DashboardContainer
         title="Ad Campaign Manager"
         subtitle="Create, manage, and optimize your advertising campaigns"

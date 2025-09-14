@@ -138,7 +138,7 @@ export default function AdminPublishers() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['admin']} requireVerification>
+    <ProtectedRoute allowedRoles={['admin']}>
       <Head>
         <title>Publisher Management - Admin Dashboard - Casyoro</title>
         <meta name="description" content="Review and manage publisher accounts" />
