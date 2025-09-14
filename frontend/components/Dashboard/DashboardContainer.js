@@ -36,6 +36,12 @@ function DashboardContainer({
   showRoleSwitcher = false 
 }) {
   const { user, logout } = useAuth();
+  
+  // Safety check for user
+  if (!user) {
+    console.error('DashboardContainer: User not found');
+    return <div>Loading...</div>;
+  }
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showRoleMenu, setShowRoleMenu] = useState(false);
 
@@ -71,6 +77,12 @@ function DashboardContainer({
   };
 
   const currentRole = roleInfo[role] || roleInfo.user;
+  
+  // Ensure we have a valid role with icon
+  if (!currentRole || !currentRole.icon) {
+    console.error('Invalid role or missing icon:', { role, currentRole });
+    return <div>Error: Invalid role configuration</div>;
+  }
 
   const handleLogout = async () => {
     try {
@@ -97,7 +109,7 @@ function DashboardContainer({
               </Link>
               <div className="h-6 border-l border-gray-300"></div>
               <div className="flex items-center space-x-2">
-                <currentRole.icon className={`w-5 h-5 ${currentRole.color}`} />
+                {currentRole.icon && <currentRole.icon className={`w-5 h-5 ${currentRole.color}`} />}
                 <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
               </div>
             </div>
@@ -110,7 +122,7 @@ function DashboardContainer({
                     onClick={() => setShowRoleMenu(!showRoleMenu)}
                     className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
                   >
-                    <currentRole.icon className={`w-4 h-4 ${currentRole.color}`} />
+                    {currentRole.icon && <currentRole.icon className={`w-4 h-4 ${currentRole.color}`} />}
                     <span>{currentRole.name}</span>
                     <ChevronDownIcon className="w-4 h-4" />
                   </button>
@@ -196,7 +208,7 @@ function DashboardContainer({
           variants={fadeInUp}
         >
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, {user?.firstName}! 👋
+            Welcome back, {user?.firstName || 'User'}! 👋
           </h1>
           <p className="text-gray-600">
             {subtitle}
@@ -204,7 +216,7 @@ function DashboardContainer({
         </motion.div>
 
         {/* Quick Actions */}
-        {quickActions.length > 0 && (
+        {quickActions && quickActions.length > 0 && (
           <motion.div
             className="mb-8"
             initial="initial"
@@ -212,7 +224,12 @@ function DashboardContainer({
             variants={fadeInUp}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {quickActions.map((action, index) => (
+              {quickActions.map((action, index) => {
+                if (!action || !action.title || !action.href) {
+                  console.warn('Invalid action item:', action);
+                  return null;
+                }
+                return (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
@@ -225,7 +242,7 @@ function DashboardContainer({
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`w-10 h-10 ${action.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                        <action.icon className={`w-5 h-5 ${action.color}`} />
+                        {action.icon && <action.icon className={`w-5 h-5 ${action.color}`} />}
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
@@ -236,7 +253,8 @@ function DashboardContainer({
                     </div>
                   </Link>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
         )}
