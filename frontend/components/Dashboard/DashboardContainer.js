@@ -36,14 +36,14 @@ function DashboardContainer({
   showRoleSwitcher = false 
 }) {
   const { user, logout } = useAuth();
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showRoleMenu, setShowRoleMenu] = useState(false);
   
   // Safety check for user
   if (!user) {
     console.error('DashboardContainer: User not found');
     return <div>Loading...</div>;
   }
-  const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showRoleMenu, setShowRoleMenu] = useState(false);
 
   const roleInfo = {
     user: {

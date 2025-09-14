@@ -531,8 +531,6 @@ export default function PromoterDashboard() {
               </div>
             </div>
           </motion.div>
-
-        </motion.div>
       </DashboardContainer>
     </ProtectedRoute>
   );

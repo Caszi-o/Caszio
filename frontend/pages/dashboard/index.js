@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 // Import role-specific dashboard components
 import UserDashboard from './user';
-import PublisherDashboard from './publisher';
+import PublisherDashboard from '../../components/PublisherDashboard';
 import PromoterDashboard from './promoter';
 import AdminDashboard from './admin';
 

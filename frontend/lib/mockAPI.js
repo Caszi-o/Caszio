@@ -43,7 +43,35 @@ export const mockAuthAPI = {
   login: async (credentials) => {
     await new Promise(resolve => setTimeout(resolve, 800));
     
-    // Mock login - always reject for security
+    // Mock login - allow publisher login for testing
+    if (credentials.email === 'subhasishsahu845805@gmail.com') {
+      const mockUser = {
+        id: 1,
+        firstName: 'Subhasish',
+        lastName: 'Sahu',
+        email: 'subhasishsahu845805@gmail.com',
+        role: 'publisher',
+        isVerified: true,
+        createdAt: new Date().toISOString()
+      };
+      
+      const mockTokens = {
+        accessToken: 'mock_access_token_' + Date.now(),
+        refreshToken: 'mock_refresh_token_' + Date.now()
+      };
+      
+      return {
+        data: {
+          success: true,
+          data: {
+            user: mockUser,
+            ...mockTokens
+          }
+        }
+      };
+    }
+    
+    // Reject other logins
     throw {
       response: {
         status: 401,
@@ -71,11 +99,23 @@ export const mockAuthAPI = {
   getCurrentUser: async () => {
     await new Promise(resolve => setTimeout(resolve, 300));
     
-    // Mock getCurrentUser - always return null for security
-    throw {
-      response: {
-        status: 401,
-        data: { message: 'Not authenticated' }
+    // Mock getCurrentUser - return a publisher user for testing
+    const mockUser = {
+      id: 1,
+      firstName: 'Subhasish',
+      lastName: 'Sahu',
+      email: 'subhasishsahu845805@gmail.com',
+      role: 'publisher',
+      isVerified: true,
+      createdAt: new Date().toISOString()
+    };
+    
+    return {
+      data: {
+        success: true,
+        data: {
+          user: mockUser
+        }
       }
     };
   }

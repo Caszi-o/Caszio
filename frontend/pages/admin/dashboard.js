@@ -19,7 +19,7 @@ import {
 import { useAuth, ProtectedRoute } from '../../lib/auth';
 import { adminAPI } from '../../lib/api';
 import DashboardContainer from '../../components/Dashboard/DashboardContainer';
-import { Line, Doughnut, Bar } from 'react-chartjs-2';
+import SafeChart from '../../components/SafeChart';
 import toast from 'react-hot-toast';
 
 const fadeInUp = {
@@ -360,25 +360,25 @@ export default function AdminDashboard() {
                 <h2 className="text-lg font-semibold text-gray-900">User Growth</h2>
               </div>
               <div className="card-body">
-                <div style={{ height: '300px' }}>
-                  <Line
-                    data={userGrowthData}
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          position: 'top',
-                        },
+                <SafeChart
+                  type="line"
+                  data={userGrowthData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        position: 'top',
                       },
-                      scales: {
-                        y: {
-                          beginAtZero: true,
-                        },
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
                       },
-                    }}
-                  />
-                </div>
+                    },
+                  }}
+                  height="300px"
+                />
               </div>
             </motion.div>
 
@@ -388,20 +388,20 @@ export default function AdminDashboard() {
                 <h2 className="text-lg font-semibold text-gray-900">User Distribution</h2>
               </div>
               <div className="card-body">
-                <div style={{ height: '200px' }}>
-                  <Doughnut
-                    data={userDistributionData}
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          position: 'bottom',
-                        },
+                <SafeChart
+                  type="doughnut"
+                  data={userDistributionData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        position: 'bottom',
                       },
-                    }}
-                  />
-                </div>
+                    },
+                  }}
+                  height="200px"
+                />
               </div>
             </motion.div>
           </div>
@@ -413,30 +413,30 @@ export default function AdminDashboard() {
                 <h2 className="text-lg font-semibold text-gray-900">Revenue Growth</h2>
               </div>
               <div className="card-body">
-                <div style={{ height: '250px' }}>
-                  <Line
-                    data={revenueGrowthData}
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
+                <SafeChart
+                  type="line"
+                  data={revenueGrowthData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
                       },
-                      scales: {
-                        y: {
-                          beginAtZero: true,
-                          ticks: {
-                            callback: function(value) {
-                              return formatCurrency(value);
-                            }
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        ticks: {
+                          callback: function(value) {
+                            return formatCurrency(value);
                           }
-                        },
+                        }
                       },
-                    }}
-                  />
-                </div>
+                    },
+                  }}
+                  height="250px"
+                />
               </div>
             </motion.div>
 
@@ -446,25 +446,25 @@ export default function AdminDashboard() {
                 <h2 className="text-lg font-semibold text-gray-900">Ad Status Overview</h2>
               </div>
               <div className="card-body">
-                <div style={{ height: '250px' }}>
-                  <Bar
-                    data={adStatusData}
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                        legend: {
-                          display: false,
-                        },
+                <SafeChart
+                  type="bar"
+                  data={adStatusData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                      legend: {
+                        display: false,
                       },
-                      scales: {
-                        y: {
-                          beginAtZero: true,
-                        },
+                    },
+                    scales: {
+                      y: {
+                        beginAtZero: true,
                       },
-                    }}
-                  />
-                </div>
+                    },
+                  }}
+                  height="250px"
+                />
               </div>
             </motion.div>
           </div>
@@ -561,8 +561,6 @@ export default function AdminDashboard() {
               </div>
             </motion.div>
           </motion.div>
-
-        </motion.div>
       </DashboardContainer>
     </ProtectedRoute>
   );
