@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       toast.success('Login successful!');
       
-      // Redirect based on user role (no email verification required)
+      // Redirect based on user role (immediate access)
       const redirectPath = getRedirectPath(user.role);
       router.push(redirectPath);
       
@@ -77,15 +77,10 @@ export const AuthProvider = ({ children }) => {
       setTokens(accessToken, refreshToken);
       setUser(user);
       
-      // Redirect based on user role
-      if (user.role === 'publisher' || user.role === 'promoter') {
-        toast.success('Registration successful! Please verify your account to access all features.');
-        const redirectPath = getRedirectPath(user.role);
-        router.push(redirectPath);
-      } else {
-        toast.success('Registration successful! Please verify your email.');
-        router.push('/auth/verify-email');
-      }
+      // Redirect based on user role (no verification required)
+      toast.success('Registration successful! Welcome to Casyoro!');
+      const redirectPath = getRedirectPath(user.role);
+      router.push(redirectPath);
       
       return { success: true };
     } catch (error) {
