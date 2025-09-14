@@ -23,28 +23,23 @@ const PublisherDashboard = () => {
   }, []);
 
   const loadPublisherData = async () => {
-    // Mock data - replace with actual API calls
-    setStats({
-      totalListings: 45,
-      activeListings: 38,
-      totalClicks: 1250,
-      totalEarnings: 2500.75,
-      adSpend: 850.25,
-      walletBalance: 1650.50
-    });
+    // Load publisher data from API
+    try {
+      // TODO: Replace with actual API calls
+      setStats({
+        totalListings: 0,
+        activeListings: 0,
+        totalClicks: 0,
+        totalEarnings: 0,
+        adSpend: 0,
+        walletBalance: 0
+      });
 
-    setListings([
-      { id: 1, title: 'Wireless Headphones', status: 'active', clicks: 125, earnings: 45.50, category: 'Electronics' },
-      { id: 2, title: 'Running Shoes', status: 'active', clicks: 89, earnings: 32.25, category: 'Sports' },
-      { id: 3, title: 'Coffee Maker', status: 'paused', clicks: 67, earnings: 28.75, category: 'Home' },
-      { id: 4, title: 'Laptop Stand', status: 'active', clicks: 156, earnings: 58.90, category: 'Electronics' }
-    ]);
-
-    setCampaigns([
-      { id: 1, name: 'Electronics Campaign', type: 'CPC', budget: 500, spent: 325.50, clicks: 450, status: 'active' },
-      { id: 2, name: 'Fashion Campaign', type: 'CPM', budget: 300, spent: 180.25, impressions: 15000, status: 'active' },
-      { id: 3, name: 'Home & Garden', type: 'CPC', budget: 200, spent: 200, clicks: 280, status: 'completed' }
-    ]);
+      setListings([]);
+      setCampaigns([]);
+    } catch (error) {
+      console.error('Failed to load publisher data:', error);
+    }
   };
 
   const handleCreateListing = () => {

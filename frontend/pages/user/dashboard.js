@@ -64,8 +64,8 @@ export default function UserDashboard() {
         const dashboardRes = await userAPI.getDashboard();
         dashboardData = dashboardRes.data.data;
       } catch (dashboardError) {
-        console.warn('Dashboard API failed, using mock data:', dashboardError.message);
-        // Use mock data for development
+        console.error('Dashboard API failed:', dashboardError.message);
+        // Set empty data when API fails
         dashboardData = {
           orderStats: {
             totalOrders: 0,
@@ -87,22 +87,9 @@ export default function UserDashboard() {
         const offersRes = await offersAPI.getFeaturedOffers();
         offersData = offersRes.data.data?.offers || offersRes.data.data || [];
       } catch (offersError) {
-        console.warn('Offers API failed, using mock data:', offersError.message);
-        // Use mock offers for development
-        offersData = [
-          {
-            _id: '1',
-            title: 'Amazon Cashback',
-            merchant: { name: 'Amazon' },
-            cashbackPercentage: 5
-          },
-          {
-            _id: '2', 
-            title: 'Flipkart Deal',
-            merchant: { name: 'Flipkart' },
-            cashbackPercentage: 3
-          }
-        ];
+        console.error('Offers API failed:', offersError.message);
+        // Set empty offers when API fails
+        offersData = [];
       }
 
       // Set the data
@@ -192,17 +179,6 @@ export default function UserDashboard() {
             <Link href="/auth/register" className="btn btn-secondary">
               Create Account
             </Link>
-          </div>
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-blue-800 mb-2">
-              <strong>For testing, use these credentials:</strong>
-            </p>
-            <div className="text-xs space-y-1">
-              <div>• <strong>User:</strong> test@example.com / password123</div>
-              <div>• <strong>Publisher:</strong> publisher@example.com / password123</div>
-              <div>• <strong>Promoter:</strong> promoter@example.com / password123</div>
-              <div>• <strong>Admin:</strong> admin@example.com / password123</div>
-            </div>
           </div>
         </div>
       </div>

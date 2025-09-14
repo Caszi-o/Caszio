@@ -23,28 +23,23 @@ const AdminDashboard = () => {
   }, []);
 
   const loadAdminData = async () => {
-    // Mock data - replace with actual API calls
-    setStats({
-      totalUsers: 1250,
-      totalPublishers: 45,
-      totalPromoters: 78,
-      totalEarnings: 12500.75,
-      pendingApprovals: 12,
-      totalRevenue: 25000.50
-    });
+    // Load admin data from API
+    try {
+      // TODO: Replace with actual API calls
+      setStats({
+        totalUsers: 0,
+        totalPublishers: 0,
+        totalPromoters: 0,
+        totalEarnings: 0,
+        pendingApprovals: 0,
+        totalRevenue: 0
+      });
 
-    setRecentUsers([
-      { id: 1, name: 'John Doe', email: 'john@example.com', role: 'user', joinedAt: '2024-01-15', status: 'active' },
-      { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'publisher', joinedAt: '2024-01-14', status: 'active' },
-      { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'promoter', joinedAt: '2024-01-13', status: 'pending' },
-      { id: 4, name: 'Alice Brown', email: 'alice@example.com', role: 'user', joinedAt: '2024-01-12', status: 'active' }
-    ]);
-
-    setPendingApprovals([
-      { id: 1, name: 'Bob Johnson', email: 'bob@example.com', type: 'promoter', submittedAt: '2024-01-13' },
-      { id: 2, name: 'Charlie Wilson', email: 'charlie@example.com', type: 'publisher', submittedAt: '2024-01-12' },
-      { id: 3, name: 'Diana Lee', email: 'diana@example.com', type: 'promoter', submittedAt: '2024-01-11' }
-    ]);
+      setRecentUsers([]);
+      setPendingApprovals([]);
+    } catch (error) {
+      console.error('Failed to load admin data:', error);
+    }
   };
 
   const handleApprove = (id) => {

@@ -22,22 +22,19 @@ const UserDashboard = () => {
   }, []);
 
   const loadUserData = async () => {
-    // Mock data for now - replace with actual API calls
-    setLinkedAccounts([
-      { id: 1, name: 'Amazon', status: 'linked', logo: '/images/merchants/Amazon-logo.jpeg' },
-      { id: 2, name: 'Flipkart', status: 'linked', logo: '/images/merchants/Flipkart-Logo.jpg' },
-      { id: 3, name: 'Myntra', status: 'not_linked', logo: '/images/merchants/Myntra-Logo.jpg' },
-      { id: 4, name: 'Nykaa', status: 'not_linked', logo: '/images/merchants/Nykaa-Logo.png' },
-      { id: 5, name: 'Tata CLiQ', status: 'not_linked', logo: '/images/merchants/Tata-Cliq-Logo.jpg' },
-      { id: 6, name: 'AJIO', status: 'not_linked', logo: '/images/merchants/Ajio-Logo.jpg' }
-    ]);
-
-    setCashbackData({
-      total: 1250.50,
-      pending: 150.25,
-      withdrawn: 800.00,
-      credited: 300.25
-    });
+    // Load user data from API
+    try {
+      // TODO: Replace with actual API calls
+      setLinkedAccounts([]);
+      setCashbackData({
+        total: 0,
+        pending: 0,
+        withdrawn: 0,
+        credited: 0
+      });
+    } catch (error) {
+      console.error('Failed to load user data:', error);
+    }
   };
 
   const handleLinkAccount = (accountId) => {

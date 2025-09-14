@@ -23,29 +23,23 @@ const PromoterDashboard = () => {
   }, []);
 
   const loadPromoterData = async () => {
-    // Mock data - replace with actual API calls
-    setStats({
-      totalEarnings: 1850.75,
-      pendingEarnings: 125.50,
-      totalClicks: 2450,
-      totalImpressions: 125000,
-      conversionRate: 3.2,
-      approvalStatus: 'approved'
-    });
+    // Load promoter data from API
+    try {
+      // TODO: Replace with actual API calls
+      setStats({
+        totalEarnings: 0,
+        pendingEarnings: 0,
+        totalClicks: 0,
+        totalImpressions: 0,
+        conversionRate: 0,
+        approvalStatus: 'pending'
+      });
 
-    setEarnings([
-      { id: 1, campaign: 'Electronics Campaign', type: 'CPC', amount: 45.50, date: '2024-01-15', status: 'paid' },
-      { id: 2, campaign: 'Fashion Campaign', type: 'CPA', amount: 32.25, date: '2024-01-14', status: 'paid' },
-      { id: 3, campaign: 'Home & Garden', type: 'CPC', amount: 28.75, date: '2024-01-13', status: 'pending' },
-      { id: 4, campaign: 'Tech Gadgets', type: 'CPA', amount: 58.90, date: '2024-01-12', status: 'paid' }
-    ]);
-
-    setCampaigns([
-      { id: 1, name: 'Electronics Campaign', type: 'CPC', rate: 0.50, clicks: 91, earnings: 45.50, status: 'active' },
-      { id: 2, name: 'Fashion Campaign', type: 'CPA', rate: 15.00, conversions: 2, earnings: 30.00, status: 'active' },
-      { id: 3, name: 'Home & Garden', type: 'CPC', rate: 0.75, clicks: 38, earnings: 28.50, status: 'paused' },
-      { id: 4, name: 'Tech Gadgets', type: 'CPA', rate: 25.00, conversions: 2, earnings: 50.00, status: 'active' }
-    ]);
+      setEarnings([]);
+      setCampaigns([]);
+    } catch (error) {
+      console.error('Failed to load promoter data:', error);
+    }
   };
 
   const handleWithdrawRequest = () => {
