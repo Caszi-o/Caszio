@@ -43,68 +43,13 @@ export const mockAuthAPI = {
   login: async (credentials) => {
     await new Promise(resolve => setTimeout(resolve, 800));
     
-    // Support different test users for different roles
-    const testUsers = {
-      'test@example.com': {
-        id: 1,
-        firstName: 'Test',
-        lastName: 'User',
-        email: 'test@example.com',
-        role: 'user',
-        isVerified: true
-      },
-      'publisher@example.com': {
-        id: 2,
-        firstName: 'Test',
-        lastName: 'Publisher',
-        email: 'publisher@example.com',
-        role: 'publisher',
-        isVerified: true
-      },
-      'promoter@example.com': {
-        id: 3,
-        firstName: 'Test',
-        lastName: 'Promoter',
-        email: 'promoter@example.com',
-        role: 'promoter',
-        isVerified: true
-      },
-      'admin@example.com': {
-        id: 4,
-        firstName: 'Test',
-        lastName: 'Admin',
-        email: 'admin@example.com',
-        role: 'admin',
-        isVerified: true
+    // Mock login - always reject for security
+    throw {
+      response: {
+        status: 401,
+        data: { message: 'Invalid credentials' }
       }
     };
-    
-    if (testUsers[credentials.email] && credentials.password === 'password123') {
-      const user = testUsers[credentials.email];
-      
-      // Store the current user in global scope for getCurrentUser
-      if (typeof window !== 'undefined') {
-        window.mockCurrentUser = user;
-      }
-      
-      return {
-        data: {
-          success: true,
-          data: {
-            user,
-            accessToken: 'mock_access_token_' + user.role,
-            refreshToken: 'mock_refresh_token_' + user.role
-          }
-        }
-      };
-    } else {
-      throw {
-        response: {
-          status: 401,
-          data: { message: 'Invalid credentials' }
-        }
-      };
-    }
   },
   
   logout: async (refreshToken) => {
@@ -126,28 +71,11 @@ export const mockAuthAPI = {
   getCurrentUser: async () => {
     await new Promise(resolve => setTimeout(resolve, 300));
     
-    // Get the current user from a global variable or return a default
-    // This is a simple approach for mock API
-    let user = {
-      id: 1,
-      firstName: 'Test',
-      lastName: 'User',
-      email: 'test@example.com',
-      role: 'user',
-      isVerified: true
-    };
-    
-    // Check if we have a stored user in the global scope
-    if (typeof window !== 'undefined' && window.mockCurrentUser) {
-      user = window.mockCurrentUser;
-    }
-    
-    return {
-      data: {
-        success: true,
-        data: {
-          user
-        }
+    // Mock getCurrentUser - always return null for security
+    throw {
+      response: {
+        status: 401,
+        data: { message: 'Not authenticated' }
       }
     };
   }
@@ -238,7 +166,7 @@ export const mockPublisherAPI = {
         data: {
                   publisher: {
                     _id: '1',
-                    companyName: 'Test Publisher Co.',
+                    companyName: 'Your Company',
                     verificationStatus: 'pending',
                     currentPackage: 'Premium',
                     packageStatus: 'active'

@@ -69,32 +69,7 @@ export default function PromoterLanding() {
     'Easy-to-use dashboard'
   ];
 
-  const testimonials = [
-    {
-      name: 'Sneha Patel',
-      platform: 'Instagram Influencer',
-      image: '/images/testimonials/promoter1.jpg',
-      rating: 5,
-      content: 'I earn ₹25,000+ monthly by promoting ads through Casyoro. It\'s been life-changing!',
-      earnings: '₹25,000+ monthly'
-    },
-    {
-      name: 'Rahul Singh',
-      platform: 'YouTube Creator',
-      image: '/images/testimonials/promoter2.jpg',
-      rating: 5,
-      content: 'The platform is so easy to use. I can track my earnings and manage campaigns effortlessly.',
-      earnings: '₹40,000+ monthly'
-    },
-    {
-      name: 'Priya Sharma',
-      platform: 'Blogger',
-      image: '/images/testimonials/promoter3.jpg',
-      rating: 5,
-      content: 'Casyoro has helped me monetize my blog effectively. The commission rates are excellent.',
-      earnings: '₹18,000+ monthly'
-    }
-  ];
+  const testimonials = [];
 
   const stats = [
     { label: 'Active Promoters', value: '2,500+' },

@@ -69,32 +69,7 @@ export default function PublisherLanding() {
     '24/7 customer support'
   ];
 
-  const testimonials = [
-    {
-      name: 'Rajesh Kumar',
-      company: 'TechStart Solutions',
-      image: '/images/testimonials/publisher1.jpg',
-      rating: 5,
-      content: 'Casyoro has helped us increase our brand visibility by 300%. The ad management system is incredibly user-friendly.',
-      results: '300% increase in brand visibility'
-    },
-    {
-      name: 'Priya Sharma',
-      company: 'Fashion Forward',
-      image: '/images/testimonials/publisher2.jpg',
-      rating: 5,
-      content: 'The analytics dashboard gives us insights we never had before. Our ROI has improved significantly.',
-      results: '250% improvement in ROI'
-    },
-    {
-      name: 'Amit Patel',
-      company: 'Digital Marketing Pro',
-      image: '/images/testimonials/publisher3.jpg',
-      rating: 5,
-      content: 'The promoter network is amazing. We reach exactly the audience we want with our campaigns.',
-      results: '400% increase in qualified leads'
-    }
-  ];
+  const testimonials = [];
 
   const stats = [
     { label: 'Active Publishers', value: '500+' },
