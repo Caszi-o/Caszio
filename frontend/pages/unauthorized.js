@@ -21,8 +21,7 @@ export default function Unauthorized() {
   const roleRedirects = {
     user: '/user/dashboard',
     publisher: '/publisher/dashboard', 
-    promoter: '/promoter/dashboard',
-    admin: '/admin/dashboard'
+    promoter: '/promoter/dashboard'
   };
 
   return (
@@ -155,7 +154,6 @@ export default function Unauthorized() {
               <p><strong>User:</strong> Earn cashback on purchases</p>
               <p><strong>Publisher:</strong> Create and manage ads</p>
               <p><strong>Promoter:</strong> Promote ads and earn commissions</p>
-              <p><strong>Admin:</strong> Platform administration</p>
             </div>
           </motion.div>
         </motion.div>

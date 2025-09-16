@@ -83,7 +83,7 @@ export default function CreateOffer() {
   };
 
   return (
-    <ProtectedRoute allowedRoles={['publisher', 'admin']}>
+    <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
         <title>Create Offer - Publisher Dashboard | Casyoro</title>
         <meta name="description" content="Create a new discount offer or cashback deal" />
@@ -118,7 +118,7 @@ export default function CreateOffer() {
                   Instant Approval
                 </h3>
                 <p className="text-sm text-green-700 mt-1">
-                  Your offers will be automatically approved and immediately visible to users. No admin review required.
+                  Your offers will be automatically approved and immediately visible to users.
                 </p>
               </div>
             </div>

@@ -138,7 +138,7 @@ export default function OfferDetails() {
 
   if (loading) {
     return (
-      <ProtectedRoute allowedRoles={['publisher', 'admin']}>
+      <ProtectedRoute allowedRoles={['publisher']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
@@ -151,7 +151,7 @@ export default function OfferDetails() {
 
   if (!offer) {
     return (
-      <ProtectedRoute allowedRoles={['publisher', 'admin']}>
+      <ProtectedRoute allowedRoles={['publisher']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
           <div className="text-center">
             <ExclamationTriangleIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
@@ -169,7 +169,7 @@ export default function OfferDetails() {
   const StatusIcon = getStatusIcon(offer.status);
 
   return (
-    <ProtectedRoute allowedRoles={['publisher', 'admin']}>
+    <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
         <title>{offer.title} - Offer Details | Casyoro</title>
         <meta name="description" content={offer.description} />

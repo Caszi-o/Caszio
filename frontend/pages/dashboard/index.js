@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 import UserDashboard from './user';
 import PublisherDashboard from '../../components/PublisherDashboard';
 import PromoterDashboard from './promoter';
-import AdminDashboard from './admin';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -25,9 +24,6 @@ export default function Dashboard() {
     if (!loading && user) {
       const role = user.role;
       switch (role) {
-        case 'admin':
-          router.replace('/admin/dashboard');
-          break;
         case 'publisher':
           router.replace('/publisher/dashboard');
           break;

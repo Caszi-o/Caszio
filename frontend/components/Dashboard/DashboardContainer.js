@@ -67,13 +67,6 @@ function DashboardContainer({
       bgColor: 'bg-purple-100',
       description: 'Promotion & Earnings'
     },
-    admin: {
-      name: 'Admin',
-      icon: CogIcon,
-      color: 'text-red-600',
-      bgColor: 'bg-red-100',
-      description: 'Platform Management'
-    }
   };
 
   const currentRole = roleInfo[role] || roleInfo.user;
@@ -83,6 +76,9 @@ function DashboardContainer({
     console.error('Invalid role or missing icon:', { role, currentRole });
     return <div>Error: Invalid role configuration</div>;
   }
+
+  // Store the icon component in a variable for proper JSX rendering
+  const IconComponent = currentRole.icon;
 
   const handleLogout = async () => {
     try {
@@ -109,7 +105,7 @@ function DashboardContainer({
               </Link>
               <div className="h-6 border-l border-gray-300"></div>
               <div className="flex items-center space-x-2">
-                {currentRole.icon && <currentRole.icon className={`w-5 h-5 ${currentRole.color}`} />}
+                {IconComponent && <IconComponent className={`w-5 h-5 ${currentRole.color}`} />}
                 <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
               </div>
             </div>
@@ -122,7 +118,7 @@ function DashboardContainer({
                     onClick={() => setShowRoleMenu(!showRoleMenu)}
                     className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
                   >
-                    {currentRole.icon && <currentRole.icon className={`w-4 h-4 ${currentRole.color}`} />}
+                    {IconComponent && <IconComponent className={`w-4 h-4 ${currentRole.color}`} />}
                     <span>{currentRole.name}</span>
                     <ChevronDownIcon className="w-4 h-4" />
                   </button>
@@ -130,19 +126,22 @@ function DashboardContainer({
                   {showRoleMenu && (
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
                       <div className="py-1">
-                        {Object.entries(roleInfo).map(([roleKey, roleData]) => (
-                          <Link
-                            key={roleKey}
-                            href={`/${roleKey}/dashboard`}
-                            className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                          >
-                            <roleData.icon className={`w-4 h-4 ${roleData.color}`} />
-                            <div>
-                              <div className="font-medium">{roleData.name}</div>
-                              <div className="text-xs text-gray-500">{roleData.description}</div>
-                            </div>
-                          </Link>
-                        ))}
+                        {Object.entries(roleInfo).map(([roleKey, roleData]) => {
+                          const RoleIcon = roleData.icon;
+                          return (
+                            <Link
+                              key={roleKey}
+                              href={`/${roleKey}/dashboard`}
+                              className="flex items-center space-x-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                            >
+                              <RoleIcon className={`w-4 h-4 ${roleData.color}`} />
+                              <div>
+                                <div className="font-medium">{roleData.name}</div>
+                                <div className="text-xs text-gray-500">{roleData.description}</div>
+                              </div>
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -229,6 +228,7 @@ function DashboardContainer({
                   console.warn('Invalid action item:', action);
                   return null;
                 }
+                const ActionIcon = action.icon;
                 return (
                 <motion.div
                   key={index}
@@ -242,7 +242,7 @@ function DashboardContainer({
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`w-10 h-10 ${action.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                        {action.icon && <action.icon className={`w-5 h-5 ${action.color}`} />}
+                        {ActionIcon && <ActionIcon className={`w-5 h-5 ${action.color}`} />}
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">

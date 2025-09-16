@@ -17,8 +17,6 @@ const Layout = ({ children }) => {
     if (!user) return '/';
     
     switch (user.role) {
-      case 'admin':
-        return '/admin/dashboard';
       case 'publisher':
         return '/dashboard/publisher';
       case 'promoter':
@@ -30,8 +28,6 @@ const Layout = ({ children }) => {
 
   const getRoleDisplayName = (role) => {
     switch (role) {
-      case 'admin':
-        return 'Admin';
       case 'publisher':
         return 'Publisher';
       case 'promoter':

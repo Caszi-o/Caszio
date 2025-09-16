@@ -95,7 +95,7 @@ api.interceptors.response.use(
 );
 
 // Import mock API for development
-import { mockAuthAPI, mockUserAPI, mockOffersAPI, mockPublisherAPI, mockPromoterAPI, mockAdminAPI, checkBackendAvailability } from './mockAPI';
+import { mockAuthAPI, mockUserAPI, mockOffersAPI, mockPublisherAPI, mockPromoterAPI, checkBackendAvailability } from './mockAPI';
 
 // Check if we should use mock API
 const USE_MOCK_API = process.env.NODE_ENV === 'development' && (process.env.NEXT_PUBLIC_USE_MOCK_API === 'true' || true);
@@ -269,31 +269,6 @@ export const promoterAPI = {
   getMetrics: (params) => api.get('/promoters/metrics', { params }),
 };
 
-export const adminAPI = {
-  getDashboard: async () => {
-    if (USE_MOCK_API) {
-      console.log('Using mock API for admin dashboard');
-      return mockAdminAPI.getDashboard();
-    }
-    return api.get('/admin/dashboard');
-  },
-  getUsers: (params) => api.get('/admin/users', { params }),
-  updateUser: (id, data) => api.put(`/admin/users/${id}`, data),
-  getPublishers: (params) => api.get('/admin/publishers', { params }),
-  verifyPublisher: (id, data) => api.patch(`/admin/publishers/${id}/verification`, data),
-  getPromoters: (params) => api.get('/admin/promoters', { params }),
-  approvePromoter: (id, data) => api.patch(`/admin/promoters/${id}/application`, data),
-  getOffers: (params) => api.get('/admin/offers', { params }),
-  createOffer: (data) => api.post('/admin/offers', data),
-  updateOffer: (id, data) => api.put(`/admin/offers/${id}`, data),
-  getAds: (params) => api.get('/admin/ads', { params }),
-  reviewAd: (id, data) => api.patch(`/admin/ads/${id}/review`, data),
-  getTransactions: (params) => api.get('/admin/transactions', { params }),
-  getWithdrawals: (params) => api.get('/admin/withdrawals', { params }),
-  processWithdrawal: (promoterId, withdrawalId, data) => api.patch(`/admin/withdrawals/${promoterId}/${withdrawalId}`, data),
-  getAnalytics: (params) => api.get('/admin/analytics', { params }),
-  getSettings: () => api.get('/admin/settings'),
-};
 
 export const paymentAPI = {
   createRazorpayOrder: (data) => api.post('/payments/razorpay/create-order', data),

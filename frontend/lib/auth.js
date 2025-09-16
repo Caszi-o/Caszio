@@ -9,8 +9,6 @@ const AuthContext = createContext({});
 // Helper function for role-based redirects
 export const getRedirectPath = (role) => {
   switch (role) {
-    case 'admin':
-      return '/admin/dashboard';
     case 'publisher':
       return '/publisher/dashboard';
     case 'promoter':
