@@ -12,8 +12,9 @@ import {
   GlobeAltIcon,
   CurrencyRupeeIcon,
   CalendarIcon,
-  TargetIcon,
-  EyeIcon
+  ViewfinderCircleIcon,
+  EyeIcon,
+  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 import { ProtectedRoute } from '../../../lib/auth';
 import { publisherAPI } from '../../../lib/api';
@@ -296,7 +297,7 @@ export default function CreateAd() {
         return (
           <motion.div className="space-y-6" variants={fadeInUp}>
             <div className="text-center">
-              <TargetIcon className="w-12 h-12 text-primary-600 mx-auto mb-4" />
+              <ViewfinderCircleIcon className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">Define Your Target Audience</h3>
               <p className="text-gray-600">Choose who should see your ads for better performance</p>
             </div>

@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
   images: {
     domains: ['res.cloudinary.com', 'lh3.googleusercontent.com', 'graph.facebook.com'],
   },

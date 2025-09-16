@@ -7,8 +7,8 @@ import {
   EyeIcon,
   CursorArrowRaysIcon,
   ShoppingCartIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
+  ArrowTrendingUpIcon,
+  ArrowArrowTrendingDownIcon,
   DocumentTextIcon,
   CodeBracketIcon,
   BanknotesIcon,
@@ -262,7 +262,7 @@ export default function PromoterDashboard() {
                       {formatCurrency(todayEarnings.totalEarnings)}
                     </p>
                     <div className="flex items-center mt-1">
-                      <TrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
+                      <ArrowTrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
                       <span className="text-sm text-success-600">+15%</span>
                     </div>
                   </div>
@@ -303,7 +303,7 @@ export default function PromoterDashboard() {
                       {formatNumber(promoter.stats.totalClicks)}
                     </p>
                     <div className="flex items-center mt-1">
-                      <TrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
+                      <ArrowTrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
                       <span className="text-sm text-success-600">+8%</span>
                     </div>
                   </div>

@@ -9,8 +9,8 @@ import {
   CalendarIcon,
   FunnelIcon,
   ChartBarIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
+  ArrowTrendingUpIcon,
+  ArrowArrowTrendingDownIcon,
   ClockIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
@@ -229,7 +229,7 @@ export default function PromoterEarnings() {
                       {earningsData?.summary.totalTransactions || 0}
                     </p>
                     <div className="flex items-center mt-1">
-                      <TrendingUpIcon className="w-4 h-4 text-warning-100 mr-1" />
+                      <ArrowTrendingUpIcon className="w-4 h-4 text-warning-100 mr-1" />
                       <span className="text-warning-100 text-sm">+12% this month</span>
                     </div>
                   </div>
@@ -251,7 +251,7 @@ export default function PromoterEarnings() {
                     <p className="text-danger-100 text-sm mt-1">Per successful action</p>
                   </div>
                   <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
-                    <TrendingUpIcon className="w-6 h-6" />
+                    <ArrowTrendingUpIcon className="w-6 h-6" />
                   </div>
                 </div>
               </div>

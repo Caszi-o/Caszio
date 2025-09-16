@@ -7,8 +7,8 @@ import {
   EyeIcon,
   CursorArrowRaysIcon,
   BanknotesIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
+  ArrowTrendingUpIcon,
+  ArrowTrendingDownIcon,
   ExclamationTriangleIcon,
   CheckCircleIcon,
   ClockIcon,
@@ -216,12 +216,12 @@ function PublisherDashboard() {
               <div className="card-body">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Today's Impressions</p>
+                    <p className="text-sm font-medium text-gray-600">Today&apos;s Impressions</p>
                     <p className="text-3xl font-bold text-gray-900">
                       {formatNumber(todayMetrics.impressions)}
                     </p>
                     <div className="flex items-center mt-1">
-                      <TrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
+                      <ArrowTrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
                       <span className="text-sm text-success-600">+12%</span>
                     </div>
                   </div>
@@ -236,12 +236,12 @@ function PublisherDashboard() {
               <div className="card-body">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Today's Clicks</p>
+                    <p className="text-sm font-medium text-gray-600">Today&apos;s Clicks</p>
                     <p className="text-3xl font-bold text-gray-900">
                       {formatNumber(todayMetrics.clicks)}
                     </p>
                     <div className="flex items-center mt-1">
-                      <TrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
+                      <ArrowTrendingUpIcon className="w-4 h-4 text-success-500 mr-1" />
                       <span className="text-sm text-success-600">+8%</span>
                     </div>
                   </div>
@@ -256,12 +256,12 @@ function PublisherDashboard() {
               <div className="card-body">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">Today's Spend</p>
+                    <p className="text-sm font-medium text-gray-600">Today&apos;s Spend</p>
                     <p className="text-3xl font-bold text-gray-900">
                       {formatCurrency(todayMetrics.cost)}
                     </p>
                     <div className="flex items-center mt-1">
-                      <TrendingDownIcon className="w-4 h-4 text-danger-500 mr-1" />
+                      <ArrowTrendingDownIcon className="w-4 h-4 text-danger-500 mr-1" />
                       <span className="text-sm text-danger-600">-5%</span>
                     </div>
                   </div>
