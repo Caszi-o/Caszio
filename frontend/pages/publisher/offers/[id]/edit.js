@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -22,55 +22,130 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
-export default function CreateOffer() {
+export default function EditOffer() {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const { id } = router.query;
+  const [offer, setOffer] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
 
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors }
-  } = useForm({
-    defaultValues: {
-      discountType: 'percentage',
-      cashbackPercentage: 5,
-      categories: ['electronics']
-    }
-  });
+  } = useForm();
 
   const discountType = watch('discountType');
 
-  const onSubmit = async (data) => {
+  useEffect(() => {
+    if (id) {
+      loadOffer();
+    }
+  }, [id]);
+
+  const loadOffer = async () => {
     try {
       setLoading(true);
       
-      const offerData = {
-        ...data,
-        startDate: new Date(data.startDate).toISOString(),
-        endDate: new Date(data.endDate).toISOString(),
-        status: 'pending'
+      // Mock data for now
+      const mockOffer = {
+        _id: id,
+        title: 'Summer Sale - Electronics',
+        description: 'Get up to 50% off on all electronics',
+        discountType: 'percentage',
+        discountValue: 50,
+        cashbackPercentage: 5,
+        categories: ['electronics'],
+        status: 'active',
+        startDate: '2024-01-01',
+        endDate: '2024-12-31',
+        merchant: {
+          name: 'TechStore',
+          logo: null
+        },
+        terms: 'Valid on all electronics. Cannot be combined with other offers.'
       };
 
-      // Mock API call
-      console.log('Creating offer:', offerData);
+      setOffer(mockOffer);
       
-      toast.success('Offer created successfully and submitted for review!');
-      router.push('/publisher/offers');
+      // Set form values
+      setValue('title', mockOffer.title);
+      setValue('merchantName', mockOffer.merchant.name);
+      setValue('description', mockOffer.description);
+      setValue('discountType', mockOffer.discountType);
+      setValue('discountValue', mockOffer.discountValue);
+      setValue('cashbackPercentage', mockOffer.cashbackPercentage);
+      setValue('categories', mockOffer.categories[0]);
+      setValue('startDate', mockOffer.startDate);
+      setValue('endDate', mockOffer.endDate);
+      setValue('terms', mockOffer.terms);
       
     } catch (error) {
-      console.error('Create offer error:', error);
-      toast.error('Failed to create offer. Please try again.');
+      console.error('Failed to load offer:', error);
+      toast.error('Failed to load offer');
     } finally {
       setLoading(false);
     }
   };
 
+  const onSubmit = async (data) => {
+    try {
+      setSaving(true);
+      
+      const offerData = {
+        ...data,
+        startDate: new Date(data.startDate).toISOString(),
+        endDate: new Date(data.endDate).toISOString(),
+        categories: [data.categories]
+      };
+
+      // Mock API call
+      console.log('Updating offer:', offerData);
+      
+      toast.success('Offer updated successfully!');
+      router.push(`/publisher/offers/${id}`);
+      
+    } catch (error) {
+      console.error('Update offer error:', error);
+      toast.error('Failed to update offer. Please try again.');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <ProtectedRoute allowedRoles={['publisher']}>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
+  if (!offer) {
+    return (
+      <ProtectedRoute allowedRoles={['publisher']}>
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Offer Not Found</h2>
+            <p className="text-gray-600 mb-6">The offer you're looking for doesn't exist.</p>
+            <Link href="/publisher/offers" className="btn btn-primary">
+              Back to Offers
+            </Link>
+          </div>
+        </div>
+      </ProtectedRoute>
+    );
+  }
+
   return (
     <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
-        <title>Create Offer - Publisher Dashboard</title>
-        <meta name="description" content="Create a new discount offer" />
+        <title>Edit Offer - Publisher Dashboard</title>
+        <meta name="description" content="Edit your discount offer" />
       </Head>
 
       <div className="min-h-screen bg-gray-50">
@@ -79,16 +154,16 @@ export default function CreateOffer() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-4">
-                <Link href="/publisher/offers" className="text-2xl font-bold text-primary-600">
+                <Link href={`/publisher/offers/${id}`} className="text-2xl font-bold text-primary-600">
                   Casyoro
                 </Link>
                 <div className="h-6 border-l border-gray-300"></div>
-                <h1 className="text-xl font-semibold text-gray-900">Create Offer</h1>
+                <h1 className="text-xl font-semibold text-gray-900">Edit Offer</h1>
               </div>
 
-              <Link href="/publisher/offers" className="btn btn-outline">
+              <Link href={`/publisher/offers/${id}`} className="btn btn-outline">
                 <ArrowLeftIcon className="w-5 h-5 mr-2" />
-                Back to Offers
+                Back to Offer
               </Link>
             </div>
           </div>
@@ -102,9 +177,9 @@ export default function CreateOffer() {
           >
             <div className="bg-white rounded-lg shadow-sm border">
               <div className="px-6 py-4 border-b border-gray-200">
-                <h2 className="text-lg font-semibold text-gray-900">Offer Details</h2>
+                <h2 className="text-lg font-semibold text-gray-900">Edit Offer Details</h2>
                 <p className="text-sm text-gray-600 mt-1">
-                  Create a new discount offer for your customers
+                  Update your discount offer information
                 </p>
               </div>
 
@@ -321,17 +396,17 @@ export default function CreateOffer() {
                 <div className="border-t border-gray-200 pt-6">
                   <div className="flex justify-end space-x-4">
                     <Link
-                      href="/publisher/offers"
+                      href={`/publisher/offers/${id}`}
                       className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
                     >
                       Cancel
                     </Link>
                     <button
                       type="submit"
-                      disabled={loading}
+                      disabled={saving}
                       className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      {loading ? 'Creating...' : 'Create Offer'}
+                      {saving ? 'Saving...' : 'Save Changes'}
                     </button>
                   </div>
                 </div>
