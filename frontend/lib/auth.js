@@ -32,11 +32,6 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = async () => {
     try {
-      // For development with mock API, auto-set tokens if not authenticated
-      if (!isAuthenticated() && process.env.NODE_ENV === 'development') {
-        setTokens('mock_access_token_dev', 'mock_refresh_token_dev');
-      }
-      
       if (isAuthenticated()) {
         const response = await authAPI.getCurrentUser();
         setUser(response.data.data.user);

@@ -98,7 +98,7 @@ api.interceptors.response.use(
 import { mockAuthAPI, mockUserAPI, mockOffersAPI, mockPublisherAPI, mockPromoterAPI, checkBackendAvailability } from './mockAPI';
 
 // Check if we should use mock API
-const USE_MOCK_API = process.env.NODE_ENV === 'development' && (process.env.NEXT_PUBLIC_USE_MOCK_API === 'true' || true);
+const USE_MOCK_API = process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_USE_MOCK_API === 'true';
 
 // API functions with fallback to mock
 export const authAPI = {
