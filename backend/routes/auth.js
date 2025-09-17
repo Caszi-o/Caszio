@@ -88,6 +88,40 @@ router.post('/register', [
     });
     await wallet.save();
 
+    // Create role-specific profiles
+    if (role === 'publisher') {
+      const Publisher = require('../models/Publisher');
+      const publisher = new Publisher({
+        userId: user._id,
+        businessName: `${firstName} ${lastName}`,
+        businessType: 'individual',
+        industry: 'general',
+        verificationStatus: 'pending',
+        currentPackage: 'basic',
+        packageStartDate: new Date(),
+        packageEndDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+        packageFeatures: {
+          adsPerMonth: 10,
+          featuredListings: 0,
+          analyticsAccess: true,
+          prioritySupport: false,
+          customBranding: false
+        }
+      });
+      await publisher.save();
+    } else if (role === 'promoter') {
+      const Promoter = require('../models/Promoter');
+      const promoter = new Promoter({
+        userId: user._id,
+        applicationStatus: 'pending',
+        totalEarnings: 0,
+        monthlyEarnings: 0,
+        totalClicks: 0,
+        totalConversions: 0
+      });
+      await promoter.save();
+    }
+
     // Generate tokens
     const { accessToken, refreshToken } = generateTokens(user._id);
     await user.addRefreshToken(refreshToken);
