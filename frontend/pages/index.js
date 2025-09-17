@@ -34,12 +34,6 @@ const staggerChildren = {
 export default function Home() {
   const { user } = useAuth();
   const [featuredOffers, setFeaturedOffers] = useState([]);
-  const [stats, setStats] = useState({
-    users: '0',
-    cashback: '₹0',
-    merchants: '0',
-    savings: '₹0'
-  });
 
   // Load featured offers
   useEffect(() => {
@@ -195,18 +189,6 @@ export default function Home() {
                 </Link>
               </motion.div>
 
-              {/* Stats */}
-              <motion.div 
-                className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
-                variants={staggerChildren}
-              >
-                {Object.entries(stats).map(([key, value]) => (
-                  <motion.div key={key} className="text-center" variants={fadeInUp}>
-                    <div className="text-3xl font-bold text-primary-600">{value}</div>
-                    <div className="text-gray-600 capitalize">{key}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
             </motion.div>
           </div>
 
@@ -520,7 +502,7 @@ export default function Home() {
             </div>
             
             <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Casyoro. All rights reserved. | Made with ❤️ for Peter Thiel Fellowship</p>
+              <p>&copy; 2024 Casyoro. All rights reserved.</p>
             </div>
           </div>
         </footer>

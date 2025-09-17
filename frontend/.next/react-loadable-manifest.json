@@ -1,1 +1,14 @@
-{}
+{
+  "..\\components\\SafeChart.js -> chart.js": {
+    "id": "..\\components\\SafeChart.js -> chart.js",
+    "files": [
+      "static/chunks/node_modules_chart_js_dist_chart_js.js"
+    ]
+  },
+  "..\\components\\SafeChart.js -> react-chartjs-2": {
+    "id": "..\\components\\SafeChart.js -> react-chartjs-2",
+    "files": [
+      "static/chunks/node_modules_react-chartjs-2_dist_index_js.js"
+    ]
+  }
+}
