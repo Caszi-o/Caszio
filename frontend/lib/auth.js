@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       
       // Redirect based on user role (no verification required)
-      toast.success('Registration successful! Welcome to Casyoro!');
+      toast.success('Registration successful! Welcome to Caszio!');
       const redirectPath = getRedirectPath(user.role);
       router.push(redirectPath);
       

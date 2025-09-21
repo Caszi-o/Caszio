@@ -1,5 +1,5 @@
 {
-  "name": "casyoro",
+  "name": "caszio",
   "version": "1.0.0",
   "description": "Full-stack cashback and affiliate platform combining coupons, publishers, and promoters",
   "scripts": {
@@ -11,7 +11,7 @@
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
   },
   "keywords": ["cashback", "affiliate", "ecommerce", "coupons", "publishers"],
-  "author": "Casyoro Team",
+  "author": "Caszio Team",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"

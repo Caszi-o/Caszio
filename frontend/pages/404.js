@@ -17,8 +17,8 @@ export default function Custom404() {
   return (
     <>
       <Head>
-        <title>Page Not Found - Casyoro</title>
-        <meta name="description" content="The page you're looking for doesn't exist. Return to Casyoro to continue earning cashback." />
+        <title>Page Not Found - Caszio</title>
+        <meta name="description" content="The page you're looking for doesn't exist. Return to Caszio to continue earning cashback." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
@@ -34,7 +34,7 @@ export default function Custom404() {
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">C</span>
               </div>
-              <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+              <span className="text-3xl font-bold text-gray-900">Caszio</span>
             </div>
           </Link>
 
@@ -122,7 +122,7 @@ export default function Custom404() {
             <p className="text-xs text-gray-500 mb-2">While you're here...</p>
             <p className="text-sm text-gray-700">
               <span className="font-semibold text-primary-600">50,000+</span> users are earning 
-              <span className="font-semibold text-success-600"> ₹2.5Cr+</span> in cashback with Casyoro!
+              <span className="font-semibold text-success-600"> ₹2.5Cr+</span> in cashback with Caszio!
             </p>
           </motion.div>
         </motion.div>

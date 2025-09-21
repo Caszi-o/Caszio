@@ -57,13 +57,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Casyoro - Cashback, Coupons & Affiliate Platform</title>
+        <title>Caszio - Cashback, Coupons & Affiliate Platform</title>
         <meta name="description" content="Earn automatic cashback, find exclusive coupons, and grow your business with our comprehensive affiliate platform." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#3b82f6" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Casyoro - Cashback, Coupons & Affiliate Platform" />
+        <meta property="og:title" content="Caszio - Cashback, Coupons & Affiliate Platform" />
         <meta property="og:description" content="Earn automatic cashback, find exclusive coupons, and grow your business with our comprehensive affiliate platform." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={process.env.NEXT_PUBLIC_FRONTEND_URL} />
@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }) {
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Casyoro - Cashback, Coupons & Affiliate Platform" />
+        <meta name="twitter:title" content="Caszio - Cashback, Coupons & Affiliate Platform" />
         <meta name="twitter:description" content="Earn automatic cashback, find exclusive coupons, and grow your business with our comprehensive affiliate platform." />
         <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/og-image.jpg`} />
         

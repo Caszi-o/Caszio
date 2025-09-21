@@ -71,8 +71,8 @@ export default function Register() {
   return (
     <PublicRoute>
       <Head>
-        <title>Choose Your Role - Casyoro</title>
-        <meta name="description" content="Join Casyoro as a user, publisher, or promoter. Choose your role and start your journey today." />
+        <title>Choose Your Role - Caszio</title>
+        <meta name="description" content="Join Caszio as a user, publisher, or promoter. Choose your role and start your journey today." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50">
@@ -85,7 +85,7 @@ export default function Register() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -109,7 +109,7 @@ export default function Register() {
               Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">Role</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join Casyoro and be part of India's leading cashback and affiliate platform. 
+              Join Caszio and be part of India's leading cashback and affiliate platform. 
               Choose how you want to participate in our ecosystem.
             </p>
           </motion.div>

@@ -29,16 +29,16 @@ export default function FAQ() {
       title: 'Getting Started',
       questions: [
         {
-          question: 'How do I create an account on Casyoro?',
+          question: 'How do I create an account on Caszio?',
           answer: 'Creating an account is simple! Click on "Get Started" or "Register" button, fill in your details including name, email, and password. You\'ll receive a confirmation email to verify your account.'
         },
         {
-          question: 'Is Casyoro free to use?',
-          answer: 'Yes, Casyoro is completely free for users! You can browse offers, earn cashback, and use all basic features without any charges. Some premium features may have additional costs.'
+          question: 'Is Caszio free to use?',
+          answer: 'Yes, Caszio is completely free for users! You can browse offers, earn cashback, and use all basic features without any charges. Some premium features may have additional costs.'
         },
         {
           question: 'How does cashback work?',
-          answer: 'When you make a purchase through our platform, you earn a percentage of your purchase amount back as cashback. This cashback is credited to your Casyoro wallet and can be withdrawn to your bank account.'
+          answer: 'When you make a purchase through our platform, you earn a percentage of your purchase amount back as cashback. This cashback is credited to your Caszio wallet and can be withdrawn to your bank account.'
         }
       ]
     },
@@ -106,7 +106,7 @@ export default function FAQ() {
         },
         {
           question: 'What browsers are supported?',
-          answer: 'Casyoro works on all modern browsers including Chrome, Firefox, Safari, and Edge. For the best experience, we recommend using the latest version of your browser.'
+          answer: 'Caszio works on all modern browsers including Chrome, Firefox, Safari, and Edge. For the best experience, we recommend using the latest version of your browser.'
         }
       ]
     }
@@ -115,8 +115,8 @@ export default function FAQ() {
   return (
     <>
       <Head>
-        <title>FAQ - Frequently Asked Questions | Casyoro</title>
-        <meta name="description" content="Find answers to common questions about Casyoro cashback, rewards, account management, and more." />
+        <title>FAQ - Frequently Asked Questions | Caszio</title>
+        <meta name="description" content="Find answers to common questions about Caszio cashback, rewards, account management, and more." />
       </Head>
 
       <div className="min-h-screen bg-gray-50">
@@ -129,7 +129,7 @@ export default function FAQ() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -160,7 +160,7 @@ export default function FAQ() {
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-gray-600">
-              Find answers to common questions about Casyoro
+              Find answers to common questions about Caszio
             </p>
           </motion.div>
 

@@ -35,8 +35,8 @@ export default function ForgotPassword() {
   return (
     <PublicRoute>
       <Head>
-        <title>Forgot Password - Casyoro</title>
-        <meta name="description" content="Reset your Casyoro account password with our secure password recovery system." />
+        <title>Forgot Password - Caszio</title>
+        <meta name="description" content="Reset your Caszio account password with our secure password recovery system." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -52,7 +52,7 @@ export default function ForgotPassword() {
                 <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">C</span>
                 </div>
-                <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-3xl font-bold text-gray-900">Caszio</span>
               </div>
             </Link>
             

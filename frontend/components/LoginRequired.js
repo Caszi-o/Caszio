@@ -21,7 +21,7 @@ const LoginRequired = () => {
           
           <div className="space-y-4">
             <div className="bg-blue-50 rounded-lg p-4 mb-6">
-              <h3 className="font-semibold text-blue-900 mb-2">New to Casyoro?</h3>
+              <h3 className="font-semibold text-blue-900 mb-2">New to Caszio?</h3>
               <p className="text-sm text-blue-800">
                 Create a publisher account to start advertising and reach your target audience effectively.
               </p>

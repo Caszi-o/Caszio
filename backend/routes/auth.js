@@ -413,7 +413,7 @@ router.post('/resend-verification', [
     try {
       const emailResult = await sendEmail({
         to: email,
-        subject: 'Verify Your Casyoro Account',
+        subject: 'Verify Your Caszio Account',
         template: 'verification',
         data: {
           name: user.firstName,
@@ -475,7 +475,7 @@ router.post('/forgot-password', [
     // Send reset email
     await sendEmail({
       to: email,
-      subject: 'Reset Your Casyoro Password',
+      subject: 'Reset Your Caszio Password',
       template: 'password-reset',
       data: {
         name: user.firstName,
@@ -550,8 +550,8 @@ router.post('/reset-password', [
 router.post('/setup-2fa', authenticateToken, async (req, res) => {
   try {
     const secret = speakeasy.generateSecret({
-      name: `Casyoro (${req.user.email})`,
-      issuer: 'Casyoro'
+      name: `Caszio (${req.user.email})`,
+      issuer: 'Caszio'
     });
 
     // Generate QR code

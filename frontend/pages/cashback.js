@@ -105,8 +105,8 @@ export default function Cashback() {
   return (
     <>
       <Head>
-        <title>Cashback Program - Casyoro</title>
-        <meta name="description" content="Earn automatic cashback on every purchase with Casyoro. Get up to 20% cashback from 500+ merchants without any manual effort." />
+        <title>Cashback Program - Caszio</title>
+        <meta name="description" content="Earn automatic cashback on every purchase with Caszio. Get up to 20% cashback from 500+ merchants without any manual effort." />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -118,7 +118,7 @@ export default function Cashback() {
                 <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">C</span>
                 </div>
-                <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-2xl font-bold text-gray-900">Caszio</span>
               </Link>
               
               <div className="hidden md:flex items-center space-x-8">
@@ -198,7 +198,7 @@ export default function Cashback() {
               variants={fadeInUp}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Choose Casyoro Cashback?
+                Why Choose Caszio Cashback?
               </h2>
               <p className="text-xl text-gray-600">
                 The most advanced and user-friendly cashback system in India
@@ -449,13 +449,13 @@ export default function Cashback() {
                   name: 'Rajesh Kumar',
                   role: 'Business Owner',
                   earning: '₹15,000/month',
-                  quote: 'Casyoro has helped me save thousands on business expenses while earning cashback.'
+                  quote: 'Caszio has helped me save thousands on business expenses while earning cashback.'
                 },
                 {
                   name: 'Sneha Patel',
                   role: 'Student',
                   earning: '₹3,200/month',
-                  quote: 'As a student, every rupee counts. Casyoro helps me save money on daily purchases.'
+                  quote: 'As a student, every rupee counts. Caszio helps me save money on daily purchases.'
                 }
               ].map((testimonial, index) => (
                 <motion.div
@@ -497,7 +497,7 @@ export default function Cashback() {
                 Ready to Start Earning Automatic Cashback?
               </h2>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join 50,000+ users who are already earning ₹2.5Cr+ in automatic cashback with Casyoro
+                Join 50,000+ users who are already earning ₹2.5Cr+ in automatic cashback with Caszio
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

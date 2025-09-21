@@ -51,8 +51,8 @@ export default function Login() {
   return (
     <PublicRoute>
       <Head>
-        <title>Login - Casyoro</title>
-        <meta name="description" content="Login to your Casyoro account to access cashback, coupons, and affiliate features." />
+        <title>Login - Caszio</title>
+        <meta name="description" content="Login to your Caszio account to access cashback, coupons, and affiliate features." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -68,7 +68,7 @@ export default function Login() {
                 <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">C</span>
                 </div>
-                <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-3xl font-bold text-gray-900">Caszio</span>
               </div>
             </Link>
             <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">

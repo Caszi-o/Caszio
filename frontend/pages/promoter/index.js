@@ -81,8 +81,8 @@ export default function PromoterLanding() {
   return (
     <>
       <Head>
-        <title>Promoters - Casyoro</title>
-        <meta name="description" content="Join Casyoro as a promoter and earn money by promoting ads. Flexible hours, high commissions, and real-time analytics." />
+        <title>Promoters - Caszio</title>
+        <meta name="description" content="Join Caszio as a promoter and earn money by promoting ads. Flexible hours, high commissions, and real-time analytics." />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -95,7 +95,7 @@ export default function PromoterLanding() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -150,7 +150,7 @@ export default function PromoterLanding() {
                 className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto"
                 variants={fadeInUp}
               >
-                Join Casyoro as a promoter and start earning money by promoting ads to your audience. 
+                Join Caszio as a promoter and start earning money by promoting ads to your audience. 
                 Flexible hours, high commission rates, and real-time analytics - perfect for influencers, bloggers, and content creators.
               </motion.p>
 
@@ -199,7 +199,7 @@ export default function PromoterLanding() {
               variants={fadeInUp}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Choose Casyoro?
+                Why Choose Caszio?
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Our platform is designed to help you maximize your earning potential with minimal effort.
@@ -244,7 +244,7 @@ export default function PromoterLanding() {
                 Perfect for Everyone
               </h2>
               <p className="text-xl text-gray-600">
-                Whether you're a beginner or an experienced promoter, Casyoro has something for you
+                Whether you're a beginner or an experienced promoter, Caszio has something for you
               </p>
             </motion.div>
 
@@ -283,7 +283,7 @@ export default function PromoterLanding() {
                 Success Stories
               </h2>
               <p className="text-xl text-gray-600">
-                See how other promoters are earning with Casyoro
+                See how other promoters are earning with Caszio
               </p>
             </motion.div>
 
@@ -350,7 +350,7 @@ export default function PromoterLanding() {
                 Ready to Start Earning?
               </h2>
               <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                Join thousands of promoters already earning with Casyoro. Start your journey today!
+                Join thousands of promoters already earning with Caszio. Start your journey today!
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -375,7 +375,7 @@ export default function PromoterLanding() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold">Casyoro</span>
+                  <span className="text-2xl font-bold">Caszio</span>
                 </div>
                 <p className="text-gray-400 mb-4">
                   India's leading cashback and affiliate platform helping businesses grow and users save.
@@ -412,7 +412,7 @@ export default function PromoterLanding() {
             </div>
             
             <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Casyoro. All rights reserved.</p>
+              <p>&copy; 2024 Caszio. All rights reserved.</p>
             </div>
           </div>
         </footer>

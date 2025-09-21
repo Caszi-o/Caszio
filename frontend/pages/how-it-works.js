@@ -30,7 +30,7 @@ export default function HowItWorks() {
     {
       icon: UserPlusIcon,
       title: 'Sign Up Free',
-      description: 'Create your Casyoro account in under 2 minutes. Choose your role: User, Publisher, or Promoter.',
+      description: 'Create your Caszio account in under 2 minutes. Choose your role: User, Publisher, or Promoter.',
       details: [
         'No credit card required',
         'Email verification for security',
@@ -137,15 +137,15 @@ export default function HowItWorks() {
     },
     {
       question: 'Are there any fees?',
-      answer: 'Casyoro is completely free for users. Publishers and promoters pay only when they see results - no upfront costs or hidden fees.'
+      answer: 'Caszio is completely free for users. Publishers and promoters pay only when they see results - no upfront costs or hidden fees.'
     }
   ];
 
   return (
     <>
       <Head>
-        <title>How It Works - Casyoro</title>
-        <meta name="description" content="Learn how Casyoro's automatic cashback system works. Earn money on every purchase without manual order entry." />
+        <title>How It Works - Caszio</title>
+        <meta name="description" content="Learn how Caszio's automatic cashback system works. Earn money on every purchase without manual order entry." />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -157,7 +157,7 @@ export default function HowItWorks() {
                 <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">C</span>
                 </div>
-                <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-2xl font-bold text-gray-900">Caszio</span>
               </Link>
               
               <div className="hidden md:flex items-center space-x-8">
@@ -187,7 +187,7 @@ export default function HowItWorks() {
               variants={fadeInUp}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                How Casyoro Works
+                How Caszio Works
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                 Discover how our automatic cashback system revolutionizes the way you earn money on every purchase
@@ -339,7 +339,7 @@ export default function HowItWorks() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600">
-                Everything you need to know about Casyoro
+                Everything you need to know about Caszio
               </p>
             </motion.div>
 
@@ -393,7 +393,7 @@ export default function HowItWorks() {
                 Ready to Start Your Journey?
               </h2>
               <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                Join thousands of users who are already earning with Casyoro. It's free, automated, and rewarding.
+                Join thousands of users who are already earning with Caszio. It's free, automated, and rewarding.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

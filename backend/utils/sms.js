@@ -14,28 +14,28 @@ const initializeTwilio = () => {
 // SMS templates
 const smsTemplates = {
   verification: (data) => 
-    `Your Casyoro verification code is: ${data.code}. Valid for 10 minutes. Do not share this code with anyone.`,
+    `Your Caszio verification code is: ${data.code}. Valid for 10 minutes. Do not share this code with anyone.`,
   
   'password-reset': (data) => 
-    `Your Casyoro password reset code is: ${data.code}. Valid for 10 minutes. Do not share this code.`,
+    `Your Caszio password reset code is: ${data.code}. Valid for 10 minutes. Do not share this code.`,
   
   'cashback-credited': (data) => 
-    `Great news! ₹${data.amount} cashback credited to your Casyoro wallet. Total balance: ₹${data.balance}`,
+    `Great news! ₹${data.amount} cashback credited to your Caszio wallet. Total balance: ₹${data.balance}`,
   
   'withdrawal-approved': (data) => 
     `Your withdrawal of ₹${data.amount} has been approved. Transaction ID: ${data.transactionId}. Expected credit: ${data.expectedDate}`,
   
   'low-balance': (data) => 
-    `Your Casyoro wallet balance is low (₹${data.balance}). Add funds to continue enjoying cashback benefits.`,
+    `Your Caszio wallet balance is low (₹${data.balance}). Add funds to continue enjoying cashback benefits.`,
   
   'order-tracked': (data) => 
     `Order ${data.orderId} tracked! Expected cashback: ₹${data.cashback}. Check your dashboard for details.`,
   
   'kyc-approved': (data) => 
-    `Your KYC verification is complete! You can now withdraw funds and access all Casyoro features.`,
+    `Your KYC verification is complete! You can now withdraw funds and access all Caszio features.`,
   
   'publisher-approved': (data) => 
-    `Your publisher account is approved! Start creating ad campaigns on Casyoro dashboard.`,
+    `Your publisher account is approved! Start creating ad campaigns on Caszio dashboard.`,
   
   'promoter-approved': (data) => 
     `Your promoter application is approved! Access your dashboard to get ad scripts and start earning.`
@@ -90,10 +90,10 @@ const sendSMS = async (options) => {
 // Send OTP SMS
 const sendOTP = async (phoneNumber, otp, purpose = 'verification') => {
   const templates = {
-    verification: `Your Casyoro verification OTP is: ${otp}. Valid for 10 minutes. Do not share this OTP.`,
-    'password-reset': `Your Casyoro password reset OTP is: ${otp}. Valid for 10 minutes. Do not share this OTP.`,
-    login: `Your Casyoro login OTP is: ${otp}. Valid for 5 minutes. Do not share this OTP.`,
-    withdrawal: `Your Casyoro withdrawal OTP is: ${otp}. Valid for 10 minutes. Use this to confirm your withdrawal.`
+    verification: `Your Caszio verification OTP is: ${otp}. Valid for 10 minutes. Do not share this OTP.`,
+    'password-reset': `Your Caszio password reset OTP is: ${otp}. Valid for 10 minutes. Do not share this OTP.`,
+    login: `Your Caszio login OTP is: ${otp}. Valid for 5 minutes. Do not share this OTP.`,
+    withdrawal: `Your Caszio withdrawal OTP is: ${otp}. Valid for 10 minutes. Use this to confirm your withdrawal.`
   };
 
   return sendSMS({

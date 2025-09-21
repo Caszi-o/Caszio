@@ -160,8 +160,8 @@ export default function RegisterPublisher() {
   return (
     <PublicRoute>
       <Head>
-        <title>Join as Publisher - Casyoro</title>
-        <meta name="description" content="Create your Casyoro publisher account to advertise your business and reach more customers." />
+        <title>Join as Publisher - Caszio</title>
+        <meta name="description" content="Create your Caszio publisher account to advertise your business and reach more customers." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50">
@@ -174,7 +174,7 @@ export default function RegisterPublisher() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -203,7 +203,7 @@ export default function RegisterPublisher() {
                   Grow Your <span className="bg-gradient-primary bg-clip-text text-transparent">Business</span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8">
-                  Join Casyoro as a publisher and reach thousands of potential customers with targeted advertising.
+                  Join Caszio as a publisher and reach thousands of potential customers with targeted advertising.
                 </p>
               </motion.div>
 

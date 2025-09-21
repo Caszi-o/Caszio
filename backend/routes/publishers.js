@@ -206,7 +206,7 @@ router.post('/documents', [
 
     for (const file of req.files) {
       const uploadResult = await uploadToCloudinary(file.buffer, {
-        folder: 'casyoro/publisher-documents',
+        folder: 'caszio/publisher-documents',
         resource_type: 'auto'
       });
 

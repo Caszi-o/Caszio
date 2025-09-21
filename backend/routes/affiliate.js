@@ -12,11 +12,11 @@ router.get('/links', async (req, res) => {
     // Placeholder for affiliate link generation
     // TODO: Integrate with actual affiliate APIs (Amazon, Flipkart, etc.)
     const affiliateLinks = {
-      amazon: `https://amazon.in/affiliate-link?product=${product}&tag=casyoro-21`,
-      flipkart: `https://flipkart.com/affiliate-link?product=${product}&affid=casyoro`,
-      myntra: `https://myntra.com/affiliate-link?product=${product}&partner=casyoro`,
-      ajio: `https://ajio.com/affiliate-link?product=${product}&affiliate=casyoro`,
-      nykaa: `https://nykaa.com/affiliate-link?product=${product}&ref=casyoro`
+      amazon: `https://amazon.in/affiliate-link?product=${product}&tag=caszio-21`,
+      flipkart: `https://flipkart.com/affiliate-link?product=${product}&affid=caszio`,
+      myntra: `https://myntra.com/affiliate-link?product=${product}&partner=caszio`,
+      ajio: `https://ajio.com/affiliate-link?product=${product}&affiliate=caszio`,
+      nykaa: `https://nykaa.com/affiliate-link?product=${product}&ref=caszio`
     };
 
     res.json({

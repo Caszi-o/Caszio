@@ -16,12 +16,12 @@ const createTransporter = () => {
 // Email templates
 const templates = {
   verification: (data) => ({
-    subject: 'Verify Your Casyoro Account',
+    subject: 'Verify Your Caszio Account',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">Welcome to Casyoro!</h2>
+        <h2 style="color: #333;">Welcome to Caszio!</h2>
         <p>Hi ${data.name},</p>
-        <p>Thank you for registering with Casyoro. Please verify your email address by clicking the button below:</p>
+        <p>Thank you for registering with Caszio. Please verify your email address by clicking the button below:</p>
         <div style="text-align: center; margin: 30px 0;">
           <a href="${data.verificationLink}" 
              style="background-color: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
@@ -33,19 +33,19 @@ const templates = {
         <p>This verification link will expire in 24 hours.</p>
         <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
         <p style="font-size: 12px; color: #666;">
-          If you didn't create an account with Casyoro, please ignore this email.
+          If you didn't create an account with Caszio, please ignore this email.
         </p>
       </div>
     `
   }),
 
   'password-reset': (data) => ({
-    subject: 'Reset Your Casyoro Password',
+    subject: 'Reset Your Caszio Password',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #333;">Password Reset Request</h2>
         <p>Hi ${data.name},</p>
-        <p>You requested to reset your password for your Casyoro account. Click the button below to reset it:</p>
+        <p>You requested to reset your password for your Caszio account. Click the button below to reset it:</p>
         <div style="text-align: center; margin: 30px 0;">
           <a href="${data.resetLink}" 
              style="background-color: #dc3545; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
@@ -69,7 +69,7 @@ const templates = {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2 style="color: #28a745;">Cashback Credited! 🎉</h2>
         <p>Hi ${data.name},</p>
-        <p>Great news! Your cashback has been credited to your Casyoro wallet:</p>
+        <p>Great news! Your cashback has been credited to your Caszio wallet:</p>
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
           <p><strong>Order ID:</strong> ${data.orderId}</p>
           <p><strong>Merchant:</strong> ${data.merchant}</p>
@@ -82,7 +82,7 @@ const templates = {
             View Dashboard
           </a>
         </div>
-        <p>Thank you for choosing Casyoro!</p>
+        <p>Thank you for choosing Caszio!</p>
       </div>
     `
   }),
@@ -180,7 +180,7 @@ const sendEmail = async (options) => {
     }
 
     const mailOptions = {
-      from: `"Casyoro" <${process.env.EMAIL_USER}>`,
+      from: `"Caszio" <${process.env.EMAIL_USER}>`,
       to: options.to,
       subject: emailContent.subject,
       html: emailContent.html

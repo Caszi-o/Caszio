@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Casyoro - India's Leading Cashback & Affiliate Platform</title>
+                <title>Caszio - India's Leading Cashback & Affiliate Platform</title>
         <meta name="description" content="Earn automatic cashback, find exclusive coupons, and grow your business with our comprehensive affiliate platform." />
       </Head>
 
@@ -104,7 +104,7 @@ export default function Home() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -435,7 +435,7 @@ export default function Home() {
                 Ready to Start Earning?
               </h2>
               <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                Join Casyoro today and start earning cashback on every purchase. It's free, automatic, and rewarding.
+                Join Caszio today and start earning cashback on every purchase. It's free, automatic, and rewarding.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -460,7 +460,7 @@ export default function Home() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold">Casyoro</span>
+                  <span className="text-2xl font-bold">Caszio</span>
                 </div>
                 <p className="text-gray-400 mb-4">
                   India's leading cashback and affiliate platform helping users earn more on every purchase.
@@ -502,7 +502,7 @@ export default function Home() {
             </div>
             
             <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Casyoro. All rights reserved.</p>
+              <p>&copy; 2024 Caszio. All rights reserved.</p>
             </div>
           </div>
         </footer>

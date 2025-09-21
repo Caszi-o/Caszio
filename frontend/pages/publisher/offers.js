@@ -204,7 +204,7 @@ export default function PublisherOffers() {
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-4">
                 <Link href="/publisher/dashboard" className="text-2xl font-bold text-primary-600">
-                  Casyoro
+                  Caszio
                 </Link>
                 <div className="h-6 border-l border-gray-300"></div>
                 <h1 className="text-xl font-semibold text-gray-900">Manage Offers</h1>

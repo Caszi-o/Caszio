@@ -634,7 +634,7 @@ export default function CreateAd() {
   return (
     <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
-        <title>Create Ad - Publisher Dashboard - Casyoro</title>
+        <title>Create Ad - Publisher Dashboard - Caszio</title>
         <meta name="description" content="Create a new advertising campaign" />
       </Head>
 

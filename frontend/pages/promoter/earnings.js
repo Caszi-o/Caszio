@@ -150,7 +150,7 @@ export default function PromoterEarnings() {
   return (
     <ProtectedRoute allowedRoles={['promoter']}>
       <Head>
-        <title>Earnings - Promoter Dashboard - Casyoro</title>
+        <title>Earnings - Promoter Dashboard - Caszio</title>
         <meta name="description" content="Track your earnings and manage withdrawals" />
       </Head>
 
@@ -161,7 +161,7 @@ export default function PromoterEarnings() {
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-4">
                 <Link href="/promoter/dashboard" className="text-2xl font-bold text-primary-600">
-                  Casyoro
+                  Caszio
                 </Link>
                 <div className="h-6 border-l border-gray-300"></div>
                 <h1 className="text-xl font-semibold text-gray-900">Earnings</h1>

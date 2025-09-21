@@ -43,7 +43,7 @@ export default function Help() {
   const articles = [
     {
       id: 1,
-      title: 'How to Get Started with Casyoro',
+      title: 'How to Get Started with Caszio',
       category: 'getting-started',
       description: 'Complete guide to setting up your account and earning your first cashback',
       readTime: '5 min read',
@@ -141,8 +141,8 @@ export default function Help() {
   return (
     <>
       <Head>
-        <title>Help Center - Casyoro</title>
-        <meta name="description" content="Find answers to your questions about Casyoro. Get help with cashback, account setup, and more." />
+        <title>Help Center - Caszio</title>
+        <meta name="description" content="Find answers to your questions about Caszio. Get help with cashback, account setup, and more." />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -154,7 +154,7 @@ export default function Help() {
                 <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">C</span>
                 </div>
-                <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-2xl font-bold text-gray-900">Caszio</span>
               </Link>
               
               <div className="hidden md:flex items-center space-x-8">
@@ -190,7 +190,7 @@ export default function Help() {
                 How can we help you?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Find answers to your questions and get the most out of Casyoro
+                Find answers to your questions and get the most out of Caszio
               </p>
               
               {/* Search Bar */}

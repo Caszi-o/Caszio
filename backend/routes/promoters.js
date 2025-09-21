@@ -728,7 +728,7 @@ router.post('/documents', [
 
     for (const file of req.files) {
       const uploadResult = await uploadToCloudinary(file.buffer, {
-        folder: 'casyoro/promoter-documents',
+        folder: 'caszio/promoter-documents',
         resource_type: 'auto'
       });
 
@@ -765,8 +765,8 @@ function generateHTMLScript(ad, promoter) {
   const baseUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
   
   return `
-<!-- Casyoro Promoter Ad: ${ad.title} -->
-<div class="casyoro-promoter-ad" data-ad-id="${ad._id}" data-promoter="${promoter.referralCode}">
+<!-- Caszio Promoter Ad: ${ad.title} -->
+<div class="caszio-promoter-ad" data-ad-id="${ad._id}" data-promoter="${promoter.referralCode}">
   <div style="border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; background: white; font-family: Arial, sans-serif; max-width: ${ad.format?.width || 300}px;">
     ${ad.type === 'banner' && ad.creatives[0] ? `
       <img src="${ad.creatives[0].url}" alt="${ad.title}" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 12px;" />
@@ -778,7 +778,7 @@ function generateHTMLScript(ad, promoter) {
       <p style="margin: 0 0 12px 0; font-size: 14px; color: #666; line-height: 1.4;">${ad.description}</p>
     ` : ''}
     
-    <a href="#" onclick="casyoroTrackClick('${ad._id}', '${promoter.referralCode}'); window.open('${ad.landingPage.url}', '_blank'); return false;" 
+    <a href="#" onclick="caszioTrackClick('${ad._id}', '${promoter.referralCode}'); window.open('${ad.landingPage.url}', '_blank'); return false;" 
        style="display: inline-block; background: #3b82f6; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 14px;">
       ${ad.cta?.text || 'Learn More'}
     </a>
@@ -788,7 +788,7 @@ function generateHTMLScript(ad, promoter) {
 </div>
 
 <script>
-function casyoroTrackClick(adId, promoterCode) {
+function caszioTrackClick(adId, promoterCode) {
   fetch('${baseUrl}/api/promoters/track/click/' + adId, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -819,7 +819,7 @@ function generateJavaScriptScript(ad, promoter) {
   
   return `
 (function() {
-  var casyoroPromoterAd = {
+  var caszioPromoterAd = {
     adId: '${ad._id}',
     promoterCode: '${promoter.referralCode}',
     
@@ -832,11 +832,11 @@ function generateJavaScriptScript(ad, promoter) {
     },
     
     getHTML: function() {
-      return '<div class="casyoro-promoter-ad">' +
+      return '<div class="caszio-promoter-ad">' +
         '<div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;background:white;font-family:Arial,sans-serif;">' +
         '<h3 style="margin:0 0 8px 0;font-size:16px;font-weight:600;">${ad.title}</h3>' +
         '<p style="margin:0 0 12px 0;font-size:14px;color:#666;">${ad.description || ''}</p>' +
-        '<a href="#" onclick="casyoroPromoterAd.trackClick(); window.open(\'${ad.landingPage.url}\', \'_blank\'); return false;" ' +
+        '<a href="#" onclick="caszioPromoterAd.trackClick(); window.open(\'${ad.landingPage.url}\', \'_blank\'); return false;" ' +
         'style="display:inline-block;background:#3b82f6;color:white;padding:8px 16px;text-decoration:none;border-radius:4px;">' +
         '${ad.cta?.text || 'Learn More'}</a>' +
         '<div style="margin-top:8px;font-size:10px;color:#999;">Promoted Content</div>' +
@@ -868,7 +868,7 @@ function generateJavaScriptScript(ad, promoter) {
     }
   };
   
-  window.CasyoroPromoterAd_${ad._id} = casyoroPromoterAd;
+  window.CaszioPromoterAd_${ad._id} = caszioPromoterAd;
 })();
 `;
 }

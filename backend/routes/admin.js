@@ -967,7 +967,7 @@ router.get('/settings', async (req, res) => {
     // In a real implementation, this would come from a settings collection
     const settings = {
       platform: {
-        name: 'Casyoro',
+        name: 'Caszio',
         version: '1.0.0',
         maintenanceMode: false,
         registrationEnabled: true

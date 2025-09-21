@@ -12,8 +12,8 @@ import {
   DocumentTextIcon,
   ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
-import { ProtectedRoute } from '../../../lib/auth';
-import { publisherAPI } from '../../../lib/api';
+import { ProtectedRoute } from '../../../../lib/auth';
+import { publisherAPI } from '../../../../lib/api';
 import toast from 'react-hot-toast';
 
 const fadeInUp = {
@@ -155,7 +155,7 @@ export default function EditOffer() {
             <div className="flex justify-between items-center h-16">
               <div className="flex items-center space-x-4">
                 <Link href={`/publisher/offers/${id}`} className="text-2xl font-bold text-primary-600">
-                  Casyoro
+                  Caszio
                 </Link>
                 <div className="h-6 border-l border-gray-300"></div>
                 <h1 className="text-xl font-semibold text-gray-900">Edit Offer</h1>

@@ -160,7 +160,7 @@ router.post('/avatar', authenticateToken, upload.single('avatar'), async (req, r
 
     // Upload to cloudinary
     const uploadResult = await uploadToCloudinary(req.file.buffer, {
-      folder: 'casyoro/avatars',
+      folder: 'caszio/avatars',
       transformation: [
         { width: 200, height: 200, crop: 'fill' },
         { quality: 'auto', format: 'auto' }

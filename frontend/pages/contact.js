@@ -112,8 +112,8 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact Us - Casyoro</title>
-        <meta name="description" content="Get in touch with Casyoro. We're here to help with any questions about cashback, technical support, or partnerships." />
+        <title>Contact Us - Caszio</title>
+        <meta name="description" content="Get in touch with Caszio. We're here to help with any questions about cashback, technical support, or partnerships." />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -125,7 +125,7 @@ export default function Contact() {
                 <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">C</span>
                 </div>
-                <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-2xl font-bold text-gray-900">Caszio</span>
               </Link>
               
               <div className="hidden md:flex items-center space-x-8">
@@ -161,7 +161,7 @@ export default function Contact() {
                 Get in Touch
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Have questions about Casyoro? We're here to help! Reach out to our friendly support team.
+                Have questions about Caszio? We're here to help! Reach out to our friendly support team.
               </p>
             </motion.div>
           </div>

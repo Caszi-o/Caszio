@@ -22,7 +22,7 @@ export default function Custom500() {
   return (
     <>
       <Head>
-        <title>Server Error - Casyoro</title>
+        <title>Server Error - Caszio</title>
         <meta name="description" content="Something went wrong on our end. We're working to fix it. Please try again later." />
       </Head>
 
@@ -39,7 +39,7 @@ export default function Custom500() {
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">C</span>
               </div>
-              <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+              <span className="text-3xl font-bold text-gray-900">Caszio</span>
             </div>
           </Link>
 
@@ -109,7 +109,7 @@ export default function Custom500() {
                 Browse Available Offers
               </Link>
               <Link href="/how-it-works" className="text-primary-600 hover:text-primary-700 p-2 border border-primary-200 rounded-lg hover:bg-primary-50 transition-colors">
-                Learn How Casyoro Works
+                Learn How Caszio Works
               </Link>
               <Link href="/auth/register" className="text-primary-600 hover:text-primary-700 p-2 border border-primary-200 rounded-lg hover:bg-primary-50 transition-colors">
                 Create Your Account

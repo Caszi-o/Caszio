@@ -225,9 +225,9 @@ function generateHTMLScript(ad, theme) {
   const baseUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
   
   return `
-<!-- Casyoro Ad: ${ad.title} -->
-<div class="casyoro-ad-container" data-ad-id="${ad._id}" style="max-width: ${ad.format.width || 300}px;">
-  <div class="casyoro-ad-content" style="
+<!-- Caszio Ad: ${ad.title} -->
+<div class="caszio-ad-container" data-ad-id="${ad._id}" style="max-width: ${ad.format.width || 300}px;">
+  <div class="caszio-ad-content" style="
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     padding: 16px;
@@ -279,7 +279,7 @@ function generateJavaScriptScript(ad, theme) {
   
   return `
 (function() {
-  var casyoroAd = {
+  var caszioAd = {
     id: '${ad._id}',
     title: '${ad.title}',
     description: '${ad.description || ''}',
@@ -291,7 +291,7 @@ function generateJavaScriptScript(ad, theme) {
       var container = document.getElementById(containerId);
       if (!container) return;
       
-      var adHtml = '<div class="casyoro-ad" style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;background:white;font-family:Arial,sans-serif;">';
+      var adHtml = '<div class="caszio-ad" style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;background:white;font-family:Arial,sans-serif;">';
       
       ${ad.creatives[0] ? `
       adHtml += '<img src="' + this.imageUrl + '" alt="' + this.title + '" style="width:100%;height:auto;border-radius:4px;margin-bottom:12px;" />';
@@ -326,11 +326,11 @@ function generateJavaScriptScript(ad, theme) {
   
   // Auto-render if container exists
   document.addEventListener('DOMContentLoaded', function() {
-    casyoroAd.render('casyoro-ad-${ad._id}');
+    caszioAd.render('caszio-ad-${ad._id}');
   });
   
   // Make available globally
-  window.CasyoroAd_${ad._id} = casyoroAd;
+  window.CaszioAd_${ad._id} = caszioAd;
 })();
 `;
 }
@@ -351,9 +351,9 @@ function getImplementationInstructions(format) {
       title: 'JavaScript Implementation',
       steps: [
         'Add the JavaScript code to your website',
-        'Create a div with id="casyoro-ad-{AD_ID}" where you want the ad',
+        'Create a div with id="caszio-ad-{AD_ID}" where you want the ad',
         'The script will automatically render the ad in that container',
-        'Alternative: Call CasyoroAd_{AD_ID}.render("your-container-id") manually'
+        'Alternative: Call CaszioAd_{AD_ID}.render("your-container-id") manually'
       ]
     };
   }

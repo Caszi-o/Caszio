@@ -2,7 +2,7 @@
 // Copy this to .env in production
 module.exports = {
   // MongoDB
-  MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/casyoro',
+  MONGODB_URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/caszio',
   
   // JWT
   JWT_SECRET: process.env.JWT_SECRET || 'your_jwt_secret_here_change_in_production',

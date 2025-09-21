@@ -18,7 +18,7 @@ const uploadToCloudinary = async (buffer, options = {}) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           resource_type: 'auto',
-          folder: options.folder || 'casyoro',
+          folder: options.folder || 'caszio',
           transformation: options.transformation || [],
           ...options
         },
@@ -49,7 +49,7 @@ const uploadUrlToCloudinary = async (url, options = {}) => {
 
     const result = await cloudinary.uploader.upload(url, {
       resource_type: 'auto',
-      folder: options.folder || 'casyoro',
+      folder: options.folder || 'caszio',
       transformation: options.transformation || [],
       ...options
     });

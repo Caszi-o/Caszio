@@ -69,8 +69,8 @@ export default function VerifyEmail() {
   return (
     <>
       <Head>
-        <title>Verify Email - Casyoro</title>
-        <meta name="description" content="Verify your email address to complete your Casyoro account setup." />
+        <title>Verify Email - Caszio</title>
+        <meta name="description" content="Verify your email address to complete your Caszio account setup." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -86,7 +86,7 @@ export default function VerifyEmail() {
                 <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">C</span>
                 </div>
-                <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+                <span className="text-3xl font-bold text-gray-900">Caszio</span>
               </div>
             </Link>
           </div>
@@ -149,7 +149,7 @@ export default function VerifyEmail() {
                 Email verified!
               </h2>
               <p className="text-gray-600 mb-6">
-                Your email has been successfully verified. You can now access all features of your Casyoro account.
+                Your email has been successfully verified. You can now access all features of your Caszio account.
               </p>
               <p className="text-sm text-gray-500 mb-6">
                 Redirecting to your dashboard in a few seconds...

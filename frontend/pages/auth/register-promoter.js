@@ -186,8 +186,8 @@ export default function RegisterPromoter() {
   return (
     <PublicRoute>
       <Head>
-        <title>Join as Promoter - Casyoro</title>
-        <meta name="description" content="Create your Casyoro promoter account to start earning money by promoting ads and content." />
+        <title>Join as Promoter - Caszio</title>
+        <meta name="description" content="Create your Caszio promoter account to start earning money by promoting ads and content." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50">
@@ -200,7 +200,7 @@ export default function RegisterPromoter() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -229,7 +229,7 @@ export default function RegisterPromoter() {
                   Start <span className="bg-gradient-primary bg-clip-text text-transparent">Earning</span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8">
-                  Join Casyoro as a promoter and monetize your social media presence by promoting relevant ads.
+                  Join Caszio as a promoter and monetize your social media presence by promoting relevant ads.
                 </p>
               </motion.div>
 

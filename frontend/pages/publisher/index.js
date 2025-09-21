@@ -81,8 +81,8 @@ export default function PublisherLanding() {
   return (
     <>
       <Head>
-        <title>Publishers - Casyoro</title>
-        <meta name="description" content="Join Casyoro as a publisher and advertise your business to millions of users. Advanced ad management, detailed analytics, and flexible budgeting." />
+        <title>Publishers - Caszio</title>
+        <meta name="description" content="Join Caszio as a publisher and advertise your business to millions of users. Advanced ad management, detailed analytics, and flexible budgeting." />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -95,7 +95,7 @@ export default function PublisherLanding() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -150,7 +150,7 @@ export default function PublisherLanding() {
                 className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto"
                 variants={fadeInUp}
               >
-                Join Casyoro as a publisher and reach millions of users through our network of verified promoters. 
+                Join Caszio as a publisher and reach millions of users through our network of verified promoters. 
                 Advanced ad management, detailed analytics, and flexible budgeting - all in one platform.
               </motion.p>
 
@@ -241,7 +241,7 @@ export default function PublisherLanding() {
               variants={fadeInUp}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Choose Casyoro?
+                Why Choose Caszio?
               </h2>
               <p className="text-xl text-gray-600">
                 Join hundreds of successful businesses already using our platform
@@ -283,7 +283,7 @@ export default function PublisherLanding() {
                 Success Stories
               </h2>
               <p className="text-xl text-gray-600">
-                See how other publishers are growing their business with Casyoro
+                See how other publishers are growing their business with Caszio
               </p>
             </motion.div>
 
@@ -350,7 +350,7 @@ export default function PublisherLanding() {
                 Ready to Grow Your Business?
               </h2>
               <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                Join Casyoro today and start reaching your target audience with our powerful advertising platform.
+                Join Caszio today and start reaching your target audience with our powerful advertising platform.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -375,7 +375,7 @@ export default function PublisherLanding() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold">Casyoro</span>
+                  <span className="text-2xl font-bold">Caszio</span>
                 </div>
                 <p className="text-gray-400 mb-4">
                   India's leading cashback and affiliate platform helping businesses grow and users save.
@@ -412,7 +412,7 @@ export default function PublisherLanding() {
             </div>
             
             <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Casyoro. All rights reserved.</p>
+              <p>&copy; 2024 Caszio. All rights reserved.</p>
             </div>
           </div>
         </footer>

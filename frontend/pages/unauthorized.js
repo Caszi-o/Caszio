@@ -27,7 +27,7 @@ export default function Unauthorized() {
   return (
     <>
       <Head>
-        <title>Unauthorized Access - Casyoro</title>
+        <title>Unauthorized Access - Caszio</title>
         <meta name="description" content="You don't have permission to access this page. Contact support if you believe this is an error." />
       </Head>
 
@@ -44,7 +44,7 @@ export default function Unauthorized() {
               <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">C</span>
               </div>
-              <span className="text-3xl font-bold text-gray-900">Casyoro</span>
+              <span className="text-3xl font-bold text-gray-900">Caszio</span>
             </div>
           </Link>
 

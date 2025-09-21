@@ -41,7 +41,7 @@ export default function Blog() {
       title: '10 Ways to Maximize Your Cashback Earnings',
       excerpt: 'Learn proven strategies to earn more cashback on every purchase and build your savings faster.',
       content: 'Discover the best practices for maximizing your cashback earnings...',
-      author: 'Casyoro Team',
+      author: 'Caszio Team',
       date: '2024-01-15',
       category: 'cashback',
       image: '/images/blog/cashback-tips.jpg',
@@ -119,8 +119,8 @@ export default function Blog() {
   return (
     <>
       <Head>
-        <title>Blog - Casyoro</title>
-        <meta name="description" content="Read the latest tips, guides, and insights about cashback, savings, and smart shopping on Casyoro blog." />
+        <title>Blog - Caszio</title>
+        <meta name="description" content="Read the latest tips, guides, and insights about cashback, savings, and smart shopping on Caszio blog." />
       </Head>
 
       <div className="min-h-screen bg-gray-50">
@@ -133,7 +133,7 @@ export default function Blog() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -162,7 +162,7 @@ export default function Blog() {
               variants={fadeInUp}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Casyoro Blog
+                Caszio Blog
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Discover tips, guides, and insights to help you save more and earn more with cashback

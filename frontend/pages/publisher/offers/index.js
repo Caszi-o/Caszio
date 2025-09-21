@@ -171,7 +171,7 @@ export default function PublisherOffers() {
   return (
     <ProtectedRoute allowedRoles={['publisher']}>
       <Head>
-        <title>My Offers - Publisher Dashboard | Casyoro</title>
+        <title>My Offers - Publisher Dashboard | Caszio</title>
         <meta name="description" content="Manage your offers and discounts" />
       </Head>
 

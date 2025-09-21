@@ -1,10 +1,10 @@
-# Casyoro - Revolutionary Cashback & Affiliate Marketing Platform
+# Caszio - Revolutionary Cashback & Affiliate Marketing Platform
 
 > **Innovation in Action** - Showcasing cutting-edge technology, scalability, and real-world impact in the $50B+ global affiliate marketing industry.
 
 ## 🌍 Vision
 
-Casyoro is India's first fully automated cashback and affiliate marketing platform that combines **Cashback + Coupons + Publisher Advertising + Promoter Revenue Sharing** into one unified ecosystem. Our revolutionary approach eliminates manual order entry through direct e-commerce account linking, making earning cashback effortless for users while providing powerful tools for businesses and content creators.
+Caszio is India's first fully automated cashback and affiliate marketing platform that combines **Cashback + Coupons + Publisher Advertising + Promoter Revenue Sharing** into one unified ecosystem. Our revolutionary approach eliminates manual order entry through direct e-commerce account linking, making earning cashback effortless for users while providing powerful tools for businesses and content creators.
 
 ## 🚀 Core Features
 
@@ -73,8 +73,8 @@ Casyoro is India's first fully automated cashback and affiliate marketing platfo
 ### Installation
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/casyoro.git
-cd casyoro
+git clone https://github.com/yourusername/caszio.git
+cd caszio
 npm run install:all
 
 # Configure environment
@@ -88,7 +88,7 @@ npm run dev  # Frontend: 3000, Backend: 5000
 ### Environment Setup
 ```env
 # Essential configurations in backend/.env
-MONGODB_URI=mongodb://localhost:27017/your_database_name
+MONGODB_URI=mongodb://localhost:27017/caszio
 JWT_SECRET=your_secure_jwt_secret_here
 FRONTEND_URL=http://localhost:3000
 
@@ -347,8 +347,8 @@ npm start
 - **LinkedIn**: 
 - **Twitter**: 
 - **YouTube**: 
-- **GitHub**: https://github.com/Casyoro/Casyoro
-- **Instagram**: https://www.instagram.com/casyoro.casyoro?igsh=bW5taTV2cHp2NTJq
+- **GitHub**: https://github.com/Caszio/Caszio
+- **Instagram**: https://www.instagram.com/caszio.caszio?igsh=bW5taTV2cHp2NTJq
 - **Facebook**: https://www.facebook.com/share/1CW6kEJu8c/
 
 ---

@@ -129,8 +129,8 @@ export default function RegisterUser() {
   return (
     <PublicRoute>
       <Head>
-        <title>Join as User - Casyoro</title>
-        <meta name="description" content="Create your Casyoro user account to start earning cashback and accessing exclusive deals." />
+        <title>Join as User - Caszio</title>
+        <meta name="description" content="Create your Caszio user account to start earning cashback and accessing exclusive deals." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50">
@@ -143,7 +143,7 @@ export default function RegisterUser() {
                   <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-lg">C</span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">Casyoro</span>
+                  <span className="text-2xl font-bold text-gray-900">Caszio</span>
                 </Link>
               </div>
 
@@ -172,7 +172,7 @@ export default function RegisterUser() {
                   Start Earning <span className="bg-gradient-primary bg-clip-text text-transparent">Cashback</span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8">
-                  Join thousands of users who are already saving money on every purchase with Casyoro.
+                  Join thousands of users who are already saving money on every purchase with Caszio.
                 </p>
               </motion.div>
 
