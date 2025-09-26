@@ -95,7 +95,7 @@ api.interceptors.response.use(
 );
 
 // Import mock API for development
-import { mockAuthAPI, mockUserAPI, mockOffersAPI, mockPublisherAPI, mockPromoterAPI, checkBackendAvailability } from './mockAPI';
+import { mockAuthAPI, mockUserAPI, mockOffersAPI, mockPublisherAPI, checkBackendAvailability } from './mockAPI';
 
 // Check if we should use mock API
 const USE_MOCK_API = process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_USE_MOCK_API === 'true';
@@ -251,23 +251,6 @@ export const publisherAPI = {
   getOfferAnalytics: (id) => api.get(`/publishers/offers/${id}/analytics`),
 };
 
-export const promoterAPI = {
-  apply: (data) => api.post('/promoters/apply', data),
-  getProfile: () => api.get('/promoters/profile'),
-  updateProfile: (data) => api.put('/promoters/profile', data),
-  getDashboard: async () => {
-    if (USE_MOCK_API) {
-      console.log('Using mock API for promoter dashboard');
-      return mockPromoterAPI.getDashboard();
-    }
-    return api.get('/promoters/dashboard');
-  },
-  getAdScripts: (params) => api.get('/promoters/scripts', { params }),
-  getEarnings: (params) => api.get('/promoters/earnings', { params }),
-  requestWithdrawal: (data) => api.post('/promoters/withdraw', data),
-  getWithdrawals: (params) => api.get('/promoters/withdrawals', { params }),
-  getMetrics: (params) => api.get('/promoters/metrics', { params }),
-};
 
 
 export const paymentAPI = {
@@ -276,6 +259,19 @@ export const paymentAPI = {
   getPaymentMethods: () => api.get('/payments/methods'),
   addPaymentMethod: (data) => api.post('/payments/methods', data),
   deletePaymentMethod: (id) => api.delete(`/payments/methods/${id}`),
+};
+
+// Partnership API
+export const partnershipAPI = {
+  // Submit partnership application
+  submitApplication: (data) => api.post('/partnership', data),
+  
+  // Get application status
+  getApplicationStatus: (applicationId) => api.get(`/partnership/status/${applicationId}`),
+  
+  // Admin functions
+  getPartnershipApplications: (params) => api.get('/partnership/admin', { params }),
+  updateApplicationStatus: (id, data) => api.patch(`/partnership/admin/${id}`, data),
 };
 
 // Utility functions

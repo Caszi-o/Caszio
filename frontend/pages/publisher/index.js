@@ -55,7 +55,7 @@ export default function PublisherLanding() {
     {
       icon: UsersIcon,
       title: 'Targeted Reach',
-      description: 'Reach your target audience through our network of verified promoters and affiliate partners.',
+      description: 'Reach your target audience through our network of verified affiliate partners.',
       color: 'bg-danger-500'
     }
   ];
@@ -106,9 +106,6 @@ export default function PublisherLanding() {
                 <Link href="/how-it-works" className="text-gray-600 hover:text-primary-600 transition-colors">
                   How it Works
                 </Link>
-                <Link href="/promoter" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Promoters
-                </Link>
                 
                 {user ? (
                   <Link href="/user/dashboard" className="btn btn-primary">
@@ -150,7 +147,7 @@ export default function PublisherLanding() {
                 className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto"
                 variants={fadeInUp}
               >
-                Join Caszio as a publisher and reach millions of users through our network of verified promoters. 
+                Join Caszio as a publisher and reach millions of users through our network. 
                 Advanced ad management, detailed analytics, and flexible budgeting - all in one platform.
               </motion.p>
 
@@ -388,7 +385,6 @@ export default function PublisherLanding() {
                   <li><Link href="/offers" className="hover:text-white transition-colors">Offers</Link></li>
                   <li><Link href="/cashback" className="hover:text-white transition-colors">Cashback</Link></li>
                   <li><Link href="/publisher" className="hover:text-white transition-colors">Publishers</Link></li>
-                  <li><Link href="/promoter" className="hover:text-white transition-colors">Promoters</Link></li>
                 </ul>
               </div>
               

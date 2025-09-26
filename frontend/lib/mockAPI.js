@@ -231,32 +231,3 @@ export const mockPublisherAPI = {
   }
 };
 
-// Mock API for promoter dashboard
-export const mockPromoterAPI = {
-  getDashboard: async () => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    return {
-      data: {
-        success: true,
-        data: {
-          promoter: {
-            _id: '1',
-            applicationStatus: 'pending',
-            totalEarnings: 0,
-            monthlyEarnings: 0,
-            totalClicks: 0,
-            totalConversions: 0
-          },
-          recentActivities: [],
-          performance: {
-            clicks: 0,
-            conversions: 0,
-            conversionRate: 0,
-            totalEarnings: 0
-          }
-        }
-      }
-    };
-  }
-};

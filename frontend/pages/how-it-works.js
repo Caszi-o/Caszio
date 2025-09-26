@@ -30,7 +30,7 @@ export default function HowItWorks() {
     {
       icon: UserPlusIcon,
       title: 'Sign Up Free',
-      description: 'Create your Caszio account in under 2 minutes. Choose your role: User, Publisher, or Promoter.',
+      description: 'Create your Caszio account in under 2 minutes. Choose your role: User or Publisher.',
       details: [
         'No credit card required',
         'Email verification for security',
@@ -102,20 +102,6 @@ export default function HowItWorks() {
       cta: 'Start Advertising',
       href: '/auth/register?role=publisher'
     },
-    {
-      title: 'For Promoters',
-      subtitle: 'Monetize Your Traffic',
-      icon: '💰',
-      features: [
-        'Earn per click and conversion',
-        'Easy-to-use promotion tools',
-        'Performance-based payouts',
-        'Detailed earning analytics',
-        'Multiple payout methods'
-      ],
-      cta: 'Start Promoting',
-      href: '/auth/register?role=promoter'
-    }
   ];
 
   const faqs = [
@@ -137,7 +123,7 @@ export default function HowItWorks() {
     },
     {
       question: 'Are there any fees?',
-      answer: 'Caszio is completely free for users. Publishers and promoters pay only when they see results - no upfront costs or hidden fees.'
+      answer: 'Caszio is completely free for users. Publishers pay only when they see results - no upfront costs or hidden fees.'
     }
   ];
 

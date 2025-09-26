@@ -109,17 +109,6 @@ router.post('/register', [
         }
       });
       await publisher.save();
-    } else if (role === 'promoter') {
-      const Promoter = require('../models/Promoter');
-      const promoter = new Promoter({
-        userId: user._id,
-        applicationStatus: 'pending',
-        totalEarnings: 0,
-        monthlyEarnings: 0,
-        totalClicks: 0,
-        totalConversions: 0
-      });
-      await promoter.save();
     }
 
     // Generate tokens

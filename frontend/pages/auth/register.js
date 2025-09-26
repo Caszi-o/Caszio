@@ -54,25 +54,13 @@ export default function Register() {
       borderColor: 'border-green-200',
       link: '/auth/register-publisher'
     },
-    {
-      id: 'promoter',
-      title: 'Promoter',
-      subtitle: 'Earn by Promoting',
-      description: 'Monetize your social media presence',
-      icon: ShareIcon,
-      features: ['High commission rates', 'Track performance', 'Flexible schedule'],
-      color: 'from-purple-500 to-purple-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'border-purple-200',
-      link: '/auth/register-promoter'
-    }
   ];
 
   return (
     <PublicRoute>
       <Head>
         <title>Choose Your Role - Caszio</title>
-        <meta name="description" content="Join Caszio as a user, publisher, or promoter. Choose your role and start your journey today." />
+        <meta name="description" content="Join Caszio as a user or publisher. Choose your role and start your journey today." />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-success-50">

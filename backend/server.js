@@ -45,7 +45,6 @@ mongoose.connect(process.env.MONGODB_URI || config.MONGODB_URI, {
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/publishers', require('./routes/publishers'));
-app.use('/api/promoters', require('./routes/promoters'));
 app.use('/api/offers', require('./routes/offers'));
 app.use('/api/ads', require('./routes/ads'));
 app.use('/api/orders', require('./routes/orders'));
@@ -53,6 +52,7 @@ app.use('/api/wallet', require('./routes/wallet'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/affiliate', require('./routes/affiliate'));
 app.use('/api/payments', require('./routes/payments'));
+app.use('/api/partnership', require('./routes/partnership'));
 
 // Test route for frontend connection
 app.get('/api/test', (req, res) => {

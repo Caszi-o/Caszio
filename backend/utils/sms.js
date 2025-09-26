@@ -37,8 +37,6 @@ const smsTemplates = {
   'publisher-approved': (data) => 
     `Your publisher account is approved! Start creating ad campaigns on Caszio dashboard.`,
   
-  'promoter-approved': (data) => 
-    `Your promoter application is approved! Access your dashboard to get ad scripts and start earning.`
 };
 
 // Send SMS function

@@ -68,12 +68,6 @@ export default function Home() {
       description: 'Grow your business with our advanced ad management system. Target your audience effectively.',
       color: 'bg-warning-500'
     },
-    {
-      icon: ShoppingBagIcon,
-      title: 'Promoter Network',
-      description: 'Monetize your traffic by promoting ads. Earn per click and build sustainable income streams.',
-      color: 'bg-danger-500'
-    }
   ];
 
   const testimonials = [];
@@ -117,9 +111,6 @@ export default function Home() {
                 </Link>
                 <Link href="/publisher" className="text-gray-600 hover:text-primary-600 transition-colors">
                   Publishers
-                </Link>
-                <Link href="/promoter" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Promoters
                 </Link>
                 
                 {user ? (
@@ -476,7 +467,6 @@ export default function Home() {
                   <li><Link href="/offers" className="hover:text-white transition-colors">Offers</Link></li>
                   <li><Link href="/cashback" className="hover:text-white transition-colors">Cashback</Link></li>
                   <li><Link href="/publisher" className="hover:text-white transition-colors">Publishers</Link></li>
-                  <li><Link href="/promoter" className="hover:text-white transition-colors">Promoters</Link></li>
                 </ul>
               </div>
               

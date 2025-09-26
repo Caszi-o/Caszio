@@ -2,12 +2,12 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 const Publisher = require('../models/Publisher');
-const Promoter = require('../models/Promoter');
 const Ad = require('../models/Ad');
 const Order = require('../models/Order');
 const Transaction = require('../models/Transaction');
 const Wallet = require('../models/Wallet');
 const Offer = require('../models/Offer');
+const Partnership = require('../models/Partnership');
 const { authenticateToken, authorize } = require('../middleware/auth');
 
 const router = express.Router();
@@ -37,10 +37,10 @@ router.get('/dashboard', async (req, res) => {
     const approvedPublishers = await Publisher.countDocuments({ verificationStatus: 'verified' });
     const pendingPublishers = await Publisher.countDocuments({ verificationStatus: 'pending' });
 
-    // Promoter statistics
-    const totalPromoters = await Promoter.countDocuments();
-    const approvedPromoters = await Promoter.countDocuments({ applicationStatus: 'approved' });
-    const pendingPromoters = await Promoter.countDocuments({ applicationStatus: 'pending' });
+    // Partnership statistics
+    const totalPartnerships = await Partnership.countDocuments();
+    const pendingPartnerships = await Partnership.countDocuments({ status: 'pending' });
+    const approvedPartnerships = await Partnership.countDocuments({ status: 'approved' });
 
     // Ad statistics
     const totalAds = await Ad.countDocuments();
@@ -132,10 +132,10 @@ router.get('/dashboard', async (req, res) => {
             approved: approvedPublishers,
             pending: pendingPublishers
           },
-          promoters: {
-            total: totalPromoters,
-            approved: approvedPromoters,
-            pending: pendingPromoters
+          partnerships: {
+            total: totalPartnerships,
+            pending: pendingPartnerships,
+            approved: approvedPartnerships
           },
           ads: {
             total: totalAds,
@@ -227,7 +227,7 @@ router.get('/users', async (req, res) => {
 
 // Update user
 router.put('/users/:id', [
-  body('role').optional().isIn(['user', 'publisher', 'promoter', 'admin']),
+  body('role').optional().isIn(['user', 'publisher', 'admin']),
   body('isVerified').optional().isBoolean(),
   body('isBlocked').optional().isBoolean()
 ], async (req, res) => {
@@ -363,100 +363,6 @@ router.patch('/publishers/:id/verification', [
   }
 });
 
-// Promoter Management
-router.get('/promoters', async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 20;
-    const status = req.query.status;
-    const search = req.query.search;
-
-    const query = {};
-    if (status) query.applicationStatus = status;
-    if (search) {
-      query.$or = [
-        { displayName: { $regex: search, $options: 'i' } },
-        { 'platforms.url': { $regex: search, $options: 'i' } }
-      ];
-    }
-
-    const promoters = await Promoter.find(query)
-      .populate('userId', 'firstName lastName email')
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .skip((page - 1) * limit);
-
-    const total = await Promoter.countDocuments(query);
-
-    res.json({
-      success: true,
-      data: {
-        promoters,
-        pagination: {
-          currentPage: page,
-          totalPages: Math.ceil(total / limit),
-          totalItems: total,
-          itemsPerPage: limit
-        }
-      }
-    });
-
-  } catch (error) {
-    console.error('Get promoters error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to get promoters'
-    });
-  }
-});
-
-// Approve/Reject promoter
-router.patch('/promoters/:id/application', [
-  body('status').isIn(['approved', 'rejected']).withMessage('Invalid status'),
-  body('notes').optional().trim()
-], async (req, res) => {
-  try {
-    const { status, notes } = req.body;
-
-    const promoter = await Promoter.findById(req.params.id);
-    if (!promoter) {
-      return res.status(404).json({
-        success: false,
-        message: 'Promoter not found'
-      });
-    }
-
-    promoter.applicationStatus = status;
-    promoter.approvedBy = req.user._id;
-    promoter.approvedAt = new Date();
-    if (notes) promoter.applicationNotes = notes;
-
-    // Generate referral code if approved
-    if (status === 'approved' && !promoter.referralCode) {
-      promoter.referralCode = `PROMO${Date.now().toString().slice(-6)}`;
-    }
-
-    await promoter.save();
-
-    // Update user role if approved
-    if (status === 'approved') {
-      await User.findByIdAndUpdate(promoter.userId, { role: 'promoter' });
-    }
-
-    res.json({
-      success: true,
-      message: `Promoter application ${status} successfully`,
-      data: { promoter }
-    });
-
-  } catch (error) {
-    console.error('Promoter application error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to update promoter application'
-    });
-  }
-});
 
 // Ad Management
 router.get('/ads', async (req, res) => {
@@ -621,120 +527,6 @@ router.get('/transactions', async (req, res) => {
   }
 });
 
-// Withdrawal Management
-router.get('/withdrawals', async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 20;
-    const status = req.query.status;
-
-    // Get withdrawals from promoters
-    const promoterQuery = {};
-    if (status) promoterQuery['withdrawals.status'] = status;
-
-    const promoters = await Promoter.find(promoterQuery)
-      .populate('userId', 'firstName lastName email')
-      .sort({ createdAt: -1 });
-
-    // Flatten withdrawals
-    const allWithdrawals = [];
-    promoters.forEach(promoter => {
-      promoter.withdrawals.forEach(withdrawal => {
-        allWithdrawals.push({
-          ...withdrawal.toObject(),
-          promoter: {
-            _id: promoter._id,
-            displayName: promoter.displayName,
-            userId: promoter.userId
-          }
-        });
-      });
-    });
-
-    // Filter by status if specified
-    let filteredWithdrawals = allWithdrawals;
-    if (status) {
-      filteredWithdrawals = allWithdrawals.filter(w => w.status === status);
-    }
-
-    // Sort by request date
-    filteredWithdrawals.sort((a, b) => new Date(b.requestedAt) - new Date(a.requestedAt));
-
-    // Paginate
-    const total = filteredWithdrawals.length;
-    const startIndex = (page - 1) * limit;
-    const paginatedWithdrawals = filteredWithdrawals.slice(startIndex, startIndex + limit);
-
-    res.json({
-      success: true,
-      data: {
-        withdrawals: paginatedWithdrawals,
-        pagination: {
-          currentPage: page,
-          totalPages: Math.ceil(total / limit),
-          totalItems: total,
-          itemsPerPage: limit
-        }
-      }
-    });
-
-  } catch (error) {
-    console.error('Get withdrawals error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to get withdrawals'
-    });
-  }
-});
-
-// Process withdrawal
-router.patch('/withdrawals/:promoterId/:withdrawalId', [
-  body('status').isIn(['approved', 'rejected', 'completed']).withMessage('Invalid status'),
-  body('transactionId').optional().trim(),
-  body('notes').optional().trim()
-], async (req, res) => {
-  try {
-    const { status, transactionId, notes } = req.body;
-    const { promoterId, withdrawalId } = req.params;
-
-    const promoter = await Promoter.findById(promoterId);
-    if (!promoter) {
-      return res.status(404).json({
-        success: false,
-        message: 'Promoter not found'
-      });
-    }
-
-    const withdrawal = promoter.withdrawals.id(withdrawalId);
-    if (!withdrawal) {
-      return res.status(404).json({
-        success: false,
-        message: 'Withdrawal not found'
-      });
-    }
-
-    withdrawal.status = status;
-    withdrawal.processedBy = req.user._id;
-    withdrawal.processedAt = new Date();
-    if (transactionId) withdrawal.transactionId = transactionId;
-    if (notes) withdrawal.adminNotes = notes;
-
-    await promoter.save();
-
-    res.json({
-      success: true,
-      message: `Withdrawal ${status} successfully`,
-      data: { withdrawal }
-    });
-
-  } catch (error) {
-    console.error('Process withdrawal error:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to process withdrawal'
-    });
-  }
-});
 
 // Content Management - Offers
 router.get('/offers', async (req, res) => {
@@ -981,11 +773,6 @@ router.get('/settings', async (req, res) => {
         verificationRequired: true,
         autoApproval: false,
         maxAdsPerAccount: 50
-      },
-      promoters: {
-        verificationRequired: true,
-        autoApproval: false,
-        commissionRate: 70
       },
       security: {
         twoFactorRequired: false,

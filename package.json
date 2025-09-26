@@ -1,7 +1,7 @@
 {
   "name": "caszio",
   "version": "1.0.0",
-  "description": "Full-stack cashback and affiliate platform combining coupons, publishers, and promoters",
+  "description": "Full-stack cashback and affiliate platform combining coupons and publishers",
   "scripts": {
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm run dev",

@@ -37,10 +37,10 @@ router.get('/links', async (req, res) => {
 // @access  Public
 router.post('/track', async (req, res) => {
   try {
-    const { platform, productId, userId, promoterId } = req.body;
+    const { platform, productId, userId } = req.body;
     
     // TODO: Implement click tracking logic
-    console.log('Affiliate click tracked:', { platform, productId, userId, promoterId });
+    console.log('Affiliate click tracked:', { platform, productId, userId });
     
     res.json({
       success: true,

@@ -37,7 +37,6 @@ export default function Help() {
     { id: 'cashback', name: 'Cashback & Earnings', icon: CreditCardIcon },
     { id: 'accounts', name: 'Account Management', icon: ShieldCheckIcon },
     { id: 'publisher', name: 'For Publishers', icon: ChartBarIcon },
-    { id: 'promoter', name: 'For Promoters', icon: ChatBubbleLeftRightIcon },
   ];
 
   const articles = [
@@ -80,14 +79,6 @@ export default function Help() {
       description: 'Best practices for publishers to create high-converting ad campaigns',
       readTime: '10 min read',
       tags: ['advertising', 'campaigns', 'conversion']
-    },
-    {
-      id: 6,
-      title: 'Maximizing Your Promoter Earnings',
-      category: 'promoter',
-      description: 'Tips and strategies to increase your earnings as a promoter',
-      readTime: '8 min read',
-      tags: ['promotion', 'earnings', 'strategy']
     },
     {
       id: 7,

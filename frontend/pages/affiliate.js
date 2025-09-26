@@ -147,9 +147,6 @@ export default function AffiliateProgram() {
                 <Link href="/publisher" className="text-gray-600 hover:text-primary-600 transition-colors">
                   Publishers
                 </Link>
-                <Link href="/promoter" className="text-gray-600 hover:text-primary-600 transition-colors">
-                  Promoters
-                </Link>
                 
                 {user ? (
                   <Link href="/user/dashboard" className="btn btn-primary">
@@ -468,7 +465,6 @@ export default function AffiliateProgram() {
                   <li><Link href="/offers" className="hover:text-white transition-colors">Offers</Link></li>
                   <li><Link href="/cashback" className="hover:text-white transition-colors">Cashback</Link></li>
                   <li><Link href="/publisher" className="hover:text-white transition-colors">Publishers</Link></li>
-                  <li><Link href="/promoter" className="hover:text-white transition-colors">Promoters</Link></li>
                 </ul>
               </div>
               

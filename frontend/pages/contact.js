@@ -86,8 +86,8 @@ export default function Contact() {
       answer: 'The minimum withdrawal amount is ₹100. You can withdraw to your bank account or digital wallet.'
     },
     {
-      question: 'How do I become a publisher or promoter?',
-      answer: 'You can apply to become a publisher or promoter during registration or through your dashboard. Applications are reviewed within 2-3 business days.'
+      question: 'How do I become a publisher?',
+      answer: 'You can apply to become a publisher during registration or through your dashboard. Applications are reviewed within 2-3 business days.'
     }
   ];
 

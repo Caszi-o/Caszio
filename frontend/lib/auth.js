@@ -11,8 +11,6 @@ export const getRedirectPath = (role) => {
   switch (role) {
     case 'publisher':
       return '/publisher/dashboard';
-    case 'promoter':
-      return '/promoter/dashboard';
     case 'user':
     default:
       return '/user/dashboard';

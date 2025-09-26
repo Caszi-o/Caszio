@@ -172,7 +172,7 @@ router.post('/:id/conversion', async (req, res) => {
   }
 });
 
-// Get ad script for promoters
+// Get ad script
 router.get('/:id/script', async (req, res) => {
   try {
     const { format = 'html', theme = 'default' } = req.query;

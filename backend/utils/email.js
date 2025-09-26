@@ -134,28 +134,155 @@ const templates = {
     `
   }),
 
-  'promoter-approved': (data) => ({
-    subject: 'Promoter Application Approved',
+  // Partnership application templates
+  'partnership-confirmation': (data) => ({
+    subject: 'Partnership Application Received - Caszio',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #28a745;">Promoter Application Approved! 🎉</h2>
-        <p>Hi ${data.name},</p>
-        <p>Great news! Your promoter application has been approved. You can now start earning by promoting ads on your platforms.</p>
+        <h2 style="color: #007bff;">Partnership Application Received! 📋</h2>
+        <p>Hi ${data.contactPerson},</p>
+        <p>Thank you for your interest in partnering with Caszio! We have successfully received your partnership application for <strong>${data.companyName}</strong>.</p>
+        
         <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
-          <p><strong>Display Name:</strong> ${data.displayName}</p>
-          <p><strong>Approval Date:</strong> ${data.approvalDate}</p>
-          <p><strong>Commission Rate:</strong> ₹${data.cpcRate} per click</p>
+          <p><strong>Application ID:</strong> ${data.applicationId}</p>
+          <p><strong>Company:</strong> ${data.companyName}</p>
+          <p><strong>Status:</strong> Under Review</p>
+          <p><strong>Submitted:</strong> ${new Date().toLocaleDateString()}</p>
         </div>
+        
+        <h3 style="color: #333;">What's Next?</h3>
+        <ul style="color: #666;">
+          <li>Our partnership team will review your application within 2-3 business days</li>
+          <li>We may reach out for additional information if needed</li>
+          <li>You'll receive an email notification once we make a decision</li>
+        </ul>
+        
         <div style="text-align: center; margin: 30px 0;">
-          <a href="${process.env.FRONTEND_URL}/promoter/dashboard" 
+          <a href="${data.statusUrl}" 
              style="background-color: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
-            Access Promoter Dashboard
+            Check Application Status
           </a>
         </div>
-        <p>Get your ad scripts and start earning today!</p>
+        
+        <p style="color: #666; font-size: 14px;">
+          If you have any questions, please contact us at partnerships@caszio.com
+        </p>
+      </div>
+    `
+  }),
+
+  'partnership-admin-notification': (data) => ({
+    subject: `New Partnership Application - ${data.companyName}`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #dc3545;">🔔 New Partnership Application</h2>
+        <p>A new partnership application has been submitted and requires review.</p>
+        
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0;">
+          <h3 style="margin-top: 0; color: #333;">Company Details</h3>
+          <p><strong>Company Name:</strong> ${data.companyName}</p>
+          <p><strong>Website:</strong> <a href="${data.website}" target="_blank">${data.website}</a></p>
+          <p><strong>Contact Person:</strong> ${data.contactPerson}</p>
+          <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+          <p><strong>Phone:</strong> ${data.phone}</p>
+        </div>
+        
+        <div style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <h4 style="margin-top: 0; color: #856404;">Message/Proposal:</h4>
+          <p style="color: #856404; font-style: italic;">"${data.message}"</p>
+        </div>
+        
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="${data.dashboardUrl}" 
+             style="background-color: #dc3545; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Review Application
+          </a>
+        </div>
+        
+        <p style="color: #666; font-size: 12px;">
+          Application ID: ${data.applicationId}
+        </p>
+      </div>
+    `
+  }),
+
+  'partnership-approved': (data) => ({
+    subject: 'Partnership Application Approved - Welcome to Caszio! 🎉',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #28a745;">Partnership Approved! 🎉</h2>
+        <p>Hi ${data.contactPerson},</p>
+        <p>Congratulations! We're excited to inform you that your partnership application for <strong>${data.companyName}</strong> has been approved!</p>
+        
+        <div style="background-color: #d4edda; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #28a745;">
+          <h3 style="margin-top: 0; color: #155724;">Welcome to the Caszio Partner Network!</h3>
+          <p style="color: #155724; margin-bottom: 0;">You can now start creating advertising campaigns and reaching millions of potential customers through our platform.</p>
+        </div>
+        
+        <h3 style="color: #333;">Next Steps:</h3>
+        <ol style="color: #666;">
+          <li>Complete your publisher account setup</li>
+          <li>Verify your business information</li>
+          <li>Create your first advertising campaign</li>
+          <li>Start reaching your target audience</li>
+        </ol>
+        
+        ${data.adminNotes ? `
+          <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <h4 style="margin-top: 0; color: #333;">Additional Notes:</h4>
+            <p style="color: #666; font-style: italic;">${data.adminNotes}</p>
+          </div>
+        ` : ''}
+        
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="${data.dashboardUrl}" 
+             style="background-color: #28a745; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Access Your Dashboard
+          </a>
+        </div>
+        
+        <p style="color: #666; font-size: 14px;">
+          Welcome to Caszio! If you have any questions, our support team is here to help at support@caszio.com
+        </p>
+      </div>
+    `
+  }),
+
+  'partnership-rejected': (data) => ({
+    subject: 'Partnership Application Update - Caszio',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #dc3545;">Partnership Application Update</h2>
+        <p>Hi ${data.contactPerson},</p>
+        <p>Thank you for your interest in partnering with Caszio. After careful review, we regret to inform you that we cannot approve your partnership application for <strong>${data.companyName}</strong> at this time.</p>
+        
+        ${data.adminNotes ? `
+          <div style="background-color: #f8d7da; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #dc3545;">
+            <h3 style="margin-top: 0; color: #721c24;">Feedback:</h3>
+            <p style="color: #721c24;">${data.adminNotes}</p>
+          </div>
+        ` : ''}
+        
+        <div style="background-color: #d1ecf1; padding: 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #17a2b8;">
+          <h3 style="margin-top: 0; color: #0c5460;">Alternative Options:</h3>
+          <ul style="color: #0c5460;">
+            <li>Consider applying again in the future when your business meets our criteria</li>
+            <li>Explore our affiliate program as an alternative way to earn with Caszio</li>
+            <li>Contact our support team if you have questions about the decision</li>
+          </ul>
+        </div>
+        
+        <p style="color: #666;">
+          We appreciate your interest in Caszio and encourage you to stay connected with us for future opportunities.
+        </p>
+        
+        <p style="color: #666; font-size: 14px;">
+          If you have any questions about this decision, please contact us at partnerships@caszio.com
+        </p>
       </div>
     `
   })
+
 };
 
 // Send email function

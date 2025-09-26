@@ -19,8 +19,6 @@ const Layout = ({ children }) => {
     switch (user.role) {
       case 'publisher':
         return '/dashboard/publisher';
-      case 'promoter':
-        return '/dashboard/promoter';
       default:
         return '/dashboard/user';
     }
@@ -30,8 +28,6 @@ const Layout = ({ children }) => {
     switch (role) {
       case 'publisher':
         return 'Publisher';
-      case 'promoter':
-        return 'Promoter';
       default:
         return 'User';
     }
@@ -207,8 +203,9 @@ const Layout = ({ children }) => {
               <h3 className="text-lg font-semibold mb-4">For Partners</h3>
               <ul className="space-y-2">
                 <li><Link href="/publisher" className="text-gray-400 hover:text-white text-sm">For Publishers</Link></li>
-                <li><Link href="/promoter" className="text-gray-400 hover:text-white text-sm">For Promoters</Link></li>
                 <li><Link href="/affiliate" className="text-gray-400 hover:text-white text-sm">Affiliate Program</Link></li>
+                <li><Link href="/partnership" className="text-gray-400 hover:text-white text-sm">Partnership</Link></li>
+                <li><Link href="/partnership/apply" className="text-gray-400 hover:text-white text-sm">Apply for Partnership</Link></li>
               </ul>
             </div>
             

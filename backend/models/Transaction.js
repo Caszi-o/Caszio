@@ -30,7 +30,6 @@ const transactionSchema = new mongoose.Schema({
       'referral_bonus',
       'ad_revenue',
       'publisher_payment',
-      'promoter_payment',
       'withdrawal',
       'refund',
       'penalty',
@@ -385,7 +384,7 @@ transactionSchema.statics.getRevenueReport = function(startDate, endDate) {
       $match: {
         createdAt: { $gte: startDate, $lte: endDate },
         status: 'completed',
-        type: { $in: ['cashback_earned', 'ad_revenue', 'publisher_payment', 'promoter_payment'] }
+        type: { $in: ['cashback_earned', 'ad_revenue', 'publisher_payment'] }
       }
     },
     {

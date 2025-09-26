@@ -7,7 +7,6 @@ import { motion } from 'framer-motion';
 // Import role-specific dashboard components
 import UserDashboard from './user';
 import PublisherDashboard from '../../components/PublisherDashboard';
-import PromoterDashboard from './promoter';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -26,9 +25,6 @@ export default function Dashboard() {
       switch (role) {
         case 'publisher':
           router.replace('/publisher/dashboard');
-          break;
-        case 'promoter':
-          router.replace('/promoter/dashboard');
           break;
         case 'user':
         default:

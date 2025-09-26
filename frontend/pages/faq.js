@@ -77,20 +77,12 @@ export default function FAQ() {
       ]
     },
     {
-      title: 'Publishers & Promoters',
+      title: 'Publishers',
       questions: [
         {
           question: 'How do I become a publisher?',
           answer: 'Click on "Become a Publisher" and fill out the application form. Our team will review your application and contact you within 24-48 hours to guide you through the verification process.'
         },
-        {
-          question: 'How do I become a promoter?',
-          answer: 'Click on "Become a Promoter" and complete the application. Once approved, you can start promoting ads and earning commissions for every click or conversion.'
-        },
-        {
-          question: 'What are the commission rates for promoters?',
-          answer: 'Commission rates vary by campaign and advertiser, typically ranging from ₹5 to ₹50 per click. High-performing promoters may qualify for higher rates.'
-        }
       ]
     },
     {

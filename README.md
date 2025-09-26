@@ -4,7 +4,7 @@
 
 ## 🌍 Vision
 
-Caszio is India's first fully automated cashback and affiliate marketing platform that combines **Cashback + Coupons + Publisher Advertising + Promoter Revenue Sharing** into one unified ecosystem. Our revolutionary approach eliminates manual order entry through direct e-commerce account linking, making earning cashback effortless for users while providing powerful tools for businesses and content creators.
+Caszio is India's first fully automated cashback and affiliate marketing platform that combines **Cashback + Coupons + Publisher Advertising** into one unified ecosystem. Our revolutionary approach eliminates manual order entry through direct e-commerce account linking, making earning cashback effortless for users while providing powerful tools for businesses.
 
 ## 🚀 Core Features
 
@@ -30,7 +30,7 @@ Caszio is India's first fully automated cashback and affiliate marketing platfor
 - **Budget Control**: Daily and monthly budget limits with automatic optimization
 - **Quality Scoring**: AI-powered ad quality assessment for better performance
 
-### 💰 **Promoter Revenue Network**
+### 💰 **Affiliate Revenue Network**
 - **Multiple Earning Models**: CPC (Cost Per Click), CPA (Cost Per Action), and Revenue Share
 - **Easy Integration**: Dynamic ad script generation for websites, blogs, and social media
 - **Performance-Based Payouts**: Earn significant monthly income through quality traffic promotion
@@ -39,7 +39,7 @@ Caszio is India's first fully automated cashback and affiliate marketing platfor
 - **Quality Assurance**: Automated fraud detection and quality-based scoring system
 
 ### 🎛️ **Comprehensive Admin CMS**
-- **User Management**: Complete oversight of users, publishers, and promoters
+- **User Management**: Complete oversight of users and publishers
 - **Financial Controls**: Transaction monitoring, withdrawal approvals, and payment processing
 - **Content Management**: Offer curation, merchant onboarding, and platform content updates
 - **Analytics Dashboard**: Platform-wide metrics, user behavior analysis, and business intelligence
@@ -102,7 +102,6 @@ FRONTEND_URL=http://localhost:3000
 - **User**: Profile, wallet, linked accounts, KYC
 - **Order**: Platform sync, cashback calculation, tracking  
 - **Publisher**: Business verification, ads, packages
-- **Promoter**: Applications, earnings, ad scripts
 - **Offer**: Coupons, deals, performance metrics
 - **Ad**: Campaigns, targeting, budget, analytics
 - **Wallet**: Balance, transactions, withdrawals
@@ -114,7 +113,6 @@ FRONTEND_URL=http://localhost:3000
 /api/wallet/*       # Wallet operations  
 /api/offers/*       # Coupons & deals
 /api/publishers/*   # Publisher dashboard
-/api/promoters/*    # Promoter system
 /api/admin/*        # Admin CMS
 /api/payments/*     # Payment processing
 ```
@@ -138,7 +136,6 @@ FRONTEND_URL=http://localhost:3000
 ### **Role-Based Dashboards**
 - **User Dashboard**: Cashback tracking, wallet management, order history, and offer browsing
 - **Publisher Dashboard**: Ad campaign management, analytics, budget control, and performance metrics
-- **Promoter Dashboard**: Earning tracking, ad script generation, payment history, and performance analytics
 - **Admin Dashboard**: Platform oversight, user management, financial controls, and system analytics
 
 ## 🔐 Security & Compliance
@@ -171,7 +168,7 @@ FRONTEND_URL=http://localhost:3000
 - **Comprehensive Analytics**: Detailed insights into campaign performance and ROI
 - **Flexible Packages**: Choose from Basic, Standard, or Premium plans based on needs
 
-### **For Promoters (Content Creators)**
+### **For Affiliates (Content Creators)**
 - **Multiple Revenue Streams**: Earn through clicks, conversions, and revenue sharing
 - **Easy Integration**: Simple script generation for any website or social media platform
 - **Performance Rewards**: Higher earnings for quality traffic and conversions
@@ -183,7 +180,7 @@ FRONTEND_URL=http://localhost:3000
 ### **Primary Revenue Sources**
 1. **Affiliate Commissions**: Commission from merchant sales through our platform
 2. **Publisher Subscriptions**: Monthly recurring revenue from advertising packages
-3. **Promoter Revenue Share**: Commission on promoter earnings
+3. **Affiliate Revenue Share**: Commission on affiliate earnings
 4. **Transaction Fees**: Processing fee on cashback withdrawals
 5. **Premium Analytics**: Advanced reporting and insights for enterprise clients
 
@@ -224,7 +221,7 @@ npm start
 - ✅ **Core Platform**: Complete authentication system with JWT and OAuth
 - ✅ **Automatic Cashback**: E-commerce account linking and real-time cashback processing
 - ✅ **Publisher Tools**: Ad campaign management with analytics and budget controls
-- ✅ **Promoter Network**: Revenue sharing system with script generation
+- ✅ **Affiliate Network**: Revenue sharing system with script generation
 - ✅ **Admin CMS**: Comprehensive platform management and oversight
 - ✅ **Payment Integration**: Multiple payment gateways and withdrawal options
 
@@ -273,7 +270,7 @@ npm start
 ### **User Engagement Metrics**
 - **High User Retention** rate after 3 months
 - **Multiple transactions** per user per month
-- **Significant monthly earnings** for active promoters
+- **Significant monthly earnings** for active affiliates
 - **Strong ROI improvement** for publisher ad campaigns
 - **High User Rating** across all platform reviews
 
@@ -314,7 +311,7 @@ npm start
 - ✅ **Multiple Ad Formats** - Banner, native, video, and sponsored content ads
 - ✅ **Quality Scoring** - AI-powered ad quality assessment and recommendations
 
-### **Promoter Features**
+### **Affiliate Features**
 - ✅ **Revenue Sharing** - Multiple earning models (CPC, CPA, Revenue Share)
 - ✅ **Ad Script Generation** - Easy-to-use tools for website and social media integration
 - ✅ **Performance Tracking** - Detailed analytics on clicks, conversions, and earnings

@@ -52,8 +52,8 @@ export default function Terms() {
           details: 'We offer advertising services for businesses (Publishers) to create and manage ad campaigns. Publishers can target audiences and track campaign performance through our platform.'
         },
         {
-          subtitle: 'Promoter Network',
-          details: 'Our promoter program allows users to earn commissions by promoting ads and driving traffic to merchant offers. Promoters are compensated based on performance metrics.'
+          subtitle: 'Affiliate Network',
+          details: 'Our affiliate program allows users to earn commissions by promoting offers and driving traffic to merchant partners. Affiliates are compensated based on performance metrics.'
         },
         {
           subtitle: 'Service Availability',
@@ -99,7 +99,7 @@ export default function Terms() {
         },
         {
           subtitle: 'Fees and Charges',
-          details: 'Basic cashback services are provided free of charge to users. Publishers and promoters may be subject to service fees as outlined in their respective agreements. We reserve the right to introduce reasonable fees with advance notice.'
+          details: 'Basic cashback services are provided free of charge to users. Publishers may be subject to service fees as outlined in their respective agreements. We reserve the right to introduce reasonable fees with advance notice.'
         },
         {
           subtitle: 'Disputes and Refunds',
@@ -208,7 +208,7 @@ export default function Terms() {
               <div className="prose prose-lg max-w-none">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to Casyoro</h2>
                 <p className="text-gray-600 mb-6">
-                  These Terms of Service ("Terms") govern your use of Casyoro's cashback and affiliate marketing platform ("Service") operated by Casyoro ("us," "we," or "our"). Our Service provides automated cashback rewards, advertising solutions for businesses, and monetization opportunities for promoters.
+                  These Terms of Service ("Terms") govern your use of Casyoro's cashback and affiliate marketing platform ("Service") operated by Casyoro ("us," "we," or "our"). Our Service provides automated cashback rewards, advertising solutions for businesses, and monetization opportunities for affiliates.
                 </p>
                 <p className="text-gray-600 mb-6">
                   By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of these terms, then you may not access the Service.

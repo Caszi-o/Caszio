@@ -60,13 +60,6 @@ function DashboardContainer({
       bgColor: 'bg-green-100',
       description: 'Ad Management'
     },
-    promoter: {
-      name: 'Promoter',
-      icon: UserGroupIcon,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-100',
-      description: 'Promotion & Earnings'
-    },
   };
 
   const currentRole = roleInfo[role] || roleInfo.user;
